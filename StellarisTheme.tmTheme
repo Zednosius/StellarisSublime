@@ -3,8 +3,7 @@
 <plist version="1.0">
 <dict>
 	
- 	<!-- If you want to edit the colors of this file, i'd suggest copying it first so you can compare to the old one.
-
+ 	<!--
      To change a color, find the right scope for what you want to change and change its foreground color 
      Scopes can be found by activating the syntax file for a stellaris file, and then putting the caret on what you want to color
 	 and then press ctrl+shift+alt+P , the word in the bottom of the popup is the scope you need to find.
@@ -85,7 +84,7 @@
 	    		<string>#9CCB19</string>
 	    	</dict>
 	    </dict>
-	    <!-- All 'keywords' are colored with this, basically stuff that don't really fall into one of the other three-->
+	    <!-- All 'keywords' that are usually followed by braces are colored with this, basically stuff that don't really fall into one of the other three-->
 	    <dict>
 	    	<key>name</key>
 	    	<string>Keywords with braces after</string>
