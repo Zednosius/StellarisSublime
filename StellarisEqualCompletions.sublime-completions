@@ -3,6 +3,5 @@
 	"scope": "sign.comparator",
 	"completions":
 	[
-		{ "trigger": "test_trigger", "contents": "testing_inside_scope" }
 	]
 }	
