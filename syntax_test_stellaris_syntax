@@ -1,0 +1,19 @@
+// SYNTAX TEST "stellaris.sublime-syntax"
+planet_event
+// ^source.stellaris effect
+   id = anomaly.1
+//  ^source.stellaris predefined.keyword
+//    ^source.stellaris equal.sign
+//      ^source.stellaris defined.key.value
+//              ^source.stellaris defined.key.value
+set_owner = root
+//  ^source.stellaris effect
+//        ^source.stellaris equal.sign
+//           ^source.stellaris scope
+fromfromfrom
+// ^source.stellaris scope
+//    ^source.stellaris scope
+//       ^source.stellaris scope
+fromfrom
+// ^source.stellaris scope
+//    ^source.stellaris scope

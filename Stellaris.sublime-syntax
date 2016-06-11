@@ -1,0 +1,151 @@
+%YAML 1.2
+---
+# See http://www.sublimetext.com/docs/3/syntax.html
+#
+# Made by: Zednosius
+#
+#
+
+variables:
+  scope_names: '(?i)(root|fromfromfromfrom|fromfromfrom|fromfrom|from|prevprevprevprev|prevprev|prev|any_attacker|any_bordering_country|any_controlled_planet|any_country|any_defender|any_moon|any_neighbor_country|any_neighbor_system|any_neighboring_tile|any_owned_fleet|any_owned_leader|any_owned_planet|any_owned_pop|any_owned_ship|any_planet|any_planet_within_border|any_pop|any_sector|any_ship|any_ship_in_system|any_system|any_system_within_border|any_tile|any_war|best_tile_for_pop|capital_scope|closest_system|every_country|every_fleet_in_system|every_neighboring_tile|every_owned_planet|every_owned_pop|every_owned_ship|every_planet|every_planet_army|every_pop_faction|every_system_ambient_object|every_system_planet|every_tile|fleet|last_created_ambient_object|last_created_country|last_created_fleet|last_created_leader|last_created_pop|last_created_species|orbit|orbital_deposit_tile|owner|owner_species|random_army|random_country|random_moon|random_neighbor_country|random_neighboring_tile|random_owned_leader|random_owned_planet|random_owned_pop|random_owned_ship|random_planet|random_pop|random_pop_faction|random_rim_system|random_system|random_system_ambient_object|random_system_planet|random_tile|solar_system|space_owner|pop_faction|planet|home_planet|observation_outpost_owner|observation_outpost|leader)' 
+  
+  condition_names: '(?i)(text|limit|if|else|happiness|has_ring|hidden_trigger|has_owner|any_owned_planet|any_controlled_planet|is_ai|always|has_trait|has_ethic|is_moon|opinion|any_pop|is_owned_by|is_same_species|any_war_defender|any_war_attacker|ideal_planet_class|is_same_empire|is_planet_class|has_strategic_resource|is_star_class|distance|has_technology|has_planet_modifier|has_planet_flag|has_country_flag|has_fleet_flag|has_ship_flag|is_ship_class|is_ship_size|is_capital|has_ground_combat|is_at_war|num_owned_planets|has_government|num_pops|is_primitive|is_inside_nebula|is_pirate|is_inside_border|any_country|planet_size|any_planet|influence|is_star|is_asteroid|is_at_war_with|their_opinion|is_same_species_class|has_alliance|has_federation|is_colonizable|gender|has_level|num_minerals|num_physics|num_society|num_engineering|num_modifiers|has_any_strategic_resource|free_leader_slots|has_pop_flag|is_occupied_flag|can_colonize|is_damaged|has_hp|is_surveyed|has_global_flag|check_variable|any_planet_within_border|any_owned_ship|any_ship|energy|pop_has_ethic|pop_has_trait|is_colony|habitability|has_building|is_controlled_by|is_terraformed|is_terraforming|has_planet_edict|has_country_edict|has_observation_outpost|is_federation_leader|starting_system|has_star_flag|has_mining_station|has_research_station|has_spaceport|any_spaceport|any_research_station|any_mining_station|any_system|any_system_within_border|army_type|has_army|is_advisor_active|count_pops|is_enslaved|is_being_purged|graphical_culture|income|expenses|produced_energy|trade_income|trade_expenses|ship_maintenance|army_maintenance|colony_maintenance|station_maintenance|construction_expenses|federation_expenses|has_anomaly|stored_physics_points|stored_society_points|stored_engineering_points|balance|running_balance|is_planet|is_pop|is_ship|is_army|is_country|is_tutorial_level|is_multiplayer|has_event_chain|is_species_class|vassals|has_opinion_modifier|has_established_contact|has_completed_event_chain_counter|has_planet_class|is_disabled|has_existing_ship_design|has_grown_pop|has_growing_pop|has_resource|has_building_construction|any_neighboring_tile|any_tile|has_blocker|free_pop_tiles|free_building_tiles|has_relation_flag|reverse_has_relation_flag|exists|has_edict|has_moon|num_moons|is_in_cluster|any_moon|num_adjacent_tiles|is_sentient|leader_class|is_preventing_anomaly|observation_outpost_owner|observation_outpost|has_deposit|has_deposit_for|colony_age|is_rim_system|any_rim_system|has_mission|is_country_type|has_modifier|switch|sectors|num_fleets|num_ships|any_ship_in_system|mission_progress|num_ethics|num_traits|has_truce|has_access_military|has_access_civilian|has_access_construction|is_ringworld|member_of_faction|support|is_ideal_planet_class|is_pop_faction_type|is_same_value|sector_controlled|sectors_over_limit|is_orbital_tile|orbital_bombardment|intel_level|members|is_researching_area|any_owned_leader|any_owned_pop|has_faction|count_owned_pops|can_declare_war|is_hostile|has_communications|has_country_resource|has_leader_flag|num_killed_ships|num_taken_planets|count_ships|count_owned_ships|has_pop_faction_flag|research_leader|leader_of_faction|is_scope_valid|opposing_ethics_divergence|is_war_leader|can_create_sector|is_in_alliance_with|is_in_federation_with|can_change_policy|count_pop_factions|has_fleet_order|closest_system|num_communications|is_ironman|has_monthly_income|last_changed_policy|any_sector|has_policy_flag|any_owned_fleet|count_deposits|has_ground_support_stance|has_tech_option|is_species|count_tech_options|last_increased_tech|has_country_strategic_resource|has_point_of_interest|is_being_repaired|any_war|any_defender|any_attacker|has_orbital_station|any_orbital_station|has_prev_building|any_ambient_object|any_system_ambient_object|has_ambient_object_flag|war_demand_counter|attacker_war_score|defender_war_score|off_war_score_sum|def_war_score_sum|any_bordering_country|galaxy_percentage|custom_tooltip_fail|count_armies|original_owner|is_in_combat|any_member|is_guaranteeing|is_war_participant|is_homeworld|years_passed|is_threatened_to|is_protective_to|is_friendly_to|is_hostile_to|is_ruined|is_dismissive_to|is_patronizing_to|is_angry_to|is_neighbor_of|any_neighbor_country|is_rival|is_unfriendly_to|is_loyal_to|is_disloyal_to|is_cordial_to|is_domineering_to|is_wary_to|fleet_power|has_election_type|has_ai_personality|has_ai_personality_type|has_ai_personality_behaviour|has_valid_ai_personality|has_migration_access|grants_migration_access|logged_in_to_pdx_account|tech_unlocked_ratio|has_special_project|would_join_war|can_be_subject|Supported|Supported|has_skill|Checks|has_experience|any_neighbor_system|is_under_colonization|has_colony_progress|is_growing|is_colony_pop|is_subspecies|is_valid|fortification_health|subject_can_diplomacy|has_surveyed_class|fleet_size|check_pop_faction_parameter|is_robot_pop|host_has_dlc|local_has_dlc|num_rare_techs|is_core_sector|has_mandate|has_spaceport_module|has_free_spaceport_module_slot|is_spaceport_module_slot_free|can_build_spaceport_module|num_free_spaceport_module_slots|num_spaceport_modules|species_portrait|num_armies|is_proposing_war_demands)'
+
+  effect_names: '(?i)(planet_event|country_event|abort_special_project|add_anomaly|add_building_construction|add_colony_progress|add_deposit|add_energy|add_engineering|add_engineering_research|add_event_chain_counter|add_experience|add_influence|add_minerals|add_mission_progress|add_modifier|add_monthly_resource_mult|add_opinion_modifier|add_physics|add_physics_research|add_research_option|add_resource|add_ship_design|add_skill|add_society|add_society_research|add_support|add_tech_progress|add_threat|add_trait|add_war_demand|assign_leader|begin_event_chain|break|cancel_terraformation|change_country_flag|change_dominant_species|change_government|change_pc|change_planet_size|change_pop_species|change_variable|clear_deposits|clear_fleet_actions|clear_global_event_target|clear_global_event_targets|clear_orders|clear_uncharted_space|country_add_ethic|country_remove_ethic|create_ambient_object|create_army|create_army_transport|create_cluster|create_colony|create_country|create_fleet|create_leader|create_military_fleet|create_mining_station|create_point_of_interest|create_pop|create_pop_faction|create_rebels|create_research_station|create_sector|create_ship|create_ship_design|create_spaceport|create_species|create_wormhole_station|declare_war|declare_white_peace_with|destroy_ambient_object|destroy_colony|destroy_country|destroy_fleet|dismantle|enable_faction_of_type|enable_special_project|end_event_chain|enslave_pop|establish_communications|establish_communications_no_message|establish_contact|exile_leader_as|fleet_event|force_faction_evaluation|give_technology|kill_leader|kill_pop|kill_pop_faction|leave_alliance|load_parameters|modify_species|order_forced_return|pop_add_ethic|pop_event|pop_faction_event|pop_migration|pop_remove_ethic|prevent_anomaly|purge|queue_actions|recruitable|reduce_hp|reduce_hp_percent|remove_ambient_object_flag|remove_army|remove_blocker|remove_building|remove_country_flag|remove_fleet_flag|remove_global_flag|remove_leader_flag|remove_modifier|remove_opinion_modifier|remove_planet_flag|remove_point_of_interest|remove_pop_faction_flag|remove_pop_flag|remove_relation_flag|remove_sector|remove_ship_flag|remove_spaceport_module|remove_star_flag|remove_trait|repair_ship|save_event_target_as|save_global_event_target_as|set_advisor_active|set_age|set_aggro_range|set_aggro_range_measure_from|set_ambient_object_flag|set_blocker|set_building|set_capital|set_controller|set_country_flag|set_country_type|set_disable_at_health|set_disabled|set_event_locked|set_faction_hostility|set_federation_leader|set_fleet_flag|set_fleet_stance|set_formation_scale|set_global_flag|set_graphical_culture|set_heir|set_leader|set_leader_flag|set_location|set_mission|set_name|set_owner|set_planet_flag|set_planet_health|set_planet_max_health|set_policy|set_pop_faction|set_pop_faction_flag|set_pop_flag|set_primitive|set_primitive_age|set_relation_flag|set_ring|set_ruined|set_ship_flag|set_skill|set_spaceport_level|set_spaceport_module|set_star_flag|set_subject_of|set_support|set_timed_ambient_object_flag|set_timed_country_flag|set_timed_fleet_flag|set_timed_global_flag|set_timed_planet_flag|set_timed_pop_faction_flag|set_timed_pop_flag|set_timed_relation_flag|set_timed_ship_flag|set_timed_star_flag|set_tutorial_level|set_variable|ship_event|spawn_system|start_colony|surveyed|switch|unassign_leader|while)'
+
+  brace_block_keywords: '(?i)(on_success|on_fail|abort_trigger|requirements|special_project|modifier|ai_wait_days|random_list|same_option_group_as|option|trigger|hidden_effect)'
+  #Keywords that are followed by "
+  localised_keywords: '(?i)(event_chain|key|icon|title|desc|name|custom_tooltip)'
+
+  #Left hand values
+  defined_keywords: '(?i)(id|event_scope|weight|timelimit|location|picture|cost|tech_department|days_to_research|shipclass_science_ship|skill|namespace|show_sound|is_triggered_only|resource|value|min|max)'
+  #A couple of right hand values
+  #You can add here if you have some you use often, all unique right hand values are more than 80k characters, would probably take too long to apply coloring if it has to compare with all of them.
+  predefined_values: '(?i)(GFX_\w+|minerals|energy|ethic_collectivist|ethic_fanatic_collectivist|ethic_fanatic_individualist|ethic_fanatic_materialist|ethic_fanatic_militarist|ethic_fanatic_pacifist|ethic_fanatic_spiritualist|ethic_fanatic_xenophile|ethic_fanatic_xenophobe|ethic_individualist|ethic_materialist|ethic_militarist|ethic_pacifist|ethic_spaceship_room|ethic_spiritualist|ethic_xenophile|ethic_xenophobe)'
+  
+  boolean_operators: '(?i)(or|and|not|nor)'
+#\btext\b \b is for marking word boundaries, so for example texting would not match
+file_extensions: [stellaris, txt]
+scope: source.stellaris
+contexts:
+  main:
+    # Note that blackslashes don't need to be escaped within single quoted
+    # strings in YAML. When using single quoted strings, only single quotes
+    # need to be escaped: this is done by using two single quotes next to each
+    # other.
+
+    #SCOPES, all various scopes available
+    - match: '\b{{scope_names}}\b'
+      scope: scope
+      set: sign_compare_set
+
+    #EFFECTS, all various effects
+    - match: '\b{{effect_names}}\b'
+      scope: effect
+      set: sign_compare_set
+
+    #CONDITIONS, all various conditions
+    - match: '\b{{condition_names}}\b'
+      scope: condition
+      set: sign_compare_set #an equal sign follows, determine which color the value should have
+
+    #ACTIONS/KEYWORDS that are equal to some block inside { }
+    - match: '\b{{brace_block_keywords}}\b'
+      scope: brace.block.keyword
+      set: sign_compare_set
+
+    #Localised keywords, equal to something inside quotation marks
+    - match: '\b{{localised_keywords}}\b'
+      scope: keywords.localised
+      set: sign_compare_set
+
+    #Keywords equal to some defined value (either numeric or identifier)
+    - match: '\b{{defined_keywords}}\b'
+      scope: predefined.keyword
+      set: sign_compare_set #an equal sign follows, determine which color the value should have
+    #Boolean operators like Not, Or
+    - match: '\b{{boolean_operators}}\b'
+      scope: boolean.operator #In this context means "variable equal to some predefined value"
+    
+    #Numbers
+    - match: '\b\d+\b'
+      scope: constant.number
+
+    # Comments begin with a '//' and finish at the end of the line
+    - match: '#'
+      scope: punctuation.definition.comment.example-c
+      push: line_comment
+
+    #Values defined with the @, they will have this color when used also.
+    - match: '@\w+'
+      scope: predefined.constant
+      set: sign_compare_set
+
+    #Words that don't match any of the predefined ones. This is mostly just so you can color them differently if you like.
+    - match: '\w+(?=\s+=\s+{)'
+      scope: brace.block.unsure.keyword
+
+    - match: '\w+'
+      scope: undetermined.lefthand.variable
+      set: sign_compare_set
+
+  #Commented line
+  line_comment:
+    - meta_scope: line.comment
+    - match: $
+      pop: true
+
+  #Check what comes after the equal sign to switch to the correct context
+  sign_compare_set:
+    - match: '\s+=\s+(?=")' #If after = comes a "
+      scope: sign.comparator
+      set: localised_start
+
+      #Block equals
+    - match: \s+=\s+(?={)
+      scope: sign.comparator
+      pop: true
+
+    - match: \s+=\s+(?=@)
+      pop: true
+
+    - match: '\s+=\s+(?!")' #If after = there is no "
+      scope: sign.comparator
+      set: defined_key_value
+
+    - match: '\s+(>|<)\s*(?!")' #If after = there is no "
+      scope: sign.comparator
+      set: defined_key_value
+    - match: ''
+      pop: true
+
+  #Localised variables (text inside quotation marks)
+  localised_start:
+    - match: '"'
+      scope: localised
+      set: localised_value
+
+  localised_value:
+    - meta_scope: localised
+    - match: '"'
+      scope: localised
+      pop: true
+##########
+
+  #Defined keyvalues like anomaly.1, society_technology. (Basically variables without quotation marks)
+  #The lookahead \s is to preent the word from being cut in the middle
+  #for example leader_trait_careful, would become |leader|_trait_careful|, because it matched leader to scopes and assigned _trait_careful as undetermined
+  defined_key_value:
+    - match: '{{predefined_values}}(?=\s)'
+      scope: predefined.key.value
+      pop: true
+    - match: '{{scope_names}}(?=\s)'
+      scope: scope
+      pop: true
+    - match: '\b\d+\b(?=\s)'
+      scope: constant.number
+      pop: true
+    - match: '(\w|\.|-|:)+(?=\s)'
+      scope: defined.key.value
+      pop: true
+
