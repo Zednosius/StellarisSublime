@@ -6,6 +6,8 @@
 #
 #
 
+#Lists of various kinds of identifiers
+#If you want to add some specific word to a class, add it here
 variables:
   scope_names: '(?i)(root|fromfromfromfrom|fromfromfrom|fromfrom|from|prevprevprevprev|prevprev|prev|any_attacker|any_bordering_country|any_controlled_planet|any_country|any_defender|any_moon|any_neighbor_country|any_neighbor_system|any_neighboring_tile|any_owned_fleet|any_owned_leader|any_owned_planet|any_owned_pop|any_owned_ship|any_planet|any_planet_within_border|any_pop|any_sector|any_ship|any_ship_in_system|any_system|any_system_within_border|any_tile|any_war|best_tile_for_pop|capital_scope|closest_system|every_country|every_fleet_in_system|every_neighboring_tile|every_owned_planet|every_owned_pop|every_owned_ship|every_planet|every_planet_army|every_pop_faction|every_system_ambient_object|every_system_planet|every_tile|fleet|last_created_ambient_object|last_created_country|last_created_fleet|last_created_leader|last_created_pop|last_created_species|orbit|orbital_deposit_tile|owner|owner_species|random_army|random_country|random_moon|random_neighbor_country|random_neighboring_tile|random_owned_leader|random_owned_planet|random_owned_pop|random_owned_ship|random_planet|random_pop|random_pop_faction|random_rim_system|random_system|random_system_ambient_object|random_system_planet|random_tile|solar_system|space_owner|pop_faction|planet|home_planet|observation_outpost_owner|observation_outpost|leader)' 
   
@@ -107,6 +109,7 @@ contexts:
       pop: true
 
     - match: \s+=\s+(?=@)
+      scope: sign.comparator
       pop: true
 
     - match: '\s+=\s+(?!")' #If after = there is no "
@@ -133,7 +136,7 @@ contexts:
 ##########
 
   #Defined keyvalues like anomaly.1, society_technology. (Basically variables without quotation marks)
-  #The lookahead \s is to preent the word from being cut in the middle
+  #The lookahead \s is to prevent the word from being cut in the middle
   #for example leader_trait_careful, would become |leader|_trait_careful|, because it matched leader to scopes and assigned _trait_careful as undetermined
   defined_key_value:
     - match: '{{predefined_values}}(?=\s)'
