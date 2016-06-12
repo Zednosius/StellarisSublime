@@ -330,8 +330,6 @@
 		{ "trigger": "hidden_effect		Effect not shown in tooltips", "contents": "hidden_effect" },
 		{ "trigger": "custom_tooltip		Just a tooltip", "contents": "custom_tooltip" },
 		{ "trigger": "if		A conditional effect", "contents": "if" },
-		{ "trigger": "country_event		Fires a Country event", "contents": "country_event" },
-		{ "trigger": "planet_event		Fires a Planet event", "contents": "planet_event" },
 		{ "trigger": "random		A random effect", "contents": "random" },
 		{ "trigger": "random_list		A random effect", "contents": "random_list" },
 		{ "trigger": "every_owned_planet		Switches Scope to and goes through all owned planets", "contents": "every_owned_planet" },
@@ -340,13 +338,11 @@
 		{ "trigger": "random_controlled_planet		Picks a random controlled planet", "contents": "random_controlled_planet" },
 		{ "trigger": "create_ship_design		Creates a new ship design", "contents": "create_ship_design" },
 		{ "trigger": "change_government		Change government in Empire.", "contents": "change_government" },
-		{ "trigger": "ship_event		Fires a Ship event", "contents": "ship_event" },
 		{ "trigger": "add_energy		Adds a sum of energy to a country", "contents": "add_energy" },
 		{ "trigger": "add_minerals		Adds Minerals to a planet, tile or country", "contents": "add_minerals" },
 		{ "trigger": "add_physics		Adds Physics resources to a planet", "contents": "add_physics" },
 		{ "trigger": "add_society		Adds Society resources to a planet", "contents": "add_society" },
 		{ "trigger": "add_engineering		Adds Engineering resources to a planet", "contents": "add_engineering" },
-		{ "trigger": "pop_event		Fires a Pop event", "contents": "pop_event" },
 		{ "trigger": "every_war_defender		Switches Scope to and goes through all defenders in a war with a specified enemy", "contents": "every_war_defender" },
 		{ "trigger": "set_owner		Sets the owner of a planet or fleet.", "contents": "set_owner" },
 		{ "trigger": "every_war_attacker		Switches Scope to and goes through all attackers in a war with a specified enemy", "contents": "every_war_attacker" },
@@ -397,7 +393,6 @@
 		{ "trigger": "random_planet		Executes on a random planet", "contents": "random_planet" },
 		{ "trigger": "add_modifier		Gives a specific modifier to a planet.", "contents": "add_modifier" },
 		{ "trigger": "create_leader		Creates a new leader", "contents": "create_leader" },
-		{ "trigger": "fleet_event		Fires a Fleet event", "contents": "fleet_event" },
 		{ "trigger": "reduce_hp		Reduces the hitpoints of a ship by the points given", "contents": "reduce_hp" },
 		{ "trigger": "reduce_hp_percent		Reduces the hitpoints of a ship by the percentage given", "contents": "reduce_hp_percent" },
 		{ "trigger": "repair_ship		Restores a damaged ship to its full HP", "contents": "repair_ship" },
@@ -532,7 +527,6 @@
 		{ "trigger": "random_owned_leader		Picks a random owned leader", "contents": "random_owned_leader" },
 		{ "trigger": "establish_communications		Establish communications between empires.", "contents": "establish_communications" },
 		{ "trigger": "add_monthly_resource_mult		Adds multiple amount of monthly income of resource to country", "contents": "add_monthly_resource_mult" },
-		{ "trigger": "pop_faction_event		Fires a Pop faction event", "contents": "pop_faction_event" },
 		{ "trigger": "set_leader_flag		Sets a flag on a leader", "contents": "set_leader_flag" },
 		{ "trigger": "remove_leader_flag		Removes a flag from a leader", "contents": "remove_leader_flag" },
 		{ "trigger": "add_research_option		Gives a specific tech to an empire and makes it always available for research.", "contents": "add_research_option" },
@@ -665,7 +659,30 @@
 		{ "trigger": "planet		Scopes to the planet of a pop", "contents": "planet" },
 		{ "trigger": "home_planet		Scopes to the home planet of country (for effect scope to the home_planet see: capital_scope)", "contents": "home_planet" },
 		{ "trigger": "observation_outpost_owner		Scopes to the owner of the observation outpost of a planet", "contents": "observation_outpost_owner" },
-		{ "trigger": "observation_outpost		Scopes to the observation outpost of a planet", "contents": "observation_outpost" }
+		{ "trigger": "observation_outpost		Scopes to the observation outpost of a planet", "contents": "observation_outpost" },
+
+
+
+		{ "trigger": "immediate	immediate = { effects }", "contents": "immediate = { \n\t$1\n }" },
+		{ "trigger": "trigger	trigger = { conditions }", "contents": "trigger = { \n\t$1\n }" },
+		{ "trigger": "limit	limit = { conditions }", "contents": "limit = { $1 }" },
+		{ "trigger": "is_triggered_only", "contents": "is_triggered_only = ${1:yes}" },
+		{ "trigger": "option", "contents": "option = {\n\tname = ${1:OK}\n$2\n}" },
+
+		{ "trigger": "country_event		Fires a Country event"        , "contents": "country_event = { id = $1 }" },
+		{ "trigger": "planet_event		Fires a Planet event"         , "contents": "planet_event = { id = $1 }" },
+		{ "trigger": "ship_event		Fires a Ship event"           , "contents": "ship_event = { id = $1 }" },	
+		{ "trigger": "pop_event		Fires a Pop event"                , "contents": "pop_event = { id = $1 }" },
+		{ "trigger": "fleet_event		Fires a Fleet event"          , "contents": "fleet_event = { id = $1 }" },
+		{ "trigger": "pop_faction_event		Fires a Pop faction event", "contents": "pop_faction_event = { id = $1 }" },
+
+		{ "trigger": "country_event		Country event { }-block",         "contents": "country_event = {\n\tid = $1\n\thide_window = $2\n\tis_triggered_only = $3\n$4\n}"},
+		{ "trigger": "planet_event		Planet event { }-block",          "contents": "planet_event = {\n\tid = $1\n\thide_window = $2\n\tis_triggered_only = $3\n$4\n}"},
+		{ "trigger": "ship_event		Ship event { }-block",            "contents": "ship_event = {\n\tid = $1\n\thide_window = $2\n\tis_triggered_only = $3\n$4\n}"},
+		{ "trigger": "pop_event		Pop event { }-block",                 "contents": "pop_event = {\n\tid = $1\n\thide_window = $2\n\tis_triggered_only = $3\n$4\n}"},
+		{ "trigger": "fleet_event		Fleet event { }-block",           "contents": "fleet_event = {\n\tid = $1\n\thide_window = $2\n\tis_triggered_only = $3\n$4\n}"},
+		{ "trigger": "pop_faction_event		Pop faction event { }-block", "contents": "pop_faction_event = {\n\tid = $1\n\thide_window = $2\n\tis_triggered_only = $3\n$4\n}"}
+
 	]
 
 }
