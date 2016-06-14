@@ -16,6 +16,13 @@ contexts:
   main:
     
     - include: eat_end_brace
-    
+
   
 
+  peek_end_brace: 
+    - match: '(?<=})'
+      pop: true
+
+  eat_end_brace:
+    - match: "}"
+      pop: true

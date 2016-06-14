@@ -17,7 +17,7 @@ contexts:
     
     - include: to_Tile
     - include: eat_end_brace
-    
+
   
   to_Tile:
   	- match: '(?i)(random_neighboring_tile|every_neighboring_tile){{equals_open_brace}}'
@@ -35,3 +35,10 @@ contexts:
         - include: peek_end_brace
   	
 
+  peek_end_brace: 
+    - match: '(?<=})'
+      pop: true
+
+  eat_end_brace:
+    - match: "}"
+      pop: true

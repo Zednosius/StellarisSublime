@@ -22,7 +22,7 @@ contexts:
     - include: to_Fleet
     - include: to_Ship
     - include: eat_end_brace
-    
+
   
   to_Ambient_object:
   	- match: '(?i)(every_system_ambient_object|random_system_ambient_object){{equals_open_brace}}'
@@ -95,3 +95,10 @@ contexts:
         - include: peek_end_brace
   	
 
+  peek_end_brace: 
+    - match: '(?<=})'
+      pop: true
+
+  eat_end_brace:
+    - match: "}"
+      pop: true
