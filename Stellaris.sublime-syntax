@@ -26,6 +26,20 @@ variables:
   predefined_values: '(?i)(GFX_\w+|minerals|energy|ethic_collectivist|ethic_fanatic_collectivist|ethic_fanatic_individualist|ethic_fanatic_materialist|ethic_fanatic_militarist|ethic_fanatic_pacifist|ethic_fanatic_spiritualist|ethic_fanatic_xenophile|ethic_fanatic_xenophobe|ethic_individualist|ethic_materialist|ethic_militarist|ethic_pacifist|ethic_spaceship_room|ethic_spiritualist|ethic_xenophile|ethic_xenophobe)'
   
   boolean_operators: '(?i)(or|and|not|nor)'
+  
+  country_scopes: '' 
+  planet_scopes: 'any_controlled_planet|any_owned_planet|every_owned_planet|random_owned_planet|home_planet|orbit|' 
+  pop_scopes: '' 
+  fleet_scopes: '' 
+  ship_scopes: '' 
+  system_scopes: '' 
+  tile_scopes: '' 
+  war_scopes: '' 
+  leader_scopes: '' 
+
+
+
+
 #\btext\b \b is for marking word boundaries, so for example texting would not match
 file_extensions: [stellaris, txt]
 scope: source.stellaris
@@ -152,3 +166,39 @@ contexts:
       scope: defined.key.value
       pop: true
 
+
+
+  base_statements:
+    - meta_scope: statement
+    - match: ''
+  #More high granularity scoping
+  scopes:
+    - meta_scope: scope
+    - match: '{{country_scopes}}'
+    - match: '{{planet_scopes}}'
+    - match: '{{pop_scopes}}'
+    - match: '{{fleet_scopes}}'
+    - match: '{{ship_scopes}}'
+    - match: '{{system_scopes}}'
+    - match: '{{tile_scopes}}'
+    - match: '{{war_scopes}}'
+    - match: '{{leader_scopes}}'
+    
+  scope_country:
+    - meta_scope: scope.country
+  scope_planet:
+    - meta_scope: scope.planet
+  scope_pop:
+    - meta_scope: scope.pop
+  scope_fleet:
+    - meta_scope: scope.fleet
+  scope_ship:
+    - meta_scope: scope.ship
+  scope_system:
+    - meta_scope: scope.system
+  scope_tile:
+    - meta_scope: scope.tile
+  scope_war:
+    - meta_scope: scope.war
+  scope_leader:
+    - meta_scope: scope.leader

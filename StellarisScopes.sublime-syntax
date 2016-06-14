@@ -1,0 +1,201 @@
+%YAML 1.2
+---
+# See http://www.sublimetext.com/docs/3/syntax.html
+#
+# Made by: Zednosius
+#
+#
+
+#Lists of various kinds of identifiers
+#If you want to add some specific word to a class, add it here
+variables:
+  scope_names: '(?i)(root|fromfromfromfrom|fromfromfrom|fromfrom|from|prevprevprevprev|prevprev|prev|any_attacker|any_bordering_country|any_controlled_planet|any_country|any_defender|any_moon|any_neighbor_country|any_neighbor_system|any_neighboring_tile|any_owned_fleet|any_owned_leader|any_owned_planet|any_owned_pop|any_owned_ship|any_planet|any_planet_within_border|any_pop|any_sector|any_ship|any_ship_in_system|any_system|any_system_within_border|any_tile|any_war|best_tile_for_pop|capital_scope|closest_system|every_country|every_fleet_in_system|every_neighboring_tile|every_owned_planet|every_owned_pop|every_owned_ship|every_planet|every_planet_army|every_pop_faction|every_system_ambient_object|every_system_planet|every_tile|fleet|last_created_ambient_object|last_created_country|last_created_fleet|last_created_leader|last_created_pop|last_created_species|orbit|orbital_deposit_tile|owner|owner_species|random_army|random_country|random_moon|random_neighbor_country|random_neighboring_tile|random_owned_leader|random_owned_planet|random_owned_pop|random_owned_ship|random_planet|random_pop|random_pop_faction|random_rim_system|random_system|random_system_ambient_object|random_system_planet|random_tile|solar_system|space_owner|pop_faction|planet|home_planet|observation_outpost_owner|observation_outpost|leader)' 
+  #Effects that can be used inside respective scopes
+  system_vars: '(?i)( every_system_planet|set_name|set_variable|change_variable|set_star_flag|remove_star_flag|spawn_system|random_system_planet|set_timed_star_flag|create_wormhole_station|random_system_ambient_object|every_system_ambient_object|every_fleet_in_system|random_fleet_in_system|every_neighbor_system|random_neighbor_system )'
+  country_vars: '(?i)( tooltip|country_event|every_owned_planet|random_owned_planet|every_controlled_planet|random_controlled_planet|change_government|add_energy|add_minerals|every_war_defender|every_war_attacker|give_technology|add_physics_research|add_society_research|add_engineering_research|set_country_flag|remove_country_flag|every_owned_ship|random_owned_ship|set_primitive|every_owned_pop|set_name|add_modifier|create_leader|destroy_country|set_variable|change_variable|random_planet_within_border|add_influence|declare_war|set_primitive_age|random_system_within_border|random_army_within_country|set_advisor_active|set_tutorial_level|end_event_chain|modify_species|add_opinion_modifier|establish_contact|set_faction_hostility|add_event_chain_counter|create_point_of_interest|remove_point_of_interest|set_relation_flag|remove_relation_flag|kill_leader|assign_leader|country_add_ethic|country_remove_ethic|set_timed_country_flag|set_timed_relation_flag|every_planet_within_border|every_army_within_country|observation_outpost|remove_modifier|set_country_type|add_ship_design|create_pop_faction|set_graphical_culture|enable_faction_of_type|clear_uncharted_space|every_owned_leader|random_owned_leader|establish_communications|add_monthly_resource_mult|add_research_option|set_heir|declare_white_peace_with|leave_alliance|create_sector|random_owned_pop|add_tech_progress|random_sector|every_sector|random_owned_fleet|set_aggro_range|set_aggro_range_measure_from|establish_communications_no_message|set_subject_of|abort_special_project|exile_leader_as|set_leader|set_federation_leader|remove_opinion_modifier|add_war_demand|every_pop_faction|random_pop_faction|add_threat|remove_sector|change_dominant_species )'
+  pop_vars: '(?i)( tooltip|pop_event|kill_pop|enslave_pop|set_pop_flag|remove_pop_flag|add_modifier|pop_add_ethic|pop_remove_ethic|pop_migration|change_pop_species|modify_species|create_point_of_interest|set_timed_pop_flag|purge|remove_modifier|set_pop_faction|force_faction_evaluation|set_pop_faction_flag|remove_pop_faction_flag|set_timed_pop_faction_flag )'
+  leader_vars: '(?i)( add_experience|set_name|set_variable|change_variable|add_trait|remove_trait|kill_leader|set_age|set_leader_flag|remove_leader_flag|recruitable|unassign_leader|add_skill|set_skill )'
+  planet_vars: '(?i)( tooltip|planet_event|add_minerals|add_physics|add_society|add_engineering|set_owner|add_resource|set_planet_flag|remove_planet_flag|create_army|create_pop|create_colony|set_capital|change_pc|random_pop|destroy_colony|surveyed|set_ring|create_mining_station|create_research_station|every_owned_pop|set_name|add_modifier|set_variable|change_variable|create_rebels|cancel_terraformation|spawn_system|random_research_station|random_mining_station|random_spaceport|random_army|modify_species|change_planet_size|every_tile|random_tile|create_point_of_interest|random_moon|every_moon|kill_leader|set_timed_planet_flag|prevent_anomaly|every_planet_army|observation_outpost_owner|observation_outpost|purge|set_planet_max_health|set_planet_health|remove_modifier|set_spaceport_module|create_spaceport|set_spaceport_level|set_controller|random_owned_pop|unassign_leader|add_colony_progress|start_colony|add_threat|remove_spaceport_module )'
+  fleet_vars: '(?i)( set_owner|set_fleet_flag|remove_fleet_flag|random_owned_ship|set_location|create_ship|set_name|add_modifier|fleet_event|set_variable|change_variable|set_event_locked|clear_orders|order_forced_return|dismantle|queue_actions|clear_fleet_actions|kill_leader|assign_leader|set_timed_fleet_flag|add_mission_progress|create_army_transport|set_spaceport_module|set_spaceport_level|set_formation_scale|set_controller|set_timed_ambient_object_flag|set_aggro_range|set_fleet_stance|set_aggro_range_measure_from|unassign_leader|exile_leader_as|set_leader|set_mission|remove_spaceport_module )'
+  ship_vars: '(?i)( tooltip|ship_event|set_ship_flag|remove_ship_flag|set_name|add_modifier|reduce_hp|reduce_hp_percent|repair_ship|spawn_system|modify_species|set_disable_at_health|set_disabled|create_point_of_interest|kill_leader|set_timed_ship_flag|unassign_leader )'
+  unknown_vars: '(?i)( hidden_effect|custom_tooltip|if|random|random_list|create_ship_design|random_war_defender|random_war_attacker|enable_special_project|create_species|create_country|create_fleet|random_country|random_planet|remove_global_flag|set_global_flag|every_pop|every_country|every_ship|every_planet|random_system|save_event_target_as|save_global_event_target_as|clear_global_event_target|clear_global_event_targets|break|begin_event_chain|while|destroy_fleet|create_ambient_object|destroy_ambient_object|add_anomaly|add_building_construction|set_building|remove_building|set_blocker|remove_blocker|every_neighboring_tile|random_neighboring_tile|every_system_in_cluster|create_cluster|set_timed_global_flag|remove_army|add_deposit|clear_deposits|every_rim_system|random_rim_system|switch|add_support|set_support|pop_faction_event|load_parameters|set_policy|closest_system|random_ambient_object|every_ambient_object|set_ambient_object_flag|remove_ambient_object_flag|set_ruined|random_neighbor_country|change_country_flag|kill_pop_faction|create_military_fleet )'
+
+  country_scopes: '(.)'
+  sector_scopes: '(.)'
+  system_scopes: '(.)' 
+  planet_scopes: '(any_controlled_planet|any_owned_planet|every_owned_planet|random_owned_planet|home_planet|orbit)' 
+  ambient_object_scopes: '(.)'
+  fleet_scopes: '(.)' 
+  ship_scopes: '(.)' 
+  pop_scopes: '(.)' 
+  pop_faction_scopes: '(.)'
+  leader_scopes: '(.)' 
+  war_scopes: '(.)' 
+  army_scopes: '(.)'
+  tile_scopes: '(.)' 
+  conditional_scopes: '(?i)(limit|trigger)'
+  effect_scopes: '(?i)(immediate|hidden_effect)'
+
+  
+  equals_open_brace: '\s+(=)\s+({)'
+
+
+
+#\btext\b \b is for marking word boundaries, so for example texting would not match
+file_extensions: [stellaris, txt]
+scope: source.stellaris
+contexts:
+  main:
+    # Note that blackslashes don't need to be escaped within single quoted
+    # strings in YAML. When using single quoted strings, only single quotes
+    # need to be escaped: this is done by using two single quotes next to each
+    # other.
+    - match: ''
+      push: scopes
+    #SCOPES, all various scopes available
+
+  #More high granularity scoping
+  scopes:
+    - meta_scope: scope
+    #Scopes leading to a block of the names type
+    - match: '{{country_scopes}}{{equals_open_brace}}'
+      captures:
+        1: scope.country
+        2: sign.equals
+        3: brace.open
+      push: country_scope
+
+    - match: '{{sector_scopes}}{{equals_open_brace}}'
+      captures:
+        1: scope.sector
+        2: sign.equals
+        3: brace.open
+      push: sector_scope
+
+    - match: '{{system_scopes}}{{equals_open_brace}}'
+      captures:
+        1: scope.system
+        2: sign.equals
+        3: brace.open
+      push: system_scope
+
+    - match: '{{planet_scopes}}{{equals_open_brace}}'
+      captures:
+        1: scope.planet
+        2: sign.equals
+        3: brace.open
+      push: planet_scope
+
+    - match: '{{ambient_object_scopes}}{{equals_open_brace}}'
+      captures:
+        1: scope.leader
+        2: sign.equals
+        3: brace.open
+      push: ambient_object_scope  
+
+    - match: '{{fleet_scopes}}{{equals_open_brace}}'
+      captures:
+        1: scope.fleet
+        2: sign.equals
+        3: brace.open
+      push: fleet_scope
+
+    - match: '{{ship_scopes}}{{equals_open_brace}}'
+      captures:
+        1: scope.ship
+        2: sign.equals
+        3: brace.open
+      push: ship_scope
+
+    - match: '{{pop_scopes}}{{equals_open_brace}}'
+      captures: 
+        1: scope.pop
+        2: sign.equals
+        3: brace.open
+      push: pop_scope
+
+    - match: '{{pop_faction_scopes}}{{equals_open_brace}}'
+      captures:
+        1: scope.pop_faction
+        2: sign.equals
+        3: brace.open
+      push: pop_faction_scope
+
+    - match: '{{leader_scopes}}{{equals_open_brace}}'
+      captures:
+        1: scope.leader
+        2: sign.equals
+        3: brace.open
+      push: leader_scope
+
+    - match: '{{war_scopes}}{{equals_open_brace}}'
+      captures:
+        1: scope.war
+        2: sign.equals
+        3: brace.open
+      push: war_scope
+
+    - match: '{{army_scopes}}{{equals_open_brace}}'
+      captures:
+        1: scope.amry
+        2: sign.equals
+        3: brace.open
+      push: army_scope    
+
+    - match: '{{tile_scopes}}{{equals_open_brace}}'
+      captures:
+        1: scope.tile
+        2: sign.equals
+        3: brace.open
+      push: tile_scope
+
+    - match: '{{conditional_scopes}}{{equals_open_brace}}'
+      captures:
+        1: scope.conditional
+        2: sign.equals
+        3: brace.open
+      push: tile_scope      
+
+    - match: '{{effect_scopes}}{{equals_open_brace}}'
+      captures:
+        1: scope.effect
+        2: sign.equals
+        3: brace.open
+      push: tile_scope    
+
+  country_scope:
+    - meta_scope: scope.country
+    - match: '(every_owned_planet|random_owned_planet)'
+      push: planet_scope
+
+
+  sector_scope:
+    - meta_scope: scope.sector
+
+  system_scope:
+    - meta_scope: scope.system
+
+  planet_scope:
+    - meta_scope: scope.planet
+  ambient_object_scope:
+    - meta_scope: scope.ambient_object
+
+  pop_scope:
+    - meta_scope: scope.pop
+
+  fleet_scope:
+    - meta_scope: scope.fleet
+    - match: '{}'
+
+  ship_scope:
+    - meta_scope: scope.ship
+
+  tile_scope:
+    - meta_scope: scope.tile
+
+  war_scope:
+    - meta_scope: scope.war
+  army_scope:
+    - meta_scope: scope.army
+  leader_scope:
+    - meta_scope: scope.leader
