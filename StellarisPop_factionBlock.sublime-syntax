@@ -6,7 +6,7 @@
 
 file_extensions: 
   - syntaxtest
-scope: block.Leader
+scope: block.Pop_faction
 
 variables:
   equals_open_brace: '\s+(=)\s+({)'

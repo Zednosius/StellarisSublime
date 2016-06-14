@@ -23,7 +23,8 @@ contexts:
     - include: to_Tile
     - include: to_Fleet
     - include: to_Leader
-
+    - include: eat_end_brace
+    
   
   to_Army:
   	- match: '(?i)(every_planet_army){{equals_open_brace}}'
@@ -32,7 +33,7 @@ contexts:
         - match: '{{brace_behind}}'
           push: 'Packages/User/Stellaris/StellarisArmyBlock.sublime-syntax'
         - include: peek_end_brace
-  	
+
   	
   	
   to_Country:
@@ -42,7 +43,7 @@ contexts:
         - match: '{{brace_behind}}'
           push: 'Packages/User/Stellaris/StellarisCountryBlock.sublime-syntax'
         - include: peek_end_brace
-  	
+
   	- match: '(?i)(observation_outpost_owner){{equals_open_brace}}'
       push:
         - meta_content_scope: block.condition
@@ -57,7 +58,7 @@ contexts:
         - match: '{{brace_behind}}'
           push: 'Packages/User/Stellaris/StellarisSystemBlock.sublime-syntax'
         - include: peek_end_brace
-  	
+
   	- match: '(?i)(closest_system){{equals_open_brace}}'
       push:
         - meta_content_scope: block.condition
@@ -72,7 +73,7 @@ contexts:
         - match: '{{brace_behind}}'
           push: 'Packages/User/Stellaris/StellarisPopBlock.sublime-syntax'
         - include: peek_end_brace
-  	
+
   	- match: '(?i)(any_pop){{equals_open_brace}}'
       push:
         - meta_content_scope: block.condition
@@ -87,7 +88,7 @@ contexts:
         - match: '{{brace_behind}}'
           push: 'Packages/User/Stellaris/StellarisPlanetBlock.sublime-syntax'
         - include: peek_end_brace
-  	
+
   	- match: '(?i)(any_moon){{equals_open_brace}}'
       push:
         - meta_content_scope: block.condition
@@ -102,7 +103,7 @@ contexts:
         - match: '{{brace_behind}}'
           push: 'Packages/User/Stellaris/StellarisTileBlock.sublime-syntax'
         - include: peek_end_brace
-  	
+
   	- match: '(?i)(any_tile|orbital_deposit_tile){{equals_open_brace}}'
       push:
         - meta_content_scope: block.condition
@@ -117,7 +118,7 @@ contexts:
         - match: '{{brace_behind}}'
           push: 'Packages/User/Stellaris/StellarisFleetBlock.sublime-syntax'
         - include: peek_end_brace
-  	
+
   	- match: '(?i)(observation_outpost){{equals_open_brace}}'
       push:
         - meta_content_scope: block.condition
@@ -132,7 +133,7 @@ contexts:
         - match: '{{brace_behind}}'
           push: 'Packages/User/Stellaris/StellarisLeaderBlock.sublime-syntax'
         - include: peek_end_brace
-  	
+
   	
   	
 

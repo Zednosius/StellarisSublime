@@ -19,11 +19,12 @@ contexts:
     - include: to_Country
     - include: to_System
     - include: to_Leader
-
+    - include: eat_end_brace
+    
   
   to_Fleet:
   	
-  	
+
   	- match: '(?i)(fleet){{equals_open_brace}}'
       push:
         - meta_content_scope: block.condition
@@ -33,7 +34,7 @@ contexts:
   	
   to_Country:
   	
-  	
+
   	- match: '(?i)(owner){{equals_open_brace}}'
       push:
         - meta_content_scope: block.condition
@@ -48,7 +49,7 @@ contexts:
         - match: '{{brace_behind}}'
           push: 'Packages/User/Stellaris/StellarisSystemBlock.sublime-syntax'
         - include: peek_end_brace
-  	
+
   	- match: '(?i)(solar_system){{equals_open_brace}}'
       push:
         - meta_content_scope: block.condition
@@ -63,7 +64,7 @@ contexts:
         - match: '{{brace_behind}}'
           push: 'Packages/User/Stellaris/StellarisLeaderBlock.sublime-syntax'
         - include: peek_end_brace
-  	
+
   	- match: '(?i)(leader){{equals_open_brace}}'
       push:
         - meta_content_scope: block.condition

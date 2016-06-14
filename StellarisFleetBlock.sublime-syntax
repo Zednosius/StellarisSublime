@@ -17,7 +17,8 @@ contexts:
     
     - include: to_Planet
     - include: to_Ship
-
+    - include: eat_end_brace
+    
   
   to_Planet:
   	- match: '(?i)(orbit){{equals_open_brace}}'
@@ -26,7 +27,7 @@ contexts:
         - match: '{{brace_behind}}'
           push: 'Packages/User/Stellaris/StellarisPlanetBlock.sublime-syntax'
         - include: peek_end_brace
-  	
+
   	- match: '(?i)(orbit){{equals_open_brace}}'
       push:
         - meta_content_scope: block.condition
@@ -36,7 +37,7 @@ contexts:
   	
   to_Ship:
   	
-  	
+
   	- match: '(?i)(any_ship){{equals_open_brace}}'
       push:
         - meta_content_scope: block.condition

@@ -21,7 +21,8 @@ contexts:
     - include: to_Planet
     - include: to_Fleet
     - include: to_Ship
-
+    - include: eat_end_brace
+    
   
   to_Ambient_object:
   	- match: '(?i)(every_system_ambient_object|random_system_ambient_object){{equals_open_brace}}'
@@ -30,7 +31,7 @@ contexts:
         - match: '{{brace_behind}}'
           push: 'Packages/User/Stellaris/StellarisAmbient_objectBlock.sublime-syntax'
         - include: peek_end_brace
-  	
+
   	
   	
   to_Country:
@@ -40,7 +41,7 @@ contexts:
         - match: '{{brace_behind}}'
           push: 'Packages/User/Stellaris/StellarisCountryBlock.sublime-syntax'
         - include: peek_end_brace
-  	
+
   	- match: '(?i)(any_bordering_country|space_owner){{equals_open_brace}}'
       push:
         - meta_content_scope: block.condition
@@ -50,7 +51,7 @@ contexts:
   	
   to_System:
   	
-  	
+
   	- match: '(?i)(any_neighbor_system){{equals_open_brace}}'
       push:
         - meta_content_scope: block.condition
@@ -65,7 +66,7 @@ contexts:
         - match: '{{brace_behind}}'
           push: 'Packages/User/Stellaris/StellarisPlanetBlock.sublime-syntax'
         - include: peek_end_brace
-  	
+
   	- match: '(?i)(any_planet){{equals_open_brace}}'
       push:
         - meta_content_scope: block.condition
@@ -80,12 +81,12 @@ contexts:
         - match: '{{brace_behind}}'
           push: 'Packages/User/Stellaris/StellarisFleetBlock.sublime-syntax'
         - include: peek_end_brace
-  	
+
   	
   	
   to_Ship:
   	
-  	
+
   	- match: '(?i)(any_ship_in_system){{equals_open_brace}}'
       push:
         - meta_content_scope: block.condition

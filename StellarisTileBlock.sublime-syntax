@@ -16,7 +16,8 @@ contexts:
   main:
     
     - include: to_Tile
-
+    - include: eat_end_brace
+    
   
   to_Tile:
   	- match: '(?i)(random_neighboring_tile|every_neighboring_tile){{equals_open_brace}}'
@@ -25,7 +26,7 @@ contexts:
         - match: '{{brace_behind}}'
           push: 'Packages/User/Stellaris/StellarisTileBlock.sublime-syntax'
         - include: peek_end_brace
-  	
+
   	- match: '(?i)(any_neighboring_tile){{equals_open_brace}}'
       push:
         - meta_content_scope: block.condition

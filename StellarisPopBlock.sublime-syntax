@@ -18,7 +18,8 @@ contexts:
     - include: to_Planet
     - include: to_Country
     - include: to_Pop_faction
-
+    - include: eat_end_brace
+    
   
   to_Planet:
   	- match: '(?i)(planet){{equals_open_brace}}'
@@ -27,7 +28,7 @@ contexts:
         - match: '{{brace_behind}}'
           push: 'Packages/User/Stellaris/StellarisPlanetBlock.sublime-syntax'
         - include: peek_end_brace
-  	
+
   	- match: '(?i)(planet){{equals_open_brace}}'
       push:
         - meta_content_scope: block.condition
@@ -42,7 +43,7 @@ contexts:
         - match: '{{brace_behind}}'
           push: 'Packages/User/Stellaris/StellarisCountryBlock.sublime-syntax'
         - include: peek_end_brace
-  	
+
   	- match: '(?i)(owner){{equals_open_brace}}'
       push:
         - meta_content_scope: block.condition
@@ -57,7 +58,7 @@ contexts:
         - match: '{{brace_behind}}'
           push: 'Packages/User/Stellaris/StellarisPop_factionBlock.sublime-syntax'
         - include: peek_end_brace
-  	
+
   	- match: '(?i)(pop_faction){{equals_open_brace}}'
       push:
         - meta_content_scope: block.condition

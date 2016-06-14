@@ -25,11 +25,12 @@ contexts:
     - include: to_Fleet
     - include: to_Ship
     - include: to_Leader
-
+    - include: eat_end_brace
+    
   
   to_Sector:
   	
-  	
+
   	- match: '(?i)(any_sector){{equals_open_brace}}'
       push:
         - meta_content_scope: block.condition
@@ -44,7 +45,7 @@ contexts:
         - match: '{{brace_behind}}'
           push: 'Packages/User/Stellaris/StellarisCountryBlock.sublime-syntax'
         - include: peek_end_brace
-  	
+
   	- match: '(?i)(any_neighbor_country|){{equals_open_brace}}'
       push:
         - meta_content_scope: block.condition
@@ -59,7 +60,7 @@ contexts:
         - match: '{{brace_behind}}'
           push: 'Packages/User/Stellaris/StellarisSystemBlock.sublime-syntax'
         - include: peek_end_brace
-  	
+
   	- match: '(?i)(any_system_within_border|solar_system){{equals_open_brace}}'
       push:
         - meta_content_scope: block.condition
@@ -74,7 +75,7 @@ contexts:
         - match: '{{brace_behind}}'
           push: 'Packages/User/Stellaris/StellarisPopBlock.sublime-syntax'
         - include: peek_end_brace
-  	
+
   	- match: '(?i)(any_owned_pop){{equals_open_brace}}'
       push:
         - meta_content_scope: block.condition
@@ -84,7 +85,7 @@ contexts:
   	
   to_War:
   	
-  	
+
   	- match: '(?i)(any_war){{equals_open_brace}}'
       push:
         - meta_content_scope: block.condition
@@ -99,7 +100,7 @@ contexts:
         - match: '{{brace_behind}}'
           push: 'Packages/User/Stellaris/StellarisPlanetBlock.sublime-syntax'
         - include: peek_end_brace
-  	
+
   	- match: '(?i)(any_controlled_planet|any_owned_planet|any_planet_within_border|home_planet){{equals_open_brace}}'
       push:
         - meta_content_scope: block.condition
@@ -114,12 +115,12 @@ contexts:
         - match: '{{brace_behind}}'
           push: 'Packages/User/Stellaris/StellarisPop_factionBlock.sublime-syntax'
         - include: peek_end_brace
-  	
+
   	
   	
   to_Fleet:
   	
-  	
+
   	- match: '(?i)(any_owned_fleet){{equals_open_brace}}'
       push:
         - meta_content_scope: block.condition
@@ -134,7 +135,7 @@ contexts:
         - match: '{{brace_behind}}'
           push: 'Packages/User/Stellaris/StellarisShipBlock.sublime-syntax'
         - include: peek_end_brace
-  	
+
   	- match: '(?i)(any_owned_ship){{equals_open_brace}}'
       push:
         - meta_content_scope: block.condition
@@ -149,7 +150,7 @@ contexts:
         - match: '{{brace_behind}}'
           push: 'Packages/User/Stellaris/StellarisLeaderBlock.sublime-syntax'
         - include: peek_end_brace
-  	
+
   	- match: '(?i)(any_owned_leader){{equals_open_brace}}'
       push:
         - meta_content_scope: block.condition

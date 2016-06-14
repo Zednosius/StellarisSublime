@@ -16,11 +16,12 @@ contexts:
   main:
     
     - include: to_Country
-
+    - include: eat_end_brace
+    
   
   to_Country:
   	
-  	
+
   	- match: '(?i)(any_attacker|any_defender){{equals_open_brace}}'
       push:
         - meta_content_scope: block.condition
