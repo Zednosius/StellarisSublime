@@ -4,11 +4,76 @@
 file_extensions:
   - testing
 scope: source.testing
+variables:
+  equals_open_brace: '\s+(=)\s+({)'
+  brace_behind: '(?<={)'
+
 contexts:
   main:
-    - include: end
+    - include: to_planet
+    - include: to_ship
+    - include: to_pop
+    - include: to_pop_faction
+    - include: to_leader
+    - include: to_country
+  
+  to_planet:
+    - match: '(?i)(every_owned_planet|random_owned_planet|capital_scope){{equals_open_brace}}'
+      push: 
+        - meta_content_scope: block.effect
+        - match: '{{brace_behind}}'
+          push: 'Packages/User/Stellaris/StellarisPlanetBlock.sublime-syntax'
+        - include: peek_end_brace    
 
-  end: 
-    - match: '(?=})'
+  to_ship:
+    - match: '(?i)(every_owned_ship|random_owned_ship){{equals_open_brace}}'
+      push: 
+        - meta_content_scope: block.effect
+        - match: '{{brace_behind}}'
+          push: 'Packages/User/Stellaris/StellarisShipBlock.sublime-syntax'
+        - include: peek_end_brace
+
+  to_pop:
+    - match: '(?i)(every_owned_pop|random_owned_pop){{equals_open_brace}}'
+      push: 
+        - meta_content_scope: block.effect
+        - match: '{{brace_behind}}'
+          push: 'Packages/User/Stellaris/StellarisPopBlock.sublime-syntax'
+        - include: peek_end_brace
+
+  to_pop_faction:
+    - match: '(?i)(every_pop_faction|random_pop_faction){{equals_open_brace}}'
+      push: 
+        - meta_content_scope: block.effect
+        - match: '{{brace_behind}}'
+          push: 'Packages/User/Stellaris/StellarisPopBlock.sublime-syntax'
+        - include: peek_end_brace
+
+  to_leader:
+    - match: '(?i)(random_owned_leader){{equals_open_brace}}'
+      push:
+        - meta_content_scope: block.effect
+        - match: '{{brace_behind}}'
+          push: 'Packages/User/Stellaris/StellarisLeaderBlock.sublime-syntax'
+        - include: peek_end_brace
+
+
+  to_country:
+    - match: '(?i)(random_neighbor_country){{equals_open_brace}}'
+      push: 
+        - meta_content_scope: block.effect
+        - match: '{{brace_behind}}'
+          push: main
+        - include: peek_end_brace
+
+    - include: eat_end_brace
+
+
+  peek_end_brace: 
+    - match: '(?<=})'
+      pop: true
+
+  eat_end_brace:
+    - match: "}"
       pop: true
 

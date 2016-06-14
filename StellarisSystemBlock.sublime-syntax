@@ -3,10 +3,9 @@
 # See http://www.sublimetext.com/docs/3/syntax.html
 
 
-file_extensions:
-  - testing
-scope: block.pop
-
+file_extensions: 
+  - syntaxtest
+scope: block.system
 
 variables:
   equals_open_brace: '\s+(=)\s+({)'

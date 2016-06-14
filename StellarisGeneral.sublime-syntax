@@ -4,11 +4,16 @@
 #
 # Made by: Zednosius
 #
-variables:
-  equals_open_brace: '\s+(=)\s+({)'
 
 file_extensions: [testing]
 scope: source.stellaris
+
+
+variables:
+  equals_open_brace: '\s+(=)\s+({)'
+  brace_behind: '(?<={)'
+
+
 contexts:
   main: 
     - match: 'country_event{{equals_open_brace}}'
