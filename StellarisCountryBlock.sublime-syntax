@@ -4,51 +4,64 @@
 
 variables:
   equals_open_brace: '\s+(=)\s+({)'
-
+  brace_behind: '(?<={)'
 file_extensions: 
   - syntaxtest
 scope: block.country
+
 contexts:
   main:
     - match: '(?i)(every_owned_planet|random_owned_planet|capital_scope){{equals_open_brace}}'
       push: 
-        - meta_scope: block.effect
-        - match: "}"
-          pop: true
-
-        - match: ''
+        - meta_content_scope: block.effect
+        - match: '{{brace_behind}}'
           push: 'Packages/User/Stellaris/StellarisPlanetBlock.sublime-syntax'
+        - include: peek_end_brace
+
+
 
     - match: '(?i)(every_owned_ship|random_owned_ship){{equals_open_brace}}'
       push: 
-        - meta_scope: block.effect
-        - match: ''
+        - meta_content_scope: block.effect
+        - match: '{{brace_behind}}'
           push: 'Packages/User/Stellaris/StellarisShipBlock.sublime-syntax'
+        - include: peek_end_brace
 
     - match: '(?i)(every_owned_pop|random_owned_pop){{equals_open_brace}}'
       push: 
-        - meta_scope: block.effect
-        - match: ''
+        - meta_content_scope: block.effect
+        - match: '{{brace_behind}}'
           push: 'Packages/User/Stellaris/StellarisPopBlock.sublime-syntax'
+        - include: peek_end_brace
 
     - match: '(?i)(every_pop_faction|random_pop_faction){{equals_open_brace}}'
       push: 
-        - meta_scope: block.effect
-        - match: ''
+        - meta_content_scope: block.effect
+        - match: '{{brace_behind}}'
           push: 'Packages/User/Stellaris/StellarisPopBlock.sublime-syntax'
+        - include: peek_end_brace
 
     - match: '(?i)(random_owned_leader){{equals_open_brace}}'
       push:
-        - meta_scope: block.effect
+        - meta_content_scope: block.effect
+        - match: '{{brace_behind}}'
           push: 'Packages/User/Stellaris/StellarisLeaderBlock.sublime-syntax'
+        - include: peek_end_brace
 
     - match: '(?i)(random_neighbor_country){{equals_open_brace}}'
       push: 
-        - meta_scope: block.effect
-          push: $self
+        - meta_content_scope: block.effect
+        - match: '{{brace_behind}}'
+          push: main
+        - include: peek_end_brace
 
-    - include: end
+    - include: eat_end_brace
+  
 
-  end: 
-  - match: '(?=})'
-    pop: true
+  peek_end_brace: 
+    - match: '(?<=})'
+      pop: true
+
+  eat_end_brace:
+    - match: "}"
+      pop: true

@@ -6,9 +6,12 @@ file_extensions:
 scope: block.pop
 contexts:
   main:
-    - include: end
+    - include: true_end
 
   end: 
     - match: '(?=})'
       pop: true
 
+  true_end:
+    - match: "}"
+      pop: true

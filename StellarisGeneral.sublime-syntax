@@ -1,0 +1,31 @@
+%YAML 1.2
+---
+# See http://www.sublimetext.com/docs/3/syntax.html
+#
+# Made by: Zednosius
+#
+variables:
+  equals_open_brace: '\s+(=)\s+({)'
+
+file_extensions: [testing]
+scope: source.stellaris
+contexts:
+  main: 
+    - match: 'country_event{{equals_open_brace}}'
+      push: 'event'
+
+  event:
+    - meta_scope: event
+    - match: '(immediate){{equals_open_brace}}'
+      captures:
+        1: effect_starter
+        2: sign.equal
+        3: brace.open
+      push: 
+        - meta_scope: block.effect
+        - match: ''
+          push: 'Packages/User/Stellaris/StellarisCountryBlock.sublime-syntax'
+
+  end: 
+    - match: '(?=})'
+      pop: true

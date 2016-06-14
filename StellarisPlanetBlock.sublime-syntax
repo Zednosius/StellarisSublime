@@ -1,14 +1,29 @@
 %YAML 1.2
 ---
 # See http://www.sublimetext.com/docs/3/syntax.html
+
+variables:
+  equals_open_brace: '\s+(=)\s+({)'
+
+
 file_extensions:
   - testing
 scope: block.planet
 contexts:
   main:
-    - include: end
+    - match: '(random_pop)'
+      push: 
+        - meta_scope: block.effect
+        - match: ''
+          push: 'Packages/User/Stellaris/StellarisPopBlock.sublime-syntax'
+
+    - include: true_end
+
 
   end: 
     - match: '(?=})'
       pop: true
 
+  true_end:
+    - match: "}"
+      pop: true
