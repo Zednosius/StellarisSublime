@@ -1,0 +1,31 @@
+
+%YAML 1.2
+---
+# See http://www.sublimetext.com/docs/3/syntax.html
+
+
+file_extensions: 
+  - syntaxtest
+scope: block.War
+
+variables:
+  equals_open_brace: '\s+(=)\s+({)'
+  brace_behind: '(?<={)'
+
+contexts:
+  main:
+    
+    - include: to_Country
+
+  
+  to_Country:
+  	
+  	
+  	- match: '(?i)(any_attacker|any_defender){{equals_open_brace}}'
+      push:
+        - meta_content_scope: block.condition
+        - match: '{{brace_behind}}'
+          push: 'Packages/User/Stellaris/StellarisCountryBlock.sublime-syntax'
+        - include: peek_end_brace
+  	
+

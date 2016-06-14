@@ -1,0 +1,36 @@
+
+%YAML 1.2
+---
+# See http://www.sublimetext.com/docs/3/syntax.html
+
+
+file_extensions: 
+  - syntaxtest
+scope: block.Tile
+
+variables:
+  equals_open_brace: '\s+(=)\s+({)'
+  brace_behind: '(?<={)'
+
+contexts:
+  main:
+    
+    - include: to_Tile
+
+  
+  to_Tile:
+  	- match: '(?i)(random_neighboring_tile|every_neighboring_tile){{equals_open_brace}}'
+      push: 
+        - meta_content_scope: block.effect
+        - match: '{{brace_behind}}'
+          push: 'Packages/User/Stellaris/StellarisTileBlock.sublime-syntax'
+        - include: peek_end_brace
+  	
+  	- match: '(?i)(any_neighboring_tile){{equals_open_brace}}'
+      push:
+        - meta_content_scope: block.condition
+        - match: '{{brace_behind}}'
+          push: 'Packages/User/Stellaris/StellarisTileBlock.sublime-syntax'
+        - include: peek_end_brace
+  	
+
