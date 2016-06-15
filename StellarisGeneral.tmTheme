@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	
+ 	<!--
+     To change a color, find the right scope for what you want to change and change its foreground color 
+     Scopes can be found by activating the syntax file for a stellaris file, and then putting the caret on what you want to color
+	 and then press ctrl+shift+alt+P , the word in the bottom of the popup is the scope you need to find.
+
+	 If other colors change that you don't want to change, you have to go into the sublime-syntax file and edit the syntax there.
+	 Hopefully it isn't too hard to modify.
+
+	-->
+	<key>author</key>
+	<string>Zednosius</string>
+	<key>name</key>
+	<string>Stellaris Theme</string>
+
+	<key>settings</key>
+	<array>
+
+
+		<dict>
+			<key>settings</key>
+			<!-- General editor color settings   -->
+			<dict>
+				<key>background</key>
+				<string>#000000</string>
+				<key>caret</key>
+				<string>#A7A7A7</string>
+				<key>foreground</key>
+				<string>#F8F8F8</string>
+				<key>invisibles</key>
+				<string>#CAE2FB3D</string>
+				<key>lineHighlight</key>
+				<string>#FFFFFF0D</string>
+				<key>selection</key>
+				<string>#DDF0FF33</string>
+			</dict>
+		</dict>
+
+		<!-- All Scopes are colored with this -->
+	    <dict>
+	        <key>name</key>
+	        <string>Scopes</string>
+
+	        <key>scope</key>
+	        <string>scope</string>
+
+	        <key>settings</key>
+	        <dict>
+	            <key>foreground</key>
+	            <string>#b732ff</string>
+	        </dict>
+	    </dict>
+
+
+	    <!-- All effects are colored with this -->
+	    <dict>
+	   		<key>name</key>
+	        <string>Effects</string>
+
+	        <key>scope</key>
+	        <string>block.effect block.Country</string>
+
+	        <key>settings</key>
+	        <dict>
+	            <key>foreground</key>
+	            <string>#ff8300</string>
+	        </dict>
+	    </dict>
+
+	    <!-- All conditions are colored with this -->
+	    <dict>
+	    	<key>name</key>
+	    	<string>Conditions</string>
+
+	    	<key>scope</key>
+	    	<string>condition</string>
+	    	<key>settings</key>
+	    	<dict>
+	    		<key>foreground</key>
+	    		<string>#9CCB19</string>
+	    	</dict>
+	    </dict>
+	    <!-- All 'keywords' that are usually followed by braces are colored with this, basically stuff that don't really fall into one of the other three-->
+	    <dict>
+	    	<key>name</key>
+	    	<string>Keywords with braces after</string>
+	    
+	    	<key>scope</key>
+	    	<string>brace.block</string>
+	    	
+	    	<key>settings</key>
+	    	<dict>
+	    		<key>foreground</key>
+	    		<string>#16beeb</string>
+	    	</dict>
+	    </dict>
+
+	    <dict>
+	    	<key>name</key>
+	    	<string>Constant Variable</string>
+	    	<key>scope</key>
+	    	<string>constant</string>
+	    	
+	    	<key>settings</key>
+	    	<dict>
+	    		<key>foreground</key>
+	    		<string>#fca530</string>
+	    	</dict>
+	    </dict>
+
+	    <!-- All keywords that point to a localised text-->
+	    <dict>
+	    	<key>name</key>
+	    	<string>LocalisedKeywords</string>
+	    
+	    	<key>scope</key>
+	    	<string>keywords.localised</string>
+	    	
+	    	<key>settings</key>
+	    	<dict>
+	    		<key>foreground</key>
+	    		<string>#abcdef</string>
+	    	</dict>
+	    </dict>
+	    <dict>
+	    	<key>name</key>
+	    	<string>Localised Text</string>
+	    
+	    	<key>scope</key>
+	    	<string>localised</string>
+	    	
+	    	<key>settings</key>
+	    	<dict>
+	    		<key>foreground</key>
+	    		<string>#D51232</string>
+	    	</dict>
+	    </dict>
+
+	    <dict>
+	    	<key>name</key>
+	    	<string>Commented Line</string>
+	    
+	    	<key>scope</key>
+	    	<string>line.comment</string>
+	    	
+	    	<key>settings</key>
+	    	<dict>
+	    		<key>fontStyle</key>
+				<string>italic</string>
+	    		<key>foreground</key>
+	    		<string>#a5abaf</string>
+	    	</dict>
+	    </dict>
+	    <!-- Left hand side of equal signs-->
+	    <dict>
+	    	<key>name</key>
+	    	<string>Keyword defined</string>
+	    
+	    	<key>scope</key>
+	    	<string>block.effect.keyword</string>
+	    	
+	    	<key>settings</key>
+	    	<dict>
+	    		<key>foreground</key>
+	    		<string>#5e73af</string>
+	    	</dict>
+	    </dict>
+	    <!-- Right hand side of equal signs-->
+	    <dict>
+	    	<key>name</key>
+	    	<string>Defined Keyvalue</string>
+	    
+	    	<key>scope</key>
+	    	<string>defined.key.value</string>
+	    	
+	    	<key>settings</key>
+	    	<dict>
+	    		<key>foreground</key>
+	    		<string>#00b200</string>
+	    	</dict>
+	    </dict>
+	    	    <!-- Right hand side of equal signs-->
+	    <dict>
+	    	<key>name</key>
+	    	<string>Defined Keyvalue</string>
+	    
+	    	<key>scope</key>
+	    	<string>predefined.key.value</string>
+	    	
+	    	<key>settings</key>
+	    	<dict>
+	    		<key>foreground</key>
+	    		<string>#afb200</string>
+	    	</dict>
+	    </dict>
+	    <dict>
+	    	<key>name</key>
+	    	<string>Comparator Sign</string>
+	    
+	    	<key>scope</key>
+	    	<string>sign.comparator</string>
+	    	
+	    	<key>settings</key>
+	    	<dict>
+	    		<key>foreground</key>
+	    		<string>#ffffff</string>
+	    	</dict>
+	    </dict>
+
+	    <dict>
+	    	<key>name</key>
+	    	<string>Boolean Operator</string>
+	    
+	    	<key>scope</key>
+	    	<string>boolean.operator</string>
+	    	
+	    	<key>settings</key>
+	    	<dict>
+	    		<key>foreground</key>
+	    		<string>#EE4000</string>
+	    	</dict>
+	    </dict>
+	    <dict>
+	    	<key>name</key>
+	    	<string>Predefined file value</string>
+	    
+	    	<key>scope</key>
+	    	<string>predefined.constant</string>
+	    	
+	    	<key>settings</key>
+	    	<dict>
+	    		<key>foreground</key>
+	    		<string>#bbeeff</string>
+	    	</dict>
+	    </dict>
+
+	    <dict>
+	    	<key>name</key>
+	    	<string>Left hand variable</string>
+	    
+	    	<key>scope</key>
+	    	<string>block.effect block.condition</string>
+	    	
+	    	<key>settings</key>
+	    	<dict>
+	    		<key>foreground</key>
+	    		<string>#ff0000</string>
+	    	</dict>
+	    </dict>
+
+
+	</array>
+</dict>
+</plist>
