@@ -1,12 +1,11 @@
-
 %YAML 1.2
 ---
 # See http://www.sublimetext.com/docs/3/syntax.html
 
-
+hidden: true
 file_extensions: 
   - syntaxtest
-scope: block.War
+scope: block.Fleet
 
 variables:
   equals_open_brace: '\s+(=)\s+({)'
@@ -15,20 +14,22 @@ variables:
 contexts:
   main:
     
-    - include: to_Country
+    - include: to_Planet
     - include: eat_end_brace
 
   
-  to_Country:
-  	
-
-  	- match: '(?i)(any_attacker|any_defender){{equals_open_brace}}'
-      push:
-        - meta_content_scope: block.condition
+  to_Planet:
+    - match: '(?i)(orbit){{equals_open_brace}}'
+      captures:
+        1: block.effect.keyword
+        2: sign.equals
+        3: brace.open
+      push: 
+        - meta_content_scope: block.effect
         - match: '{{brace_behind}}'
-          push: 'Packages/User/Stellaris/StellarisCountryBlock.sublime-syntax'
+          push: 'Packages/User/Stellaris/StellarisPlanetEffectBlock.sublime-syntax'
         - include: peek_end_brace
-  	
+    
 
   peek_end_brace: 
     - match: '(?<=})'

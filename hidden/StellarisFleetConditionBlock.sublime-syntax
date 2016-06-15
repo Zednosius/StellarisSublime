@@ -1,9 +1,8 @@
-
 %YAML 1.2
 ---
 # See http://www.sublimetext.com/docs/3/syntax.html
 
-
+hidden: true
 file_extensions: 
   - syntaxtest
 scope: block.Fleet
@@ -21,30 +20,29 @@ contexts:
 
   
   to_Planet:
-  	- match: '(?i)(orbit){{equals_open_brace}}'
-      push: 
-        - meta_content_scope: block.effect
-        - match: '{{brace_behind}}'
-          push: 'Packages/User/Stellaris/StellarisPlanetBlock.sublime-syntax'
-        - include: peek_end_brace
-
-  	- match: '(?i)(orbit){{equals_open_brace}}'
+    - match: '(?i)(orbit){{equals_open_brace}}'
+      captures:
+        1: block.condition.keyword
+        2: sign.equals
+        3: brace.open      
       push:
         - meta_content_scope: block.condition
         - match: '{{brace_behind}}'
-          push: 'Packages/User/Stellaris/StellarisPlanetBlock.sublime-syntax'
+          push: 'Packages/User/Stellaris/StellarisPlanetConditionBlock.sublime-syntax'
         - include: peek_end_brace
-  	
+    
   to_Ship:
-  	
-
-  	- match: '(?i)(any_ship){{equals_open_brace}}'
+    - match: '(?i)(any_ship){{equals_open_brace}}'
+      captures:
+        1: block.condition.keyword
+        2: sign.equals
+        3: brace.open      
       push:
         - meta_content_scope: block.condition
         - match: '{{brace_behind}}'
-          push: 'Packages/User/Stellaris/StellarisShipBlock.sublime-syntax'
+          push: 'Packages/User/Stellaris/StellarisShipConditionBlock.sublime-syntax'
         - include: peek_end_brace
-  	
+    
 
   peek_end_brace: 
     - match: '(?<=})'

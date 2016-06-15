@@ -1,0 +1,118 @@
+%YAML 1.2
+---
+# See http://www.sublimetext.com/docs/3/syntax.html
+
+hidden: true
+file_extensions: 
+  - syntaxtest
+scope: block.Country
+
+variables:
+  equals_open_brace: '\s+(=)\s+({)'
+  brace_behind: '(?<={)'
+
+contexts:
+  main:
+    
+    - include: to_Country
+    - include: to_System
+    - include: to_Pop
+    - include: to_Planet
+    - include: to_Pop_faction
+    - include: to_Ship
+    - include: to_Leader
+    - include: eat_end_brace
+
+  
+  to_Country:
+    - match: '(?i)(random_neighbor_country){{equals_open_brace}}'
+      captures:
+        1: block.effect.keyword
+        2: sign.equals
+        3: brace.open
+      push: 
+        - meta_content_scope: block.effect
+        - match: '{{brace_behind}}'
+          push: 'Packages/User/Stellaris/StellarisCountryEffectBlock.sublime-syntax'
+        - include: peek_end_brace
+    
+  to_System:
+    - match: '(?i)(solar_system){{equals_open_brace}}'
+      captures:
+        1: block.effect.keyword
+        2: sign.equals
+        3: brace.open
+      push: 
+        - meta_content_scope: block.effect
+        - match: '{{brace_behind}}'
+          push: 'Packages/User/Stellaris/StellarisSystemEffectBlock.sublime-syntax'
+        - include: peek_end_brace
+    
+  to_Pop:
+    - match: '(?i)(every_owned_pop|random_owned_pop){{equals_open_brace}}'
+      captures:
+        1: block.effect.keyword
+        2: sign.equals
+        3: brace.open
+      push: 
+        - meta_content_scope: block.effect
+        - match: '{{brace_behind}}'
+          push: 'Packages/User/Stellaris/StellarisPopEffectBlock.sublime-syntax'
+        - include: peek_end_brace
+    
+  to_Planet:
+    - match: '(?i)(capital_scope|every_owned_planet|random_owned_planet){{equals_open_brace}}'
+      captures:
+        1: block.effect.keyword
+        2: sign.equals
+        3: brace.open
+      push: 
+        - meta_content_scope: block.effect
+        - match: '{{brace_behind}}'
+          push: 'Packages/User/Stellaris/StellarisPlanetEffectBlock.sublime-syntax'
+        - include: peek_end_brace
+    
+  to_Pop_faction:
+    - match: '(?i)(every_pop_faction|random_pop_faction){{equals_open_brace}}'
+      captures:
+        1: block.effect.keyword
+        2: sign.equals
+        3: brace.open
+      push: 
+        - meta_content_scope: block.effect
+        - match: '{{brace_behind}}'
+          push: 'Packages/User/Stellaris/StellarisPop_factionEffectBlock.sublime-syntax'
+        - include: peek_end_brace
+    
+  to_Ship:
+    - match: '(?i)(every_owned_ship|random_owned_ship){{equals_open_brace}}'
+      captures:
+        1: block.effect.keyword
+        2: sign.equals
+        3: brace.open
+      push: 
+        - meta_content_scope: block.effect
+        - match: '{{brace_behind}}'
+          push: 'Packages/User/Stellaris/StellarisShipEffectBlock.sublime-syntax'
+        - include: peek_end_brace
+    
+  to_Leader:
+    - match: '(?i)(random_owned_leader|leader){{equals_open_brace}}'
+      captures:
+        1: block.effect.keyword
+        2: sign.equals
+        3: brace.open
+      push: 
+        - meta_content_scope: block.effect
+        - match: '{{brace_behind}}'
+          push: 'Packages/User/Stellaris/StellarisLeaderEffectBlock.sublime-syntax'
+        - include: peek_end_brace
+    
+
+  peek_end_brace: 
+    - match: '(?<=})'
+      pop: true
+
+  eat_end_brace:
+    - match: "}"
+      pop: true

@@ -1,0 +1,144 @@
+%YAML 1.2
+---
+# See http://www.sublimetext.com/docs/3/syntax.html
+
+hidden: true
+file_extensions: 
+  - syntaxtest
+scope: block.Country
+
+variables:
+  equals_open_brace: '\s+(=)\s+({)'
+  brace_behind: '(?<={)'
+
+contexts:
+  main:
+    
+    - include: to_Sector
+    - include: to_Country
+    - include: to_System
+    - include: to_Pop
+    - include: to_Leader
+    - include: to_Planet
+    - include: to_Fleet
+    - include: to_Ship
+    - include: to_War
+    - include: eat_end_brace
+
+  
+  to_Sector:
+    - match: '(?i)(any_sector){{equals_open_brace}}'
+      captures:
+        1: block.condition.keyword
+        2: sign.equals
+        3: brace.open      
+      push:
+        - meta_content_scope: block.condition
+        - match: '{{brace_behind}}'
+          push: 'Packages/User/Stellaris/StellarisSectorConditionBlock.sublime-syntax'
+        - include: peek_end_brace
+    
+  to_Country:
+    - match: '(?i)(any_neighbor_country|){{equals_open_brace}}'
+      captures:
+        1: block.condition.keyword
+        2: sign.equals
+        3: brace.open      
+      push:
+        - meta_content_scope: block.condition
+        - match: '{{brace_behind}}'
+          push: 'Packages/User/Stellaris/StellarisCountryConditionBlock.sublime-syntax'
+        - include: peek_end_brace
+    
+  to_System:
+    - match: '(?i)(any_system_within_border|solar_system){{equals_open_brace}}'
+      captures:
+        1: block.condition.keyword
+        2: sign.equals
+        3: brace.open      
+      push:
+        - meta_content_scope: block.condition
+        - match: '{{brace_behind}}'
+          push: 'Packages/User/Stellaris/StellarisSystemConditionBlock.sublime-syntax'
+        - include: peek_end_brace
+    
+  to_Pop:
+    - match: '(?i)(any_owned_pop){{equals_open_brace}}'
+      captures:
+        1: block.condition.keyword
+        2: sign.equals
+        3: brace.open      
+      push:
+        - meta_content_scope: block.condition
+        - match: '{{brace_behind}}'
+          push: 'Packages/User/Stellaris/StellarisPopConditionBlock.sublime-syntax'
+        - include: peek_end_brace
+    
+  to_Leader:
+    - match: '(?i)(any_owned_leader){{equals_open_brace}}'
+      captures:
+        1: block.condition.keyword
+        2: sign.equals
+        3: brace.open      
+      push:
+        - meta_content_scope: block.condition
+        - match: '{{brace_behind}}'
+          push: 'Packages/User/Stellaris/StellarisLeaderConditionBlock.sublime-syntax'
+        - include: peek_end_brace
+    
+  to_Planet:
+    - match: '(?i)(any_controlled_planet|any_owned_planet|any_planet_within_border|home_planet){{equals_open_brace}}'
+      captures:
+        1: block.condition.keyword
+        2: sign.equals
+        3: brace.open      
+      push:
+        - meta_content_scope: block.condition
+        - match: '{{brace_behind}}'
+          push: 'Packages/User/Stellaris/StellarisPlanetConditionBlock.sublime-syntax'
+        - include: peek_end_brace
+    
+  to_Fleet:
+    - match: '(?i)(any_owned_fleet){{equals_open_brace}}'
+      captures:
+        1: block.condition.keyword
+        2: sign.equals
+        3: brace.open      
+      push:
+        - meta_content_scope: block.condition
+        - match: '{{brace_behind}}'
+          push: 'Packages/User/Stellaris/StellarisFleetConditionBlock.sublime-syntax'
+        - include: peek_end_brace
+    
+  to_Ship:
+    - match: '(?i)(any_owned_ship){{equals_open_brace}}'
+      captures:
+        1: block.condition.keyword
+        2: sign.equals
+        3: brace.open      
+      push:
+        - meta_content_scope: block.condition
+        - match: '{{brace_behind}}'
+          push: 'Packages/User/Stellaris/StellarisShipConditionBlock.sublime-syntax'
+        - include: peek_end_brace
+    
+  to_War:
+    - match: '(?i)(any_war){{equals_open_brace}}'
+      captures:
+        1: block.condition.keyword
+        2: sign.equals
+        3: brace.open      
+      push:
+        - meta_content_scope: block.condition
+        - match: '{{brace_behind}}'
+          push: 'Packages/User/Stellaris/StellarisWarConditionBlock.sublime-syntax'
+        - include: peek_end_brace
+    
+
+  peek_end_brace: 
+    - match: '(?<=})'
+      pop: true
+
+  eat_end_brace:
+    - match: "}"
+      pop: true
