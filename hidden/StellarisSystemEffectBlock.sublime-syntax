@@ -5,11 +5,11 @@
 hidden: true
 file_extensions: 
   - syntaxtest
-scope: block.System
+scope: block.effect block.System
 
 variables:
   equals_open_brace: '\s+(=)\s+({)'
-  brace_behind: '(?<={)'
+  open_brace_behind: '(?<={)'
 
 contexts:
   main:
@@ -20,6 +20,31 @@ contexts:
     - include: to_Fleet
     - include: eat_end_brace
 
+
+    
+    - match: '(?i)(if|while){{equals_open_brace}}'
+      captures:
+        1: effect.to.condition
+        2: sign.equals
+        3: brace.open
+      push:
+        - match: '(limit){{equals_open_brace}}'
+          captures:
+            1: effect.to.condition
+            2: sign.equals
+            3: brace.open
+          push: 'Packages/User/Stellaris/hidden/StellarisSystemConditionBlock.sublime-syntax'
+        #- include: peek_end_brace #
+        #- include: end_brace_behind #If nothing is inside the limit
+        - include: main
+        
+
+    - match: (?i)(hidden_effect|custom_tooltip|if|random|random_list|create_species|create_country|create_fleet|random_country|remove_global_flag|set_global_flag|every_country|every_ship|every_planet|save_event_target_as|save_global_event_target_as|clear_global_event_target|clear_global_event_targets|break|while|destroy_fleet|create_ambient_object|destroy_ambient_object|set_timed_global_flag|switch|pop_faction_event|closest_system)
+      scope: keyword.effect.System
+
+
+    - match: '(any_planet|any_bordering_country|space_owner|any_ship_in_system|any_neighbor_system)'
+      push: illegal
   
   to_Ambient_object:
     - match: '(?i)(every_system_ambient_object|random_system_ambient_object){{equals_open_brace}}'
@@ -27,11 +52,8 @@ contexts:
         1: block.effect.keyword
         2: sign.equals
         3: brace.open
-      push: 
-        - meta_content_scope: block.effect
-        - match: '{{brace_behind}}'
-          push: 'Packages/User/Stellaris/StellarisAmbient_objectEffectBlock.sublime-syntax'
-        - include: peek_end_brace
+      push: 'Packages/User/Stellaris/hidden/StellarisAmbient_objectEffectBlock.sublime-syntax'
+  #  - include: end_brace_behind
     
   to_Country:
     - match: '(?i)(space_owner){{equals_open_brace}}'
@@ -39,11 +61,8 @@ contexts:
         1: block.effect.keyword
         2: sign.equals
         3: brace.open
-      push: 
-        - meta_content_scope: block.effect
-        - match: '{{brace_behind}}'
-          push: 'Packages/User/Stellaris/StellarisCountryEffectBlock.sublime-syntax'
-        - include: peek_end_brace
+      push: 'Packages/User/Stellaris/hidden/StellarisCountryEffectBlock.sublime-syntax'
+  #  - include: end_brace_behind
     
   to_Planet:
     - match: '(?i)(every_system_planet|random_system_planet){{equals_open_brace}}'
@@ -51,11 +70,8 @@ contexts:
         1: block.effect.keyword
         2: sign.equals
         3: brace.open
-      push: 
-        - meta_content_scope: block.effect
-        - match: '{{brace_behind}}'
-          push: 'Packages/User/Stellaris/StellarisPlanetEffectBlock.sublime-syntax'
-        - include: peek_end_brace
+      push: 'Packages/User/Stellaris/hidden/StellarisPlanetEffectBlock.sublime-syntax'
+  #  - include: end_brace_behind
     
   to_Fleet:
     - match: '(?i)(every_fleet_in_system){{equals_open_brace}}'
@@ -63,17 +79,23 @@ contexts:
         1: block.effect.keyword
         2: sign.equals
         3: brace.open
-      push: 
-        - meta_content_scope: block.effect
-        - match: '{{brace_behind}}'
-          push: 'Packages/User/Stellaris/StellarisFleetEffectBlock.sublime-syntax'
-        - include: peek_end_brace
+      push: 'Packages/User/Stellaris/hidden/StellarisFleetEffectBlock.sublime-syntax'
+  #  - include: end_brace_behind
     
 
-  peek_end_brace: 
+  end_brace_behind: 
     - match: '(?<=})'
+      scope: brace.end
       pop: true
 
   eat_end_brace:
     - match: "}"
+      scope: brace.end
       pop: true
+  peek_end_brace:
+    - match: '(?=})'
+      pop: true
+
+  illegal:
+    - meta_scope: illegal
+    - include: end_brace_behind

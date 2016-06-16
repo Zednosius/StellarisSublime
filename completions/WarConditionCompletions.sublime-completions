@@ -1,0 +1,12 @@
+
+{
+	"scope":"block.effect block.War",
+	"completions":
+	[
+		{ "trigger": "attacker_war_score	checks the war score of the attackers in a war", "contents": "attacker_war_score" },
+		{ "trigger": "defender_war_score	checks the war score of the defenders in a war", "contents": "defender_war_score" },
+		{ "trigger": "is_war_participant	Checks if a country is participating in scope war", "contents": "is_war_participant" },
+		{ "trigger": "count_war_participants	Count war participants.", "contents": "count_war_participants" },
+		{ "trigger": "count_potential_war_participants	Count how many could join war.", "contents": "count_potential_war_participants" }
+	]
+}

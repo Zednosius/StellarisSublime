@@ -5,11 +5,11 @@
 hidden: true
 file_extensions: 
   - syntaxtest
-scope: block.Pop
+scope: block.effect block.Pop
 
 variables:
   equals_open_brace: '\s+(=)\s+({)'
-  brace_behind: '(?<={)'
+  open_brace_behind: '(?<={)'
 
 contexts:
   main:
@@ -19,6 +19,31 @@ contexts:
     - include: to_Pop_faction
     - include: eat_end_brace
 
+
+    
+    - match: '(?i)(if|while){{equals_open_brace}}'
+      captures:
+        1: effect.to.condition
+        2: sign.equals
+        3: brace.open
+      push:
+        - match: '(limit){{equals_open_brace}}'
+          captures:
+            1: effect.to.condition
+            2: sign.equals
+            3: brace.open
+          push: 'Packages/User/Stellaris/hidden/StellarisPopConditionBlock.sublime-syntax'
+        #- include: peek_end_brace #
+        #- include: end_brace_behind #If nothing is inside the limit
+        - include: main
+        
+
+    - match: (?i)(tooltip|pop_event|kill_pop|enslave_pop|set_pop_flag|remove_pop_flag|add_modifier|pop_add_ethic|pop_remove_ethic|pop_migration|change_pop_species|modify_species|create_point_of_interest|set_timed_pop_flag|purge|remove_modifier|set_pop_faction|force_faction_evaluation|set_pop_faction_flag|remove_pop_faction_flag|set_timed_pop_faction_flag|hidden_effect|custom_tooltip|if|random|random_list|create_species|create_country|create_fleet|random_country|remove_global_flag|set_global_flag|every_country|every_ship|every_planet|save_event_target_as|save_global_event_target_as|clear_global_event_target|clear_global_event_targets|break|while|destroy_fleet|create_ambient_object|destroy_ambient_object|set_timed_global_flag|switch|pop_faction_event|closest_system)
+      scope: keyword.effect.Pop
+
+
+    - match: '(planet|owner|pop_faction)'
+      push: illegal
   
   to_Planet:
     - match: '(?i)(planet){{equals_open_brace}}'
@@ -26,11 +51,8 @@ contexts:
         1: block.effect.keyword
         2: sign.equals
         3: brace.open
-      push: 
-        - meta_content_scope: block.effect
-        - match: '{{brace_behind}}'
-          push: 'Packages/User/Stellaris/StellarisPlanetEffectBlock.sublime-syntax'
-        - include: peek_end_brace
+      push: 'Packages/User/Stellaris/hidden/StellarisPlanetEffectBlock.sublime-syntax'
+  #  - include: end_brace_behind
     
   to_Country:
     - match: '(?i)(owner){{equals_open_brace}}'
@@ -38,11 +60,8 @@ contexts:
         1: block.effect.keyword
         2: sign.equals
         3: brace.open
-      push: 
-        - meta_content_scope: block.effect
-        - match: '{{brace_behind}}'
-          push: 'Packages/User/Stellaris/StellarisCountryEffectBlock.sublime-syntax'
-        - include: peek_end_brace
+      push: 'Packages/User/Stellaris/hidden/StellarisCountryEffectBlock.sublime-syntax'
+  #  - include: end_brace_behind
     
   to_Pop_faction:
     - match: '(?i)(pop_faction){{equals_open_brace}}'
@@ -50,17 +69,23 @@ contexts:
         1: block.effect.keyword
         2: sign.equals
         3: brace.open
-      push: 
-        - meta_content_scope: block.effect
-        - match: '{{brace_behind}}'
-          push: 'Packages/User/Stellaris/StellarisPop_factionEffectBlock.sublime-syntax'
-        - include: peek_end_brace
+      push: 'Packages/User/Stellaris/hidden/StellarisPop_factionEffectBlock.sublime-syntax'
+  #  - include: end_brace_behind
     
 
-  peek_end_brace: 
+  end_brace_behind: 
     - match: '(?<=})'
+      scope: brace.end
       pop: true
 
   eat_end_brace:
     - match: "}"
+      scope: brace.end
       pop: true
+  peek_end_brace:
+    - match: '(?=})'
+      pop: true
+
+  illegal:
+    - meta_scope: illegal
+    - include: end_brace_behind

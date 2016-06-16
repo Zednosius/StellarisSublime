@@ -1,0 +1,38 @@
+
+{
+	"scope":"block.effect block.Pop",
+	"completions":
+	[
+		{ "trigger": "happiness	Compares pop happiness", "contents": "happiness" },
+		{ "trigger": "has_trait	checks if an empire's dominant species, pop, or leader has a certain Trait", "contents": "has_trait" },
+		{ "trigger": "has_ethic	checks if an empire's dominant species has a certain Ethic", "contents": "has_ethic" },
+		{ "trigger": "is_same_species	checks if a pop or empire is of the same species as another pop or empire", "contents": "is_same_species" },
+		{ "trigger": "distance	Compares the min/max distance to a target with a value", "contents": "distance" },
+		{ "trigger": "is_same_species_class	checks if a pop or empire is of the same species class as another pop or empire", "contents": "is_same_species_class" },
+		{ "trigger": "free_leader_slots	Compares the number of free leader slots", "contents": "free_leader_slots" },
+		{ "trigger": "has_pop_flag	Checks if a pop has a specified flag", "contents": "has_pop_flag" },
+		{ "trigger": "has_global_flag	Checks a global trigger", "contents": "has_global_flag" },
+		{ "trigger": "pop_has_ethic	checks if a pop has a certain Ethic", "contents": "pop_has_ethic" },
+		{ "trigger": "pop_has_trait	checks if a pop has a certain trait", "contents": "pop_has_trait" },
+		{ "trigger": "is_enslaved	checks if a pop is enslaved", "contents": "is_enslaved" },
+		{ "trigger": "is_being_purged	checks if a pop is being exterminated", "contents": "is_being_purged" },
+		{ "trigger": "is_pop	checks if a pop is of the same as the scope", "contents": "is_pop" },
+		{ "trigger": "is_species_class	Checks if the founder species of a country, or a pop is of a specific species", "contents": "is_species_class" },
+		{ "trigger": "is_sentient	checks if a pop is sentient", "contents": "is_sentient" },
+		{ "trigger": "is_preventing_anomaly	checks if a planet is currently preventing anomalies", "contents": "is_preventing_anomaly" },
+		{ "trigger": "is_rim_system	checks if a system is on the galactic rim", "contents": "is_rim_system" },
+		{ "trigger": "has_modifier	checks if scope object has a modifier", "contents": "has_modifier" },
+		{ "trigger": "num_ethics	compares the number of ethics with a value", "contents": "num_ethics" },
+		{ "trigger": "num_traits	compares the number of traits with a value", "contents": "num_traits" },
+		{ "trigger": "member_of_faction	Checks if pop is a member of a faction ( targets yes/no/specific faction )", "contents": "member_of_faction" },
+		{ "trigger": "has_pop_faction_flag	checks if a pop faction has a specified flag", "contents": "has_pop_faction_flag" },
+		{ "trigger": "opposing_ethics_divergence	Compares the opposing ethics divergence.", "contents": "opposing_ethics_divergence" },
+		{ "trigger": "is_species	Checks if the founder species of a country, or a pop is of a specific species", "contents": "is_species" },
+		{ "trigger": "is_growing	Checks if a pop is growing", "contents": "is_growing" },
+		{ "trigger": "is_colony_pop	Checks if a pop is a colony pop", "contents": "is_colony_pop" },
+		{ "trigger": "is_subspecies	checks if a pop or empire is a subspecies of the same species as another pop or empire", "contents": "is_subspecies" },
+		{ "trigger": "is_robot_pop	Checks if the pop is of a robotic species class.", "contents": "is_robot_pop" },
+		{ "trigger": "species_portrait	Checks if a species uses a certain portrait.", "contents": "species_portrait" },
+		{ "trigger": "is_proposing_war_demands	Checks if currently proposing wardemands or handling existing wardemands", "contents": "is_proposing_war_demands" }
+	]
+}

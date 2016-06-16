@@ -5,11 +5,11 @@
 hidden: true
 file_extensions: 
   - syntaxtest
-scope: block.Pop
+scope: block.condition block.Pop
 
 variables:
   equals_open_brace: '\s+(=)\s+({)'
-  brace_behind: '(?<={)'
+  open_brace_behind: '(?<={)'
 
 contexts:
   main:
@@ -19,48 +19,57 @@ contexts:
     - include: to_Pop_faction
     - include: eat_end_brace
 
+
+    
+
+    - match: (?i)(happiness|has_trait|has_ethic|is_same_species|distance|is_same_species_class|free_leader_slots|has_pop_flag|has_global_flag|pop_has_ethic|pop_has_trait|is_enslaved|is_being_purged|is_pop|is_species_class|is_sentient|is_preventing_anomaly|is_rim_system|has_modifier|num_ethics|num_traits|member_of_faction|has_pop_faction_flag|opposing_ethics_divergence|is_species|is_growing|is_colony_pop|is_subspecies|is_robot_pop|species_portrait|is_proposing_war_demands|if|and|or|not|hidden_trigger|always|any_country|any_planet|any_ship|any_system|is_multiplayer|exists|any_rim_system|switch|any_ship_in_system|is_same_value|is_scope_valid|closest_system|is_ironman|custom_tooltip_fail|years_passed|host_has_dlc|local_has_dlc|nor|nand)
+      scope: keyword.condition.Pop
+
+
+    - match: '(planet|owner|pop_faction)'
+      push: illegal
   
   to_Planet:
     - match: '(?i)(planet){{equals_open_brace}}'
       captures:
         1: block.condition.keyword
         2: sign.equals
-        3: brace.open      
-      push:
-        - meta_content_scope: block.condition
-        - match: '{{brace_behind}}'
-          push: 'Packages/User/Stellaris/StellarisPlanetConditionBlock.sublime-syntax'
-        - include: peek_end_brace
+        3: brace.open
+      push: 'Packages/User/Stellaris/hidden/StellarisPlanetConditionBlock.sublime-syntax'
+  #  - include: end_brace_behind
     
   to_Country:
     - match: '(?i)(owner){{equals_open_brace}}'
       captures:
         1: block.condition.keyword
         2: sign.equals
-        3: brace.open      
-      push:
-        - meta_content_scope: block.condition
-        - match: '{{brace_behind}}'
-          push: 'Packages/User/Stellaris/StellarisCountryConditionBlock.sublime-syntax'
-        - include: peek_end_brace
+        3: brace.open
+      push: 'Packages/User/Stellaris/hidden/StellarisCountryConditionBlock.sublime-syntax'
+  #  - include: end_brace_behind
     
   to_Pop_faction:
     - match: '(?i)(pop_faction){{equals_open_brace}}'
       captures:
         1: block.condition.keyword
         2: sign.equals
-        3: brace.open      
-      push:
-        - meta_content_scope: block.condition
-        - match: '{{brace_behind}}'
-          push: 'Packages/User/Stellaris/StellarisPop_factionConditionBlock.sublime-syntax'
-        - include: peek_end_brace
+        3: brace.open
+      push: 'Packages/User/Stellaris/hidden/StellarisPop_factionConditionBlock.sublime-syntax'
+  #  - include: end_brace_behind
     
 
-  peek_end_brace: 
+  end_brace_behind: 
     - match: '(?<=})'
+      scope: brace.end
       pop: true
 
   eat_end_brace:
     - match: "}"
+      scope: brace.end
       pop: true
+  peek_end_brace:
+    - match: '(?=})'
+      pop: true
+
+  illegal:
+    - meta_scope: illegal
+    - include: end_brace_behind

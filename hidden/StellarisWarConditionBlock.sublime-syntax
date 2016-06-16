@@ -5,11 +5,11 @@
 hidden: true
 file_extensions: 
   - syntaxtest
-scope: block.War
+scope: block.condition block.War
 
 variables:
   equals_open_brace: '\s+(=)\s+({)'
-  brace_behind: '(?<={)'
+  open_brace_behind: '(?<={)'
 
 contexts:
   main:
@@ -17,24 +17,39 @@ contexts:
     - include: to_Country
     - include: eat_end_brace
 
+
+    
+
+    - match: (?i)(attacker_war_score|defender_war_score|is_war_participant|count_war_participants :|count_potential_war_participants :|if|and|or|not|hidden_trigger|always|any_country|any_planet|any_ship|any_system|is_multiplayer|exists|any_rim_system|switch|any_ship_in_system|is_same_value|is_scope_valid|closest_system|is_ironman|custom_tooltip_fail|years_passed|host_has_dlc|local_has_dlc|nor|nand)
+      scope: keyword.condition.War
+
+
+    - match: '()'
+      push: illegal
   
   to_Country:
     - match: '(?i)(any_attacker|any_defender){{equals_open_brace}}'
       captures:
         1: block.condition.keyword
         2: sign.equals
-        3: brace.open      
-      push:
-        - meta_content_scope: block.condition
-        - match: '{{brace_behind}}'
-          push: 'Packages/User/Stellaris/StellarisCountryConditionBlock.sublime-syntax'
-        - include: peek_end_brace
+        3: brace.open
+      push: 'Packages/User/Stellaris/hidden/StellarisCountryConditionBlock.sublime-syntax'
+  #  - include: end_brace_behind
     
 
-  peek_end_brace: 
+  end_brace_behind: 
     - match: '(?<=})'
+      scope: brace.end
       pop: true
 
   eat_end_brace:
     - match: "}"
+      scope: brace.end
       pop: true
+  peek_end_brace:
+    - match: '(?=})'
+      pop: true
+
+  illegal:
+    - meta_scope: illegal
+    - include: end_brace_behind

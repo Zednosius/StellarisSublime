@@ -5,11 +5,11 @@
 hidden: true
 file_extensions: 
   - syntaxtest
-scope: block.Planet
+scope: block.effect block.Planet
 
 variables:
   equals_open_brace: '\s+(=)\s+({)'
-  brace_behind: '(?<={)'
+  open_brace_behind: '(?<={)'
 
 contexts:
   main:
@@ -24,6 +24,31 @@ contexts:
     - include: to_Leader
     - include: eat_end_brace
 
+
+    
+    - match: '(?i)(if|while){{equals_open_brace}}'
+      captures:
+        1: effect.to.condition
+        2: sign.equals
+        3: brace.open
+      push:
+        - match: '(limit){{equals_open_brace}}'
+          captures:
+            1: effect.to.condition
+            2: sign.equals
+            3: brace.open
+          push: 'Packages/User/Stellaris/hidden/StellarisPlanetConditionBlock.sublime-syntax'
+        #- include: peek_end_brace #
+        #- include: end_brace_behind #If nothing is inside the limit
+        - include: main
+        
+
+    - match: (?i)(tooltip|planet_event|add_minerals|add_physics|add_society|add_engineering|set_owner|add_resource|set_planet_flag|remove_planet_flag|create_army|create_pop|create_colony|set_capital|change_pc|random_pop|destroy_colony|surveyed|set_ring|create_mining_station|create_research_station|every_owned_pop|set_name|add_modifier|set_variable|change_variable|every_pop|create_rebels|cancel_terraformation|spawn_system|random_research_station|random_mining_station|random_spaceport|random_army|modify_species|add_anomaly|change_planet_size|every_tile|random_tile|create_point_of_interest|random_moon|every_moon|kill_leader|set_timed_planet_flag|prevent_anomaly|every_planet_army|observation_outpost_owner|observation_outpost|purge|set_planet_max_health|set_planet_health|remove_modifier|set_spaceport_module|create_spaceport|set_spaceport_level|set_controller|random_owned_pop|unassign_leader|add_colony_progress|start_colony|add_threat|remove_spaceport_module|hidden_effect|custom_tooltip|if|random|random_list|create_species|create_country|create_fleet|random_country|remove_global_flag|set_global_flag|every_country|every_ship|every_planet|save_event_target_as|save_global_event_target_as|clear_global_event_target|clear_global_event_targets|break|while|destroy_fleet|create_ambient_object|destroy_ambient_object|set_timed_global_flag|switch|pop_faction_event|closest_system)
+      scope: keyword.effect.Planet
+
+
+    - match: '(observation_outpost_owner|closest_system|any_pop|any_moon|any_tile|orbital_deposit_tile|observation_outpost)'
+      push: illegal
   
   to_Army:
     - match: '(?i)(every_planet_army){{equals_open_brace}}'
@@ -31,11 +56,8 @@ contexts:
         1: block.effect.keyword
         2: sign.equals
         3: brace.open
-      push: 
-        - meta_content_scope: block.effect
-        - match: '{{brace_behind}}'
-          push: 'Packages/User/Stellaris/StellarisArmyEffectBlock.sublime-syntax'
-        - include: peek_end_brace
+      push: 'Packages/User/Stellaris/hidden/StellarisArmyEffectBlock.sublime-syntax'
+  #  - include: end_brace_behind
     
   to_Country:
     - match: '(?i)(observation_outpost_owner){{equals_open_brace}}'
@@ -43,11 +65,8 @@ contexts:
         1: block.effect.keyword
         2: sign.equals
         3: brace.open
-      push: 
-        - meta_content_scope: block.effect
-        - match: '{{brace_behind}}'
-          push: 'Packages/User/Stellaris/StellarisCountryEffectBlock.sublime-syntax'
-        - include: peek_end_brace
+      push: 'Packages/User/Stellaris/hidden/StellarisCountryEffectBlock.sublime-syntax'
+  #  - include: end_brace_behind
     
   to_System:
     - match: '(?i)(closest_system){{equals_open_brace}}'
@@ -55,11 +74,8 @@ contexts:
         1: block.effect.keyword
         2: sign.equals
         3: brace.open
-      push: 
-        - meta_content_scope: block.effect
-        - match: '{{brace_behind}}'
-          push: 'Packages/User/Stellaris/StellarisSystemEffectBlock.sublime-syntax'
-        - include: peek_end_brace
+      push: 'Packages/User/Stellaris/hidden/StellarisSystemEffectBlock.sublime-syntax'
+  #  - include: end_brace_behind
     
   to_Pop:
     - match: '(?i)(random_pop){{equals_open_brace}}'
@@ -67,11 +83,8 @@ contexts:
         1: block.effect.keyword
         2: sign.equals
         3: brace.open
-      push: 
-        - meta_content_scope: block.effect
-        - match: '{{brace_behind}}'
-          push: 'Packages/User/Stellaris/StellarisPopEffectBlock.sublime-syntax'
-        - include: peek_end_brace
+      push: 'Packages/User/Stellaris/hidden/StellarisPopEffectBlock.sublime-syntax'
+  #  - include: end_brace_behind
     
   to_Planet:
     - match: '(?i)(random_moon|every_planet){{equals_open_brace}}'
@@ -79,11 +92,8 @@ contexts:
         1: block.effect.keyword
         2: sign.equals
         3: brace.open
-      push: 
-        - meta_content_scope: block.effect
-        - match: '{{brace_behind}}'
-          push: 'Packages/User/Stellaris/StellarisPlanetEffectBlock.sublime-syntax'
-        - include: peek_end_brace
+      push: 'Packages/User/Stellaris/hidden/StellarisPlanetEffectBlock.sublime-syntax'
+  #  - include: end_brace_behind
     
   to_Tile:
     - match: '(?i)(orbital_deposit_tile|every_tile|random_tile){{equals_open_brace}}'
@@ -91,11 +101,8 @@ contexts:
         1: block.effect.keyword
         2: sign.equals
         3: brace.open
-      push: 
-        - meta_content_scope: block.effect
-        - match: '{{brace_behind}}'
-          push: 'Packages/User/Stellaris/StellarisTileEffectBlock.sublime-syntax'
-        - include: peek_end_brace
+      push: 'Packages/User/Stellaris/hidden/StellarisTileEffectBlock.sublime-syntax'
+  #  - include: end_brace_behind
     
   to_Fleet:
     - match: '(?i)(observation_outpost){{equals_open_brace}}'
@@ -103,11 +110,8 @@ contexts:
         1: block.effect.keyword
         2: sign.equals
         3: brace.open
-      push: 
-        - meta_content_scope: block.effect
-        - match: '{{brace_behind}}'
-          push: 'Packages/User/Stellaris/StellarisFleetEffectBlock.sublime-syntax'
-        - include: peek_end_brace
+      push: 'Packages/User/Stellaris/hidden/StellarisFleetEffectBlock.sublime-syntax'
+  #  - include: end_brace_behind
     
   to_Leader:
     - match: '(?i)(leader){{equals_open_brace}}'
@@ -115,17 +119,23 @@ contexts:
         1: block.effect.keyword
         2: sign.equals
         3: brace.open
-      push: 
-        - meta_content_scope: block.effect
-        - match: '{{brace_behind}}'
-          push: 'Packages/User/Stellaris/StellarisLeaderEffectBlock.sublime-syntax'
-        - include: peek_end_brace
+      push: 'Packages/User/Stellaris/hidden/StellarisLeaderEffectBlock.sublime-syntax'
+  #  - include: end_brace_behind
     
 
-  peek_end_brace: 
+  end_brace_behind: 
     - match: '(?<=})'
+      scope: brace.end
       pop: true
 
   eat_end_brace:
     - match: "}"
+      scope: brace.end
       pop: true
+  peek_end_brace:
+    - match: '(?=})'
+      pop: true
+
+  illegal:
+    - meta_scope: illegal
+    - include: end_brace_behind

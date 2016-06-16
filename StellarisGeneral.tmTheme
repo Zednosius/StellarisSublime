@@ -55,22 +55,6 @@
 	        </dict>
 	    </dict>
 
-
-	    <!-- All effects are colored with this -->
-	    <dict>
-	   		<key>name</key>
-	        <string>Effects</string>
-
-	        <key>scope</key>
-	        <string>block.effect block.Country</string>
-
-	        <key>settings</key>
-	        <dict>
-	            <key>foreground</key>
-	            <string>#ff8300</string>
-	        </dict>
-	    </dict>
-
 	    <!-- All conditions are colored with this -->
 	    <dict>
 	    	<key>name</key>
@@ -112,6 +96,18 @@
 	    	</dict>
 	    </dict>
 
+	    <dict>
+	    	<key>name</key>
+	    	<string>Illegal</string>
+	    	<key>scope</key>
+	    	<string>illegal</string>
+	    	
+	    	<key>settings</key>
+	    	<dict>
+	    		<key>foreground</key>
+	    		<string>#ff0000</string>
+	    	</dict>
+	    </dict>
 	    <!-- All keywords that point to a localised text-->
 	    <dict>
 	    	<key>name</key>
@@ -169,6 +165,20 @@
 	    		<string>#5e73af</string>
 	    	</dict>
 	    </dict>
+
+	    <dict>
+	    	<key>name</key>
+	    	<string>Keyword defined</string>
+	    
+	    	<key>scope</key>
+	    	<string>block.condition.keyword</string>
+	    	
+	    	<key>settings</key>
+	    	<dict>
+	    		<key>foreground</key>
+	    		<string>#0fff0f</string>
+	    	</dict>
+	    </dict>
 	    <!-- Right hand side of equal signs-->
 	    <dict>
 	    	<key>name</key>
@@ -189,7 +199,7 @@
 	    	<string>Defined Keyvalue</string>
 	    
 	    	<key>scope</key>
-	    	<string>predefined.key.value</string>
+	    	<string>keyword.effect</string>
 	    	
 	    	<key>settings</key>
 	    	<dict>
@@ -202,7 +212,7 @@
 	    	<string>Comparator Sign</string>
 	    
 	    	<key>scope</key>
-	    	<string>sign.comparator</string>
+	    	<string>sign</string>
 	    	
 	    	<key>settings</key>
 	    	<dict>
@@ -210,7 +220,19 @@
 	    		<string>#ffffff</string>
 	    	</dict>
 	    </dict>
-
+	    <dict>
+	    	<key>name</key>
+	    	<string>Brace</string>
+	    
+	    	<key>scope</key>
+	    	<string>brace</string>
+	    	
+	    	<key>settings</key>
+	    	<dict>
+	    		<key>foreground</key>
+	    		<string>#ffffff</string>
+	    	</dict>
+	    </dict>
 	    <dict>
 	    	<key>name</key>
 	    	<string>Boolean Operator</string>
@@ -240,19 +262,44 @@
 
 	    <dict>
 	    	<key>name</key>
-	    	<string>Left hand variable</string>
+	    	<string>Predefined file value</string>
 	    
 	    	<key>scope</key>
-	    	<string>block.effect block.condition</string>
+	    	<string>keyword.effect.Country</string>
 	    	
 	    	<key>settings</key>
 	    	<dict>
 	    		<key>foreground</key>
-	    		<string>#ff0000</string>
+	    		<string>#bbeeff</string>
+	    	</dict>
+	    </dict>
+	    <dict>
+	    	<key>name</key>
+	    	<string>Predefined file value</string>
+	    
+	    	<key>scope</key>
+	    	<string>event.starter</string>
+	    	
+	    	<key>settings</key>
+	    	<dict>
+	    		<key>foreground</key>
+	    		<string>#55ee11</string>
 	    	</dict>
 	    </dict>
 
-
+	   <dict>
+	    	<key>name</key>
+	    	<string>Effect to Condition</string>
+	    
+	    	<key>scope</key>
+	    	<string>effect.to.condition</string>
+	    	
+	    	<key>settings</key>
+	    	<dict>
+	    		<key>foreground</key>
+	    		<string>#800080</string>
+	    	</dict>
+	    </dict>
 	</array>
 </dict>
 </plist>

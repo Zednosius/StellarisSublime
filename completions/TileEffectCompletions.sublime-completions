@@ -1,0 +1,9 @@
+
+{
+	"scope":"block.effect block.Tile",
+	"completions":
+	[
+		{ "trigger": "add_deposit	Adds a deposit to a tile", "contents": "add_deposit" },
+		{ "trigger": "clear_deposits	Removes all deposits from a tile", "contents": "clear_deposits" }
+	]
+}

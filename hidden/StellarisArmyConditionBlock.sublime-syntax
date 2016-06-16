@@ -1,0 +1,45 @@
+%YAML 1.2
+---
+# See http://www.sublimetext.com/docs/3/syntax.html
+
+hidden: true
+file_extensions: 
+  - syntaxtest
+scope: block.condition block.Army
+
+variables:
+  equals_open_brace: '\s+(=)\s+({)'
+  open_brace_behind: '(?<={)'
+
+contexts:
+  main:
+    
+    - include: eat_end_brace
+
+
+    
+
+    - match: (?i)(army_type|is_army|if|and|or|not|hidden_trigger|always|any_country|any_planet|any_ship|any_system|is_multiplayer|exists|any_rim_system|switch|any_ship_in_system|is_same_value|is_scope_valid|closest_system|is_ironman|custom_tooltip_fail|years_passed|host_has_dlc|local_has_dlc|nor|nand)
+      scope: keyword.condition.Army
+
+
+    - match: '()'
+      push: illegal
+  
+
+  end_brace_behind: 
+    - match: '(?<=})'
+      scope: brace.end
+      pop: true
+
+  eat_end_brace:
+    - match: "}"
+      scope: brace.end
+      pop: true
+  peek_end_brace:
+    - match: '(?=})'
+      pop: true
+
+  illegal:
+    - meta_scope: illegal
+    - include: end_brace_behind

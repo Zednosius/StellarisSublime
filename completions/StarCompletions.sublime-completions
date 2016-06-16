@@ -1,0 +1,23 @@
+
+{
+	"scope":"block.effect block.Star",
+	"completions":
+	[
+		{ "trigger": "every_system_planet	switches Scope to planet and goes through all planets in the system", "contents": "every_system_planet" },
+		{ "trigger": "set_name	changes the name of a scope target", "contents": "set_name" },
+		{ "trigger": "set_variable	Sets a variable value", "contents": "set_variable" },
+		{ "trigger": "change_variable	Changes a variable value", "contents": "change_variable" },
+		{ "trigger": "set_star_flag	Sets a flag on a star", "contents": "set_star_flag" },
+		{ "trigger": "remove_star_flag	Removes a flag from a star", "contents": "remove_star_flag" },
+		{ "trigger": "spawn_system	spawns system with position relative to scope, parameters are system, min_distance(0), max_distance(100)", "contents": "spawn_system" },
+		{ "trigger": "random_system_planet	picks a random planet within system", "contents": "random_system_planet" },
+		{ "trigger": "set_timed_star_flag	Sets a timed flag on a star", "contents": "set_timed_star_flag" },
+		{ "trigger": "create_wormhole_station	Creates a wormhole station", "contents": "create_wormhole_station" },
+		{ "trigger": "random_system_ambient_object	executes effects on every ambient object in system that passes limit", "contents": "random_system_ambient_object" },
+		{ "trigger": "every_system_ambient_object	executes effects on every ambient object in system that passes limit", "contents": "every_system_ambient_object" },
+		{ "trigger": "every_fleet_in_system	switches scope to and goes through all fleets in the system", "contents": "every_fleet_in_system" },
+		{ "trigger": "random_fleet_in_system	switches scope to a random fleet in system", "contents": "random_fleet_in_system" },
+		{ "trigger": "every_neighbor_system	Executes on every neighboring system", "contents": "every_neighbor_system" },
+		{ "trigger": "random_neighbor_system	Executes on a random neighboring system", "contents": "random_neighbor_system" }
+	]
+}

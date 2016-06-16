@@ -5,11 +5,11 @@
 hidden: true
 file_extensions: 
   - syntaxtest
-scope: block.System
+scope: block.condition block.System
 
 variables:
   equals_open_brace: '\s+(=)\s+({)'
-  brace_behind: '(?<={)'
+  open_brace_behind: '(?<={)'
 
 contexts:
   main:
@@ -20,60 +20,66 @@ contexts:
     - include: to_System
     - include: eat_end_brace
 
+
+    
+
+    - match: (?i)(starting_system|has_star_flag|has_planet_class|has_access_military|has_access_civilian|has_access_construction|any_neighbor_system|if|and|or|not|hidden_trigger|always|any_country|any_planet|any_ship|any_system|is_multiplayer|exists|any_rim_system|switch|any_ship_in_system|is_same_value|is_scope_valid|closest_system|is_ironman|custom_tooltip_fail|years_passed|host_has_dlc|local_has_dlc|nor|nand)
+      scope: keyword.condition.System
+
+
+    - match: '(every_system_ambient_object|random_system_ambient_object|space_owner|every_system_planet|random_system_planet|every_fleet_in_system)'
+      push: illegal
   
   to_Planet:
     - match: '(?i)(any_planet){{equals_open_brace}}'
       captures:
         1: block.condition.keyword
         2: sign.equals
-        3: brace.open      
-      push:
-        - meta_content_scope: block.condition
-        - match: '{{brace_behind}}'
-          push: 'Packages/User/Stellaris/StellarisPlanetConditionBlock.sublime-syntax'
-        - include: peek_end_brace
+        3: brace.open
+      push: 'Packages/User/Stellaris/hidden/StellarisPlanetConditionBlock.sublime-syntax'
+  #  - include: end_brace_behind
     
   to_Country:
     - match: '(?i)(any_bordering_country|space_owner){{equals_open_brace}}'
       captures:
         1: block.condition.keyword
         2: sign.equals
-        3: brace.open      
-      push:
-        - meta_content_scope: block.condition
-        - match: '{{brace_behind}}'
-          push: 'Packages/User/Stellaris/StellarisCountryConditionBlock.sublime-syntax'
-        - include: peek_end_brace
+        3: brace.open
+      push: 'Packages/User/Stellaris/hidden/StellarisCountryConditionBlock.sublime-syntax'
+  #  - include: end_brace_behind
     
   to_Ship:
     - match: '(?i)(any_ship_in_system){{equals_open_brace}}'
       captures:
         1: block.condition.keyword
         2: sign.equals
-        3: brace.open      
-      push:
-        - meta_content_scope: block.condition
-        - match: '{{brace_behind}}'
-          push: 'Packages/User/Stellaris/StellarisShipConditionBlock.sublime-syntax'
-        - include: peek_end_brace
+        3: brace.open
+      push: 'Packages/User/Stellaris/hidden/StellarisShipConditionBlock.sublime-syntax'
+  #  - include: end_brace_behind
     
   to_System:
     - match: '(?i)(any_neighbor_system){{equals_open_brace}}'
       captures:
         1: block.condition.keyword
         2: sign.equals
-        3: brace.open      
-      push:
-        - meta_content_scope: block.condition
-        - match: '{{brace_behind}}'
-          push: 'Packages/User/Stellaris/StellarisSystemConditionBlock.sublime-syntax'
-        - include: peek_end_brace
+        3: brace.open
+      push: 'Packages/User/Stellaris/hidden/StellarisSystemConditionBlock.sublime-syntax'
+  #  - include: end_brace_behind
     
 
-  peek_end_brace: 
+  end_brace_behind: 
     - match: '(?<=})'
+      scope: brace.end
       pop: true
 
   eat_end_brace:
     - match: "}"
+      scope: brace.end
       pop: true
+  peek_end_brace:
+    - match: '(?=})'
+      pop: true
+
+  illegal:
+    - meta_scope: illegal
+    - include: end_brace_behind

@@ -16,20 +16,23 @@ variables:
 
 contexts:
   main: 
-    - match: 'country_event{{equals_open_brace}}'
-      push: 'event'
+    - match: '(country_event){{equals_open_brace}}'
+      captures:
+        1: event.starter
+        2: sign.equal
+        3: brace.open
+      push: 'country_event'
 
-  event:
+  country_event:
     - meta_scope: event
     - match: '(immediate){{equals_open_brace}}'
       captures:
-        1: effect_starter
+        1: effect.starter
         2: sign.equal
         3: brace.open
       push: 
-        - meta_scope: block.effect
         - match: ''
-          push: 'Packages/User/Stellaris/StellarisCountryBlock.sublime-syntax'
+          push: 'Packages/User/Stellaris/hidden/StellarisCountryEffectBlock.sublime-syntax'
 
   end: 
     - match: '(?=})'

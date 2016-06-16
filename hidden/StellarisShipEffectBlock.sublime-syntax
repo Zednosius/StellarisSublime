@@ -5,11 +5,11 @@
 hidden: true
 file_extensions: 
   - syntaxtest
-scope: block.Ship
+scope: block.effect block.Ship
 
 variables:
   equals_open_brace: '\s+(=)\s+({)'
-  brace_behind: '(?<={)'
+  open_brace_behind: '(?<={)'
 
 contexts:
   main:
@@ -18,6 +18,31 @@ contexts:
     - include: to_Leader
     - include: eat_end_brace
 
+
+    
+    - match: '(?i)(if|while){{equals_open_brace}}'
+      captures:
+        1: effect.to.condition
+        2: sign.equals
+        3: brace.open
+      push:
+        - match: '(limit){{equals_open_brace}}'
+          captures:
+            1: effect.to.condition
+            2: sign.equals
+            3: brace.open
+          push: 'Packages/User/Stellaris/hidden/StellarisShipConditionBlock.sublime-syntax'
+        #- include: peek_end_brace #
+        #- include: end_brace_behind #If nothing is inside the limit
+        - include: main
+        
+
+    - match: (?i)(tooltip|ship_event|set_ship_flag|remove_ship_flag|set_name|add_modifier|reduce_hp|reduce_hp_percent|repair_ship|spawn_system|modify_species|set_disable_at_health|set_disabled|create_point_of_interest|kill_leader|set_timed_ship_flag|unassign_leader|hidden_effect|custom_tooltip|if|random|random_list|create_species|create_country|create_fleet|random_country|remove_global_flag|set_global_flag|every_country|every_ship|every_planet|save_event_target_as|save_global_event_target_as|clear_global_event_target|clear_global_event_targets|break|while|destroy_fleet|create_ambient_object|destroy_ambient_object|set_timed_global_flag|switch|pop_faction_event|closest_system)
+      scope: keyword.effect.Ship
+
+
+    - match: '(fleet|owner|solar_system|leader)'
+      push: illegal
   
   to_System:
     - match: '(?i)(solar_system){{equals_open_brace}}'
@@ -25,11 +50,8 @@ contexts:
         1: block.effect.keyword
         2: sign.equals
         3: brace.open
-      push: 
-        - meta_content_scope: block.effect
-        - match: '{{brace_behind}}'
-          push: 'Packages/User/Stellaris/StellarisSystemEffectBlock.sublime-syntax'
-        - include: peek_end_brace
+      push: 'Packages/User/Stellaris/hidden/StellarisSystemEffectBlock.sublime-syntax'
+  #  - include: end_brace_behind
     
   to_Leader:
     - match: '(?i)(leader){{equals_open_brace}}'
@@ -37,17 +59,23 @@ contexts:
         1: block.effect.keyword
         2: sign.equals
         3: brace.open
-      push: 
-        - meta_content_scope: block.effect
-        - match: '{{brace_behind}}'
-          push: 'Packages/User/Stellaris/StellarisLeaderEffectBlock.sublime-syntax'
-        - include: peek_end_brace
+      push: 'Packages/User/Stellaris/hidden/StellarisLeaderEffectBlock.sublime-syntax'
+  #  - include: end_brace_behind
     
 
-  peek_end_brace: 
+  end_brace_behind: 
     - match: '(?<=})'
+      scope: brace.end
       pop: true
 
   eat_end_brace:
     - match: "}"
+      scope: brace.end
       pop: true
+  peek_end_brace:
+    - match: '(?=})'
+      pop: true
+
+  illegal:
+    - meta_scope: illegal
+    - include: end_brace_behind

@@ -1,0 +1,8 @@
+
+{
+	"scope":"block.effect block.Ambient_object",
+	"completions":
+	[
+		{ "trigger": "has_ambient_object_flag	checks if an ambient object has a specified flag", "contents": "has_ambient_object_flag" }
+	]
+}

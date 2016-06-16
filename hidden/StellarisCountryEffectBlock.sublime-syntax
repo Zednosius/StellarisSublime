@@ -5,11 +5,11 @@
 hidden: true
 file_extensions: 
   - syntaxtest
-scope: block.Country
+scope: block.effect block.Country
 
 variables:
   equals_open_brace: '\s+(=)\s+({)'
-  brace_behind: '(?<={)'
+  open_brace_behind: '(?<={)'
 
 contexts:
   main:
@@ -23,6 +23,31 @@ contexts:
     - include: to_Leader
     - include: eat_end_brace
 
+
+    
+    - match: '(?i)(if|while){{equals_open_brace}}'
+      captures:
+        1: effect.to.condition
+        2: sign.equals
+        3: brace.open
+      push:
+        - match: '(limit){{equals_open_brace}}'
+          captures:
+            1: effect.to.condition
+            2: sign.equals
+            3: brace.open
+          push: 'Packages/User/Stellaris/hidden/StellarisCountryConditionBlock.sublime-syntax'
+        #- include: peek_end_brace #
+        #- include: end_brace_behind #If nothing is inside the limit
+        - include: main
+        
+
+    - match: (?i)(tooltip|country_event|every_owned_planet|random_owned_planet|every_controlled_planet|random_controlled_planet|create_ship_design|change_government|add_energy|add_minerals|every_war_defender|give_technology|enable_special_project|add_physics_research|add_society_research|add_engineering_research|set_country_flag|remove_country_flag|every_owned_ship|random_owned_ship|set_primitive|every_owned_pop|set_name|add_modifier|create_leader|destroy_country|set_variable|change_variable|random_planet_within_border|add_influence|declare_war|set_primitive_age|random_system_within_border|random_army_within_country|set_advisor_active|set_tutorial_level|begin_event_chain|end_event_chain|modify_species|add_opinion_modifier|establish_contact|set_faction_hostility|add_event_chain_counter|create_point_of_interest|remove_point_of_interest|set_relation_flag|remove_relation_flag|kill_leader|assign_leader|country_add_ethic|country_remove_ethic|set_timed_country_flag|set_timed_relation_flag|every_planet_within_border|every_army_within_country|observation_outpost|remove_modifier|set_country_type|add_ship_design|create_pop_faction|set_graphical_culture|enable_faction_of_type|clear_uncharted_space|every_owned_leader|random_owned_leader|establish_communications|add_monthly_resource_mult|add_research_option|set_heir|declare_white_peace_with|leave_alliance|create_sector|random_owned_pop|set_policy|add_tech_progress|random_sector|every_sector|random_owned_fleet|set_aggro_range|set_aggro_range_measure_from|establish_communications_no_message|set_subject_of|abort_special_project|exile_leader_as|set_leader|set_federation_leader|remove_opinion_modifier|add_war_demand|every_pop_faction|random_pop_faction|add_threat|remove_sector|change_dominant_species|create_military_fleet|hidden_effect|custom_tooltip|if|random|random_list|create_species|create_country|create_fleet|random_country|remove_global_flag|set_global_flag|every_country|every_ship|every_planet|save_event_target_as|save_global_event_target_as|clear_global_event_target|clear_global_event_targets|break|while|destroy_fleet|create_ambient_object|destroy_ambient_object|set_timed_global_flag|switch|pop_faction_event|closest_system)
+      scope: keyword.effect.Country
+
+
+    - match: '(any_sector|any_neighbor_country|any_system_within_border|solar_system|any_owned_pop|any_owned_leader|any_controlled_planet|any_owned_planet|any_planet_within_border|home_planet|any_owned_fleet|any_owned_ship|any_war)'
+      push: illegal
   
   to_Country:
     - match: '(?i)(random_neighbor_country){{equals_open_brace}}'
@@ -30,11 +55,8 @@ contexts:
         1: block.effect.keyword
         2: sign.equals
         3: brace.open
-      push: 
-        - meta_content_scope: block.effect
-        - match: '{{brace_behind}}'
-          push: 'Packages/User/Stellaris/StellarisCountryEffectBlock.sublime-syntax'
-        - include: peek_end_brace
+      push: 'Packages/User/Stellaris/hidden/StellarisCountryEffectBlock.sublime-syntax'
+  #  - include: end_brace_behind
     
   to_System:
     - match: '(?i)(solar_system){{equals_open_brace}}'
@@ -42,11 +64,8 @@ contexts:
         1: block.effect.keyword
         2: sign.equals
         3: brace.open
-      push: 
-        - meta_content_scope: block.effect
-        - match: '{{brace_behind}}'
-          push: 'Packages/User/Stellaris/StellarisSystemEffectBlock.sublime-syntax'
-        - include: peek_end_brace
+      push: 'Packages/User/Stellaris/hidden/StellarisSystemEffectBlock.sublime-syntax'
+  #  - include: end_brace_behind
     
   to_Pop:
     - match: '(?i)(every_owned_pop|random_owned_pop){{equals_open_brace}}'
@@ -54,11 +73,8 @@ contexts:
         1: block.effect.keyword
         2: sign.equals
         3: brace.open
-      push: 
-        - meta_content_scope: block.effect
-        - match: '{{brace_behind}}'
-          push: 'Packages/User/Stellaris/StellarisPopEffectBlock.sublime-syntax'
-        - include: peek_end_brace
+      push: 'Packages/User/Stellaris/hidden/StellarisPopEffectBlock.sublime-syntax'
+  #  - include: end_brace_behind
     
   to_Planet:
     - match: '(?i)(capital_scope|every_owned_planet|random_owned_planet){{equals_open_brace}}'
@@ -66,11 +82,8 @@ contexts:
         1: block.effect.keyword
         2: sign.equals
         3: brace.open
-      push: 
-        - meta_content_scope: block.effect
-        - match: '{{brace_behind}}'
-          push: 'Packages/User/Stellaris/StellarisPlanetEffectBlock.sublime-syntax'
-        - include: peek_end_brace
+      push: 'Packages/User/Stellaris/hidden/StellarisPlanetEffectBlock.sublime-syntax'
+  #  - include: end_brace_behind
     
   to_Pop_faction:
     - match: '(?i)(every_pop_faction|random_pop_faction){{equals_open_brace}}'
@@ -78,11 +91,8 @@ contexts:
         1: block.effect.keyword
         2: sign.equals
         3: brace.open
-      push: 
-        - meta_content_scope: block.effect
-        - match: '{{brace_behind}}'
-          push: 'Packages/User/Stellaris/StellarisPop_factionEffectBlock.sublime-syntax'
-        - include: peek_end_brace
+      push: 'Packages/User/Stellaris/hidden/StellarisPop_factionEffectBlock.sublime-syntax'
+  #  - include: end_brace_behind
     
   to_Ship:
     - match: '(?i)(every_owned_ship|random_owned_ship){{equals_open_brace}}'
@@ -90,11 +100,8 @@ contexts:
         1: block.effect.keyword
         2: sign.equals
         3: brace.open
-      push: 
-        - meta_content_scope: block.effect
-        - match: '{{brace_behind}}'
-          push: 'Packages/User/Stellaris/StellarisShipEffectBlock.sublime-syntax'
-        - include: peek_end_brace
+      push: 'Packages/User/Stellaris/hidden/StellarisShipEffectBlock.sublime-syntax'
+  #  - include: end_brace_behind
     
   to_Leader:
     - match: '(?i)(random_owned_leader|leader){{equals_open_brace}}'
@@ -102,17 +109,23 @@ contexts:
         1: block.effect.keyword
         2: sign.equals
         3: brace.open
-      push: 
-        - meta_content_scope: block.effect
-        - match: '{{brace_behind}}'
-          push: 'Packages/User/Stellaris/StellarisLeaderEffectBlock.sublime-syntax'
-        - include: peek_end_brace
+      push: 'Packages/User/Stellaris/hidden/StellarisLeaderEffectBlock.sublime-syntax'
+  #  - include: end_brace_behind
     
 
-  peek_end_brace: 
+  end_brace_behind: 
     - match: '(?<=})'
+      scope: brace.end
       pop: true
 
   eat_end_brace:
     - match: "}"
+      scope: brace.end
       pop: true
+  peek_end_brace:
+    - match: '(?=})'
+      pop: true
+
+  illegal:
+    - meta_scope: illegal
+    - include: end_brace_behind
