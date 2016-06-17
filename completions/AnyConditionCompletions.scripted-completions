@@ -1,0 +1,32 @@
+
+{
+	"scope":"block.condition block.Any",
+	"completions":
+	[
+		{ "trigger": "if	a conditional trigger", "contents": "if" },
+		{ "trigger": "and	all inside trigger must be true", "contents": "and" },
+		{ "trigger": "or	at least one entry inside trigger must be true", "contents": "or" },
+		{ "trigger": "not	negates content of trigger", "contents": "not" },
+		{ "trigger": "hidden_trigger	hides the tooltip for the effects within", "contents": "hidden_trigger" },
+		{ "trigger": "always	either always false or true", "contents": "always" },
+		{ "trigger": "any_country	Trigger Scope for any country", "contents": "any_country" },
+		{ "trigger": "any_planet	any planet in a solar system", "contents": "any_planet" },
+		{ "trigger": "any_ship	any ship in the game", "contents": "any_ship" },
+		{ "trigger": "any_system	any system trigger", "contents": "any_system" },
+		{ "trigger": "is_multiplayer	checks if the game is running in multiplayer", "contents": "is_multiplayer" },
+		{ "trigger": "exists	checks for object existance", "contents": "exists" },
+		{ "trigger": "any_rim_system	switches scope to and goes through each rim system", "contents": "any_rim_system" },
+		{ "trigger": "switch	Switches between scopes", "contents": "switch" },
+		{ "trigger": "any_ship_in_system	any ship in system", "contents": "any_ship_in_system" },
+		{ "trigger": "is_same_value	checks if two scopes have the same value", "contents": "is_same_value" },
+		{ "trigger": "is_scope_valid	Checks if the current scope is valid", "contents": "is_scope_valid" },
+		{ "trigger": "closest_system	switches scope to closest system that passes limit", "contents": "closest_system" },
+		{ "trigger": "is_ironman	Check if current game is ironman.", "contents": "is_ironman" },
+		{ "trigger": "custom_tooltip_fail	shows custom text when trigger is failing", "contents": "custom_tooltip_fail" },
+		{ "trigger": "years_passed	compares the number of years that have passed since game start with a value", "contents": "years_passed" },
+		{ "trigger": "host_has_dlc	Checks if the host has a certain dlc enabled", "contents": "host_has_dlc" },
+		{ "trigger": "local_has_dlc	Checks if the host has a certain dlc enabled", "contents": "local_has_dlc" },
+		{ "trigger": "nor	negates content of trigger", "contents": "nor" },
+		{ "trigger": "nand	negates content of trigger", "contents": "nand" }
+	]
+}

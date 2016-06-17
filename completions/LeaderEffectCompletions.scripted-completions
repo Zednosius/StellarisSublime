@@ -1,0 +1,21 @@
+
+{
+	"scope":"block.effect block.Leader",
+	"completions":
+	[
+		{ "trigger": "add_experience	Adds specified amount of experience to specified skill on scope leader", "contents": "add_experience" },
+		{ "trigger": "set_name	changes the name of a scope target", "contents": "set_name" },
+		{ "trigger": "set_variable	Sets a variable value", "contents": "set_variable" },
+		{ "trigger": "change_variable	Changes a variable value", "contents": "change_variable" },
+		{ "trigger": "add_trait	Adds a trait to a leader", "contents": "add_trait" },
+		{ "trigger": "remove_trait	Removes a trait from a leader", "contents": "remove_trait" },
+		{ "trigger": "kill_leader	Kills leaders of specified types. kill_leader = { type = general type = scientist etc. }", "contents": "kill_leader" },
+		{ "trigger": "set_age	Changes the age of the leader", "contents": "set_age" },
+		{ "trigger": "set_leader_flag	Sets a flag on a leader", "contents": "set_leader_flag" },
+		{ "trigger": "remove_leader_flag	Removes a flag from a leader", "contents": "remove_leader_flag" },
+		{ "trigger": "recruitable	Sets recruitable tag on leader.", "contents": "recruitable" },
+		{ "trigger": "unassign_leader	Unassigns a leader from scope", "contents": "unassign_leader" },
+		{ "trigger": "add_skill	Adds amount of skill levels to scope leader", "contents": "add_skill" },
+		{ "trigger": "set_skill	Sets skill levels to scope leader", "contents": "set_skill" }
+	]
+}

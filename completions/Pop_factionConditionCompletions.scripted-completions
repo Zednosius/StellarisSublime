@@ -1,0 +1,9 @@
+
+{
+	"scope":"block.condition block.Pop_faction",
+	"completions":
+	[
+		{ "trigger": "support	Compares the relative support of a pop faction", "contents": "support" },
+		{ "trigger": "check_pop_faction_parameter	Compares a pop faction parameter against a value", "contents": "check_pop_faction_parameter" }
+	]
+}

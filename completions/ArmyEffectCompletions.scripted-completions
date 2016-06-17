@@ -1,0 +1,8 @@
+
+{
+	"scope":"block.effect block.Army",
+	"completions":
+	[
+		{ "trigger": "remove_army	Removes scope army.", "contents": "remove_army" }
+	]
+}

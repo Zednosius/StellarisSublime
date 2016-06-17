@@ -1,0 +1,25 @@
+
+{
+	"scope":"block.condition block.Ship",
+	"completions":
+	[
+		{ "trigger": "distance	Compares the min/max distance to a target with a value", "contents": "distance" },
+		{ "trigger": "has_ship_flag	checks if a planet has a specified flag", "contents": "has_ship_flag" },
+		{ "trigger": "is_ship_class	checks if a ship is a specified class", "contents": "is_ship_class" },
+		{ "trigger": "is_ship_size	checks if a ship is a specified size", "contents": "is_ship_size" },
+		{ "trigger": "is_inside_nebula	checks if a planet/ship is inside a nebula", "contents": "is_inside_nebula" },
+		{ "trigger": "is_inside_border	checks if a planet/ship/fleet is inside the border of the specified country", "contents": "is_inside_border" },
+		{ "trigger": "free_leader_slots	Compares the number of free leader slots", "contents": "free_leader_slots" },
+		{ "trigger": "is_damaged	Checks if a ship is damaged", "contents": "is_damaged" },
+		{ "trigger": "has_hp	Compares the hit points of a ship with a value", "contents": "has_hp" },
+		{ "trigger": "has_global_flag	Checks a global trigger", "contents": "has_global_flag" },
+		{ "trigger": "is_disabled	checks if a ship or fleet is disabled", "contents": "is_disabled" },
+		{ "trigger": "is_preventing_anomaly	checks if a planet is currently preventing anomalies", "contents": "is_preventing_anomaly" },
+		{ "trigger": "is_rim_system	checks if a system is on the galactic rim", "contents": "is_rim_system" },
+		{ "trigger": "has_fleet_order	checks if a ship or a fleet has a fleet order", "contents": "has_fleet_order" },
+		{ "trigger": "has_point_of_interest	Checks if the scope location has a point of interest", "contents": "has_point_of_interest" },
+		{ "trigger": "is_being_repaired	Checks if a fleet or ship is being repaired", "contents": "is_being_repaired" },
+		{ "trigger": "is_in_combat	Checks if a fleet or ship is being repaired", "contents": "is_in_combat" },
+		{ "trigger": "is_proposing_war_demands	Checks if currently proposing wardemands or handling existing wardemands", "contents": "is_proposing_war_demands" }
+	]
+}
