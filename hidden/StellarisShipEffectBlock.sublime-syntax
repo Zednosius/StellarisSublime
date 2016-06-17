@@ -31,7 +31,7 @@ contexts:
             1: effect.to.condition
             2: sign.equals
             3: brace.open
-          push: 'Packages/User/Stellaris/hidden/StellarisShipConditionBlock.sublime-syntax'
+          push: 'Packages/Stellaris/hidden/StellarisShipConditionBlock.sublime-syntax'
         #- include: peek_end_brace #
         #- include: end_brace_behind #If nothing is inside the limit
         - include: main
@@ -41,7 +41,10 @@ contexts:
       scope: keyword.effect.Ship
 
 
-    - match: '(fleet|owner|solar_system|leader)'
+    - match: '(?i)(from{1,3}|prev{1,3}|root){{equals_open_brace}}'
+      push: general_scope
+
+    - match: '(fleet|owner|solar_system|leader|\w)'
       push: illegal
   
   to_System:
@@ -50,7 +53,7 @@ contexts:
         1: block.effect.keyword
         2: sign.equals
         3: brace.open
-      push: 'Packages/User/Stellaris/hidden/StellarisSystemEffectBlock.sublime-syntax'
+      push: 'Packages/Stellaris/hidden/StellarisSystemEffectBlock.sublime-syntax'
   #  - include: end_brace_behind
     
   to_Leader:
@@ -59,7 +62,7 @@ contexts:
         1: block.effect.keyword
         2: sign.equals
         3: brace.open
-      push: 'Packages/User/Stellaris/hidden/StellarisLeaderEffectBlock.sublime-syntax'
+      push: 'Packages/Stellaris/hidden/StellarisLeaderEffectBlock.sublime-syntax'
   #  - include: end_brace_behind
     
 
@@ -76,6 +79,24 @@ contexts:
     - match: '(?=})'
       pop: true
 
+  general_scope:
+    - meta_scope: block.effect.contextual
+    - include: Packages/Stellaris/hidden/StellarisAmbient_objectEffectBlock.sublime-syntax
+    - include: Packages/Stellaris/hidden/StellarisArmyEffectBlock.sublime-syntax
+    - include: Packages/Stellaris/hidden/StellarisCountryEffectBlock.sublime-syntax
+    - include: Packages/Stellaris/hidden/StellarisFleetEffectBlock.sublime-syntax
+    - include: Packages/Stellaris/hidden/StellarisGeneralEffectScope.sublime-syntax
+    - include: Packages/Stellaris/hidden/StellarisLeaderEffectBlock.sublime-syntax
+    - include: Packages/Stellaris/hidden/StellarisPlanetEffectBlock.sublime-syntax
+    - include: Packages/Stellaris/hidden/StellarisPopEffectBlock.sublime-syntax
+    - include: Packages/Stellaris/hidden/StellarisPop_factionEffectBlock.sublime-syntax
+    - include: Packages/Stellaris/hidden/StellarisSectorEffectBlock.sublime-syntax
+    
+    - include: Packages/Stellaris/hidden/StellarisSystemEffectBlock.sublime-syntax
+    - include: Packages/Stellaris/hidden/StellarisTileEffectBlock.sublime-syntax
+    - include: Packages/Stellaris/hidden/StellarisWarEffectBlock.sublime-syntax
+
+    - include: eat_end_brace
   illegal:
     - meta_scope: illegal
     - include: end_brace_behind
