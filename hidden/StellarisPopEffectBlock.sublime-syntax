@@ -19,7 +19,7 @@ contexts:
     - include: to_Pop_faction
     - include: eat_end_brace
 
-
+    
     
     - match: '(?i)(if|while){{equals_open_brace}}'
       captures:
@@ -33,48 +33,74 @@ contexts:
             2: sign.equals
             3: brace.open
           push: 'Packages/Stellaris/hidden/StellarisPopConditionBlock.sublime-syntax'
-        #- include: peek_end_brace #
-        #- include: end_brace_behind #If nothing is inside the limit
-        - include: main
-        
+        - include: eat_end_brace
 
-    - match: (?i)(tooltip|pop_event|kill_pop|enslave_pop|set_pop_flag|remove_pop_flag|add_modifier|pop_add_ethic|pop_remove_ethic|pop_migration|change_pop_species|modify_species|create_point_of_interest|set_timed_pop_flag|purge|remove_modifier|set_pop_faction|force_faction_evaluation|set_pop_faction_flag|remove_pop_faction_flag|set_timed_pop_faction_flag|hidden_effect|custom_tooltip|if|random|random_list|create_species|create_country|create_fleet|random_country|remove_global_flag|set_global_flag|every_country|every_ship|every_planet|save_event_target_as|save_global_event_target_as|clear_global_event_target|clear_global_event_targets|break|while|destroy_fleet|create_ambient_object|destroy_ambient_object|set_timed_global_flag|switch|pop_faction_event|closest_system)
+    - match: '(limit){{equals_open_brace}}'
+      captures:
+        1: effect.to.condition
+        2: sign.equals
+        3: brace.open
+      push: 'Packages/Stellaris/hidden/StellarisPopConditionBlock.sublime-syntax'
+    - match: '\b(?i)(tooltip|pop_event|kill_pop|enslave_pop|set_pop_flag|remove_pop_flag|add_modifier|pop_add_ethic|pop_remove_ethic|pop_migration|change_pop_species|modify_species|create_point_of_interest|set_timed_pop_flag|purge|remove_modifier|set_pop_faction|force_faction_evaluation|set_pop_faction_flag|remove_pop_faction_flag|set_timed_pop_faction_flag|hidden_effect|custom_tooltip|if|random|random_list|create_species|create_country|create_fleet|random_country|remove_global_flag|set_global_flag|every_country|every_ship|every_planet|save_event_target_as|save_global_event_target_as|clear_global_event_target|clear_global_event_targets|break|while|destroy_fleet|create_ambient_object|destroy_ambient_object|set_timed_global_flag|switch|pop_faction_event|closest_system)\b'
       scope: keyword.effect.Pop
+      push:
+       - match: '='
+         scope: sign.equals
+         set: value
 
+    - match: '(?i)(fromfromfrom|fromfrom|from|prevprevprev|prevprev|prev|root){{equals_open_brace}}'
+      captures:
+        1: effect.block.keyword.general
+        2: sign.equals
+        3: brace.open
+      push: contextual_scopes
 
-    - match: '(?i)(from{1,3}|prev{1,3}|root){{equals_open_brace}}'
-      push: general_scope
+    - match: '"'
+      push: string
 
-    - match: '(planet|owner|pop_faction|\w)'
-      push: illegal
   
   to_Planet:
     - match: '(?i)(planet){{equals_open_brace}}'
       captures:
-        1: block.effect.keyword
+        1: effect.block.keyword
         2: sign.equals
         3: brace.open
       push: 'Packages/Stellaris/hidden/StellarisPlanetEffectBlock.sublime-syntax'
-  #  - include: end_brace_behind
     
   to_Country:
     - match: '(?i)(owner){{equals_open_brace}}'
       captures:
-        1: block.effect.keyword
+        1: effect.block.keyword
         2: sign.equals
         3: brace.open
       push: 'Packages/Stellaris/hidden/StellarisCountryEffectBlock.sublime-syntax'
-  #  - include: end_brace_behind
     
   to_Pop_faction:
     - match: '(?i)(pop_faction){{equals_open_brace}}'
       captures:
-        1: block.effect.keyword
+        1: effect.block.keyword
         2: sign.equals
         3: brace.open
       push: 'Packages/Stellaris/hidden/StellarisPop_factionEffectBlock.sublime-syntax'
-  #  - include: end_brace_behind
     
+  string:
+    - meta_scope: keywords.localised
+    - match: '"'
+      pop: true
+
+  equalsign:
+    - match: '='
+      scope: sign.equals
+      pop: true
+
+  value:
+    - meta_scope: 'meta.value'
+    - match: '"'
+      set: string
+
+    - match: '\w+'
+      scope: "value"
+      pop: true
 
   end_brace_behind: 
     - match: '(?<=})'
@@ -89,13 +115,13 @@ contexts:
     - match: '(?=})'
       pop: true
 
-  general_scope:
-    - meta_scope: block.effect.contextual
+  contextual_scopes:
+    - meta_scope: effect.block.contextual
+    
     - include: Packages/Stellaris/hidden/StellarisAmbient_objectEffectBlock.sublime-syntax
     - include: Packages/Stellaris/hidden/StellarisArmyEffectBlock.sublime-syntax
     - include: Packages/Stellaris/hidden/StellarisCountryEffectBlock.sublime-syntax
     - include: Packages/Stellaris/hidden/StellarisFleetEffectBlock.sublime-syntax
-    - include: Packages/Stellaris/hidden/StellarisGeneralEffectScope.sublime-syntax
     - include: Packages/Stellaris/hidden/StellarisLeaderEffectBlock.sublime-syntax
     - include: Packages/Stellaris/hidden/StellarisPlanetEffectBlock.sublime-syntax
     
@@ -105,8 +131,4 @@ contexts:
     - include: Packages/Stellaris/hidden/StellarisSystemEffectBlock.sublime-syntax
     - include: Packages/Stellaris/hidden/StellarisTileEffectBlock.sublime-syntax
     - include: Packages/Stellaris/hidden/StellarisWarEffectBlock.sublime-syntax
-
     - include: eat_end_brace
-  illegal:
-    - meta_scope: illegal
-    - include: end_brace_behind

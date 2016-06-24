@@ -17,28 +17,52 @@ contexts:
     - include: to_Tile
     - include: eat_end_brace
 
-
     
-
-    - match: (?i)(any_neighboring_tile|num_adjacent_tiles|is_orbital_tile|is_ruined|if|and|or|not|hidden_trigger|always|any_country|any_planet|any_ship|any_system|is_multiplayer|exists|any_rim_system|switch|any_ship_in_system|is_same_value|is_scope_valid|closest_system|is_ironman|custom_tooltip_fail|years_passed|host_has_dlc|local_has_dlc|nor|nand)
+    
+    - match: '\b(?i)(any_neighboring_tile|num_adjacent_tiles|is_orbital_tile|is_ruined|if|and|or|not|hidden_trigger|always|any_country|any_planet|any_ship|any_system|is_multiplayer|exists|any_rim_system|switch|any_ship_in_system|is_same_value|is_scope_valid|closest_system|is_ironman|custom_tooltip_fail|years_passed|host_has_dlc|local_has_dlc|nor|nand)\b'
       scope: keyword.condition.Tile
+      push:
+       - match: '='
+         scope: sign.equals
+         set: value
 
+    - match: '(?i)(fromfromfrom|fromfrom|from|prevprevprev|prevprev|prev|root){{equals_open_brace}}'
+      captures:
+        1: effect.block.keyword.general
+        2: sign.equals
+        3: brace.open
+      push: contextual_scopes
 
-    - match: '(?i)(from{1,3}|prev{1,3}|root){{equals_open_brace}}'
-      push: general_scope
+    - match: '"'
+      push: string
 
-    - match: '(random_neighboring_tile|every_neighboring_tile|\w)'
-      push: illegal
   
   to_Tile:
     - match: '(?i)(any_neighboring_tile){{equals_open_brace}}'
       captures:
-        1: block.condition.keyword
+        1: condition.block.keyword
         2: sign.equals
         3: brace.open
       push: 'Packages/Stellaris/hidden/StellarisTileConditionBlock.sublime-syntax'
-  #  - include: end_brace_behind
     
+  string:
+    - meta_scope: keywords.localised
+    - match: '"'
+      pop: true
+
+  equalsign:
+    - match: '='
+      scope: sign.equals
+      pop: true
+
+  value:
+    - meta_scope: 'meta.value'
+    - match: '"'
+      set: string
+
+    - match: '\w+'
+      scope: "value"
+      pop: true
 
   end_brace_behind: 
     - match: '(?<=})'
@@ -53,8 +77,9 @@ contexts:
     - match: '(?=})'
       pop: true
 
-  general_scope:
-    - meta_scope: block.effect.contextual
+  contextual_scopes:
+    - meta_scope: effect.block.contextual
+    
     - include: Packages/Stellaris/hidden/StellarisAmbient_objectConditionBlock.sublime-syntax
     - include: Packages/Stellaris/hidden/StellarisArmyConditionBlock.sublime-syntax
     - include: Packages/Stellaris/hidden/StellarisCountryConditionBlock.sublime-syntax
@@ -69,6 +94,3 @@ contexts:
     
     - include: Packages/Stellaris/hidden/StellarisWarConditionBlock.sublime-syntax
     - include: eat_end_brace
-  illegal:
-    - meta_scope: illegal
-    - include: end_brace_behind

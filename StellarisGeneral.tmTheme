@@ -87,7 +87,7 @@
 	    	<key>name</key>
 	    	<string>Constant Variable</string>
 	    	<key>scope</key>
-	    	<string>constant</string>
+	    	<string>keyword.condition</string>
 	    	
 	    	<key>settings</key>
 	    	<dict>
@@ -157,7 +157,7 @@
 	    	<string>Keyword defined</string>
 	    
 	    	<key>scope</key>
-	    	<string>block.effect.keyword</string>
+	    	<string>effect.block.keyword</string>
 	    	
 	    	<key>settings</key>
 	    	<dict>
@@ -171,7 +171,7 @@
 	    	<string>Keyword defined</string>
 	    
 	    	<key>scope</key>
-	    	<string>block.condition.keyword</string>
+	    	<string>condition.block.keyword</string>
 	    	
 	    	<key>settings</key>
 	    	<dict>
@@ -185,12 +185,12 @@
 	    	<string>Defined Keyvalue</string>
 	    
 	    	<key>scope</key>
-	    	<string>defined.key.value</string>
+	    	<string>event.keyword</string>
 	    	
 	    	<key>settings</key>
 	    	<dict>
 	    		<key>foreground</key>
-	    		<string>#00b200</string>
+	    		<string>#ddb200</string>
 	    	</dict>
 	    </dict>
 	    	    <!-- Right hand side of equal signs-->
@@ -248,18 +248,30 @@
 	    </dict>
 	    <dict>
 	    	<key>name</key>
-	    	<string>Predefined file value</string>
+	    	<string>Value</string>
 	    
 	    	<key>scope</key>
-	    	<string>predefined.constant</string>
+	    	<string>value</string>
 	    	
 	    	<key>settings</key>
 	    	<dict>
 	    		<key>foreground</key>
-	    		<string>#bbeeff</string>
+	    		<string>#0000ff</string>
 	    	</dict>
 	    </dict>
-
+	    <dict>
+	    	<key>name</key>
+	    	<string>Value</string>
+	    
+	    	<key>scope</key>
+	    	<string>keyword.option</string>
+	    	
+	    	<key>settings</key>
+	    	<dict>
+	    		<key>foreground</key>
+	    		<string>#0000ff</string>
+	    	</dict>
+	    </dict>
 	    <dict>
 	    	<key>name</key>
 	    	<string>Predefined file value</string>

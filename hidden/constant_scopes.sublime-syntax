@@ -1,0 +1,1393 @@
+%YAML 1.2
+---
+file_extensions: 
+  - syntaxtest
+hidden: true
+scope: effect constant
+
+variables:
+  equals_open_brace: '\s*(=)\s*({)'
+  value_with_dots: '(-?(?:\w|:|\.)+)'
+prototype:
+  - include: comment
+
+contexts:
+  main:
+    - match: '(?i)\b(establish_contact)\b{{equals_open_brace}}'
+      captures:
+        1: keyword.defined.block.constant
+        2: sign.equals
+        3: brace.open
+      push: 
+        - meta_content_scope: special constant establish_contact
+        - match: '(?i)\b(who|location)\b\s*(=)'
+          captures:
+            1: keyword.defined.value
+            2: sign.equals
+
+        - match: '"'
+          push: localised
+
+        - match: '(?<==)\s*{{value_with_dots}}'
+          captures:
+            1: value.user.defined
+        - match: '(?<==)\s*(@(?:\w|\.|:)+)'
+          captures:
+            1: value.user.defined.constant
+        - include: eat_end_brace
+
+    - match: '(?i)\b(create_spaceport)\b{{equals_open_brace}}'
+      captures:
+        1: keyword.defined.block.constant
+        2: sign.equals
+        3: brace.open
+      push: 
+        - meta_content_scope: special constant create_spaceport
+        - match: '(?i)\b(owner|initial_module)\b\s*(=)'
+          captures:
+            1: keyword.defined.value
+            2: sign.equals
+
+        - match: '"'
+          push: localised
+
+        - match: '(?<==)\s*{{value_with_dots}}'
+          captures:
+            1: value.user.defined
+        - match: '(?<==)\s*(@(?:\w|\.|:)+)'
+          captures:
+            1: value.user.defined.constant
+        - include: eat_end_brace
+
+    - match: '(?i)\b(change_variable)\b{{equals_open_brace}}'
+      captures:
+        1: keyword.defined.block.constant
+        2: sign.equals
+        3: brace.open
+      push: 
+        - meta_content_scope: special constant change_variable
+        - match: '(?i)\b(value|which)\b\s*(=)'
+          captures:
+            1: keyword.defined.value
+            2: sign.equals
+
+        - match: '"'
+          push: localised
+
+        - match: '(?<==)\s*{{value_with_dots}}'
+          captures:
+            1: value.user.defined
+        - match: '(?<==)\s*(@(?:\w|\.|:)+)'
+          captures:
+            1: value.user.defined.constant
+        - include: eat_end_brace
+
+    - match: '(?i)\b(random)\b{{equals_open_brace}}'
+      captures:
+        1: keyword.defined.block.constant
+        2: sign.equals
+        3: brace.open
+      push: 
+        - meta_content_scope: special constant random
+        - match: '(?i)\b(chance|last_created_fleet|create_fleet)\b\s*(=)'
+          captures:
+            1: keyword.defined.value
+            2: sign.equals
+
+        - match: '"'
+          push: localised
+
+        - match: '(?<==)\s*{{value_with_dots}}'
+          captures:
+            1: value.user.defined
+        - match: '(?<==)\s*(@(?:\w|\.|:)+)'
+          captures:
+            1: value.user.defined.constant
+        - include: eat_end_brace
+
+    - match: '(?i)\b(set_location)\b{{equals_open_brace}}'
+      captures:
+        1: keyword.defined.block.constant
+        2: sign.equals
+        3: brace.open
+      push: 
+        - meta_content_scope: special constant set_location
+        - match: '(?i)\b(distance|angle|target)\b\s*(=)'
+          captures:
+            1: keyword.defined.value
+            2: sign.equals
+
+        - match: '"'
+          push: localised
+
+        - match: '(?<==)\s*{{value_with_dots}}'
+          captures:
+            1: value.user.defined
+        - match: '(?<==)\s*(@(?:\w|\.|:)+)'
+          captures:
+            1: value.user.defined.constant
+        - include: eat_end_brace
+
+    - match: '(?i)\b(set_subject_of)\b{{equals_open_brace}}'
+      captures:
+        1: keyword.defined.block.constant
+        2: sign.equals
+        3: brace.open
+      push: 
+        - meta_content_scope: special constant set_subject_of
+        - match: '(?i)\b(who|subject_type)\b\s*(=)'
+          captures:
+            1: keyword.defined.value
+            2: sign.equals
+
+        - match: '"'
+          push: localised
+
+        - match: '(?<==)\s*{{value_with_dots}}'
+          captures:
+            1: value.user.defined
+        - match: '(?<==)\s*(@(?:\w|\.|:)+)'
+          captures:
+            1: value.user.defined.constant
+        - include: eat_end_brace
+
+    - match: '(?i)\b(add_tech_progress)\b{{equals_open_brace}}'
+      captures:
+        1: keyword.defined.block.constant
+        2: sign.equals
+        3: brace.open
+      push: 
+        - meta_content_scope: special constant add_tech_progress
+        - match: '(?i)\b(progress|tech)\b\s*(=)'
+          captures:
+            1: keyword.defined.value
+            2: sign.equals
+
+        - match: '"'
+          push: localised
+
+        - match: '(?<==)\s*{{value_with_dots}}'
+          captures:
+            1: value.user.defined
+        - match: '(?<==)\s*(@(?:\w|\.|:)+)'
+          captures:
+            1: value.user.defined.constant
+        - include: eat_end_brace
+
+    - match: '(?i)\b(create_army_transport)\b{{equals_open_brace}}'
+      captures:
+        1: keyword.defined.block.constant
+        2: sign.equals
+        3: brace.open
+      push: 
+        - meta_content_scope: special constant create_army_transport
+        - match: '(?i)\b(army_name|ship_name|army_type|graphical_culture|species)\b\s*(=)'
+          captures:
+            1: keyword.defined.value
+            2: sign.equals
+
+        - match: '"'
+          push: localised
+
+        - match: '(?<==)\s*{{value_with_dots}}'
+          captures:
+            1: value.user.defined
+        - match: '(?<==)\s*(@(?:\w|\.|:)+)'
+          captures:
+            1: value.user.defined.constant
+        - include: eat_end_brace
+
+    - match: '(?i)\b(set_timed_fleet_flag)\b{{equals_open_brace}}'
+      captures:
+        1: keyword.defined.block.constant
+        2: sign.equals
+        3: brace.open
+      push: 
+        - meta_content_scope: special constant set_timed_fleet_flag
+        - match: '(?i)\b(flag|days)\b\s*(=)'
+          captures:
+            1: keyword.defined.value
+            2: sign.equals
+
+        - match: '"'
+          push: localised
+
+        - match: '(?<==)\s*{{value_with_dots}}'
+          captures:
+            1: value.user.defined
+        - match: '(?<==)\s*(@(?:\w|\.|:)+)'
+          captures:
+            1: value.user.defined.constant
+        - include: eat_end_brace
+
+    - match: '(?i)\b(set_timed_planet_flag)\b{{equals_open_brace}}'
+      captures:
+        1: keyword.defined.block.constant
+        2: sign.equals
+        3: brace.open
+      push: 
+        - meta_content_scope: special constant set_timed_planet_flag
+        - match: '(?i)\b(flag|days)\b\s*(=)'
+          captures:
+            1: keyword.defined.value
+            2: sign.equals
+
+        - match: '"'
+          push: localised
+
+        - match: '(?<==)\s*{{value_with_dots}}'
+          captures:
+            1: value.user.defined
+        - match: '(?<==)\s*(@(?:\w|\.|:)+)'
+          captures:
+            1: value.user.defined.constant
+        - include: eat_end_brace
+
+    - match: '(?i)\b(set_timed_pop_flag)\b{{equals_open_brace}}'
+      captures:
+        1: keyword.defined.block.constant
+        2: sign.equals
+        3: brace.open
+      push: 
+        - meta_content_scope: special constant set_timed_pop_flag
+        - match: '(?i)\b(flag|days)\b\s*(=)'
+          captures:
+            1: keyword.defined.value
+            2: sign.equals
+
+        - match: '"'
+          push: localised
+
+        - match: '(?<==)\s*{{value_with_dots}}'
+          captures:
+            1: value.user.defined
+        - match: '(?<==)\s*(@(?:\w|\.|:)+)'
+          captures:
+            1: value.user.defined.constant
+        - include: eat_end_brace
+
+    - match: '(?i)\b(add_opinion_modifier)\b{{equals_open_brace}}'
+      captures:
+        1: keyword.defined.block.constant
+        2: sign.equals
+        3: brace.open
+      push: 
+        - meta_content_scope: special constant add_opinion_modifier
+        - match: '(?i)\b(modifier|who)\b\s*(=)'
+          captures:
+            1: keyword.defined.value
+            2: sign.equals
+
+        - match: '"'
+          push: localised
+
+        - match: '(?<==)\s*{{value_with_dots}}'
+          captures:
+            1: value.user.defined
+        - match: '(?<==)\s*(@(?:\w|\.|:)+)'
+          captures:
+            1: value.user.defined.constant
+        - include: eat_end_brace
+
+    - match: '(?i)\b(modify_species)\b{{equals_open_brace}}'
+      captures:
+        1: keyword.defined.block.constant
+        2: sign.equals
+        3: brace.open
+      push: 
+        - meta_content_scope: special constant modify_species
+        - match: '(?i)\b(add_trait|species)\b\s*(=)'
+          captures:
+            1: keyword.defined.value
+            2: sign.equals
+
+        - match: '"'
+          push: localised
+
+        - match: '(?<==)\s*{{value_with_dots}}'
+          captures:
+            1: value.user.defined
+        - match: '(?<==)\s*(@(?:\w|\.|:)+)'
+          captures:
+            1: value.user.defined.constant
+        - include: eat_end_brace
+
+    - match: '(?i)\b(create_pop)\b{{equals_open_brace}}'
+      captures:
+        1: keyword.defined.block.constant
+        2: sign.equals
+        3: brace.open
+      push: 
+        - meta_content_scope: special constant create_pop
+        - match: '(?i)\b(ethos|species)\b\s*(=)'
+          captures:
+            1: keyword.defined.value
+            2: sign.equals
+
+        - match: '"'
+          push: localised
+
+        - match: '(?<==)\s*{{value_with_dots}}'
+          captures:
+            1: value.user.defined
+        - match: '(?<==)\s*(@(?:\w|\.|:)+)'
+          captures:
+            1: value.user.defined.constant
+        - include: eat_end_brace
+
+    - match: '(?i)\b(change_country_flag)\b{{equals_open_brace}}'
+      captures:
+        1: keyword.defined.block.constant
+        2: sign.equals
+        3: brace.open
+      push: 
+        - meta_content_scope: special constant change_country_flag
+        - match: '(?i)\b(colors|background|icon)\b\s*(=)'
+          captures:
+            1: keyword.defined.value
+            2: sign.equals
+
+        - match: '"'
+          push: localised
+
+        - match: '(?<==)\s*{{value_with_dots}}'
+          captures:
+            1: value.user.defined
+        - match: '(?<==)\s*(@(?:\w|\.|:)+)'
+          captures:
+            1: value.user.defined.constant
+        - include: eat_end_brace
+
+    - match: '(?i)\b(set_timed_pop_faction_flag)\b{{equals_open_brace}}'
+      captures:
+        1: keyword.defined.block.constant
+        2: sign.equals
+        3: brace.open
+      push: 
+        - meta_content_scope: special constant set_timed_pop_faction_flag
+        - match: '(?i)\b(flag|days)\b\s*(=)'
+          captures:
+            1: keyword.defined.value
+            2: sign.equals
+
+        - match: '"'
+          push: localised
+
+        - match: '(?<==)\s*{{value_with_dots}}'
+          captures:
+            1: value.user.defined
+        - match: '(?<==)\s*(@(?:\w|\.|:)+)'
+          captures:
+            1: value.user.defined.constant
+        - include: eat_end_brace
+
+    - match: '(?i)\b(set_timed_relation_flag)\b{{equals_open_brace}}'
+      captures:
+        1: keyword.defined.block.constant
+        2: sign.equals
+        3: brace.open
+      push: 
+        - meta_content_scope: special constant set_timed_relation_flag
+        - match: '(?i)\b(flag|who|days)\b\s*(=)'
+          captures:
+            1: keyword.defined.value
+            2: sign.equals
+
+        - match: '"'
+          push: localised
+
+        - match: '(?<==)\s*{{value_with_dots}}'
+          captures:
+            1: value.user.defined
+        - match: '(?<==)\s*(@(?:\w|\.|:)+)'
+          captures:
+            1: value.user.defined.constant
+        - include: eat_end_brace
+
+    - match: '(?i)\b(create_fleet)\b{{equals_open_brace}}'
+      captures:
+        1: keyword.defined.block.constant
+        2: sign.equals
+        3: brace.open
+      push: 
+        - meta_content_scope: special constant create_fleet
+        - match: '(?i)\b(name)\b\s*(=)'
+          captures:
+            1: keyword.defined.value
+            2: sign.equals
+
+        - match: '"'
+          push: localised
+
+        - match: '(?<==)\s*{{value_with_dots}}'
+          captures:
+            1: value.user.defined
+        - match: '(?<==)\s*(@(?:\w|\.|:)+)'
+          captures:
+            1: value.user.defined.constant
+        - include: eat_end_brace
+
+    - match: '(?i)\b(create_research_station)\b{{equals_open_brace}}'
+      captures:
+        1: keyword.defined.block.constant
+        2: sign.equals
+        3: brace.open
+      push: 
+        - meta_content_scope: special constant create_research_station
+        - match: '(?i)\b(owner)\b\s*(=)'
+          captures:
+            1: keyword.defined.value
+            2: sign.equals
+
+        - match: '"'
+          push: localised
+
+        - match: '(?<==)\s*{{value_with_dots}}'
+          captures:
+            1: value.user.defined
+        - match: '(?<==)\s*(@(?:\w|\.|:)+)'
+          captures:
+            1: value.user.defined.constant
+        - include: eat_end_brace
+
+    - match: '(?i)\b(create_leader)\b{{equals_open_brace}}'
+      captures:
+        1: keyword.defined.block.constant
+        2: sign.equals
+        3: brace.open
+      push: 
+        - meta_content_scope: special constant create_leader
+        - match: '(?i)\b(name|traits|skill|type|species)\b\s*(=)'
+          captures:
+            1: keyword.defined.value
+            2: sign.equals
+
+        - match: '"'
+          push: localised
+
+        - match: '(?<==)\s*{{value_with_dots}}'
+          captures:
+            1: value.user.defined
+        - match: '(?<==)\s*(@(?:\w|\.|:)+)'
+          captures:
+            1: value.user.defined.constant
+        - include: eat_end_brace
+
+    - match: '(?i)\b(remove_opinion_modifier)\b{{equals_open_brace}}'
+      captures:
+        1: keyword.defined.block.constant
+        2: sign.equals
+        3: brace.open
+      push: 
+        - meta_content_scope: special constant remove_opinion_modifier
+        - match: '(?i)\b(modifier|who)\b\s*(=)'
+          captures:
+            1: keyword.defined.value
+            2: sign.equals
+
+        - match: '"'
+          push: localised
+
+        - match: '(?<==)\s*{{value_with_dots}}'
+          captures:
+            1: value.user.defined
+        - match: '(?<==)\s*(@(?:\w|\.|:)+)'
+          captures:
+            1: value.user.defined.constant
+        - include: eat_end_brace
+
+    - match: '(?i)\b(abort_special_project)\b{{equals_open_brace}}'
+      captures:
+        1: keyword.defined.block.constant
+        2: sign.equals
+        3: brace.open
+      push: 
+        - meta_content_scope: special constant abort_special_project
+        - match: '(?i)\b(type|location)\b\s*(=)'
+          captures:
+            1: keyword.defined.value
+            2: sign.equals
+
+        - match: '"'
+          push: localised
+
+        - match: '(?<==)\s*{{value_with_dots}}'
+          captures:
+            1: value.user.defined
+        - match: '(?<==)\s*(@(?:\w|\.|:)+)'
+          captures:
+            1: value.user.defined.constant
+        - include: eat_end_brace
+
+    - match: '(?i)\b(create_ambient_object)\b{{equals_open_brace}}'
+      captures:
+        1: keyword.defined.block.constant
+        2: sign.equals
+        3: brace.open
+      push: 
+        - meta_content_scope: special constant create_ambient_object
+        - match: '(?i)\b(type|location)\b\s*(=)'
+          captures:
+            1: keyword.defined.value
+            2: sign.equals
+
+        - match: '"'
+          push: localised
+
+        - match: '(?<==)\s*{{value_with_dots}}'
+          captures:
+            1: value.user.defined
+        - match: '(?<==)\s*(@(?:\w|\.|:)+)'
+          captures:
+            1: value.user.defined.constant
+        - include: eat_end_brace
+
+    - match: '(?i)\b(create_ship_design)\b{{equals_open_brace}}'
+      captures:
+        1: keyword.defined.block.constant
+        2: sign.equals
+        3: brace.open
+      push: 
+        - meta_content_scope: special constant create_ship_design
+        - match: '(?i)\b(design|ftl|random_existing_design)\b\s*(=)'
+          captures:
+            1: keyword.defined.value
+            2: sign.equals
+
+        - match: '"'
+          push: localised
+
+        - match: '(?<==)\s*{{value_with_dots}}'
+          captures:
+            1: value.user.defined
+        - match: '(?<==)\s*(@(?:\w|\.|:)+)'
+          captures:
+            1: value.user.defined.constant
+        - include: eat_end_brace
+
+    - match: '(?i)\b(create_wormhole_station)\b{{equals_open_brace}}'
+      captures:
+        1: keyword.defined.block.constant
+        2: sign.equals
+        3: brace.open
+      push: 
+        - meta_content_scope: special constant create_wormhole_station
+        - match: '(?i)\b(owner|angle)\b\s*(=)'
+          captures:
+            1: keyword.defined.value
+            2: sign.equals
+
+        - match: '"'
+          push: localised
+
+        - match: '(?<==)\s*{{value_with_dots}}'
+          captures:
+            1: value.user.defined
+        - match: '(?<==)\s*(@(?:\w|\.|:)+)'
+          captures:
+            1: value.user.defined.constant
+        - include: eat_end_brace
+
+    - match: '(?i)\b(set_timed_global_flag)\b{{equals_open_brace}}'
+      captures:
+        1: keyword.defined.block.constant
+        2: sign.equals
+        3: brace.open
+      push: 
+        - meta_content_scope: special constant set_timed_global_flag
+        - match: '(?i)\b(flag|days)\b\s*(=)'
+          captures:
+            1: keyword.defined.value
+            2: sign.equals
+
+        - match: '"'
+          push: localised
+
+        - match: '(?<==)\s*{{value_with_dots}}'
+          captures:
+            1: value.user.defined
+        - match: '(?<==)\s*(@(?:\w|\.|:)+)'
+          captures:
+            1: value.user.defined.constant
+        - include: eat_end_brace
+
+    - match: '(?i)\b(add_monthly_resource_mult)\b{{equals_open_brace}}'
+      captures:
+        1: keyword.defined.block.constant
+        2: sign.equals
+        3: brace.open
+      push: 
+        - meta_content_scope: special constant add_monthly_resource_mult
+        - match: '(?i)\b(resource|min|max|value)\b\s*(=)'
+          captures:
+            1: keyword.defined.value
+            2: sign.equals
+
+        - match: '"'
+          push: localised
+
+        - match: '(?<==)\s*{{value_with_dots}}'
+          captures:
+            1: value.user.defined
+        - match: '(?<==)\s*(@(?:\w|\.|:)+)'
+          captures:
+            1: value.user.defined.constant
+        - include: eat_end_brace
+
+    - match: '(?i)\b(add_threat)\b{{equals_open_brace}}'
+      captures:
+        1: keyword.defined.block.constant
+        2: sign.equals
+        3: brace.open
+      push: 
+        - meta_content_scope: special constant add_threat
+        - match: '(?i)\b(amount|who)\b\s*(=)'
+          captures:
+            1: keyword.defined.value
+            2: sign.equals
+
+        - match: '"'
+          push: localised
+
+        - match: '(?<==)\s*{{value_with_dots}}'
+          captures:
+            1: value.user.defined
+        - match: '(?<==)\s*(@(?:\w|\.|:)+)'
+          captures:
+            1: value.user.defined.constant
+        - include: eat_end_brace
+
+    - match: '(?i)\b(surveyed)\b{{equals_open_brace}}'
+      captures:
+        1: keyword.defined.block.constant
+        2: sign.equals
+        3: brace.open
+      push: 
+        - meta_content_scope: special constant surveyed
+        - match: '(?i)\b(surveyor|set_surveyed)\b\s*(=)'
+          captures:
+            1: keyword.defined.value
+            2: sign.equals
+
+        - match: '"'
+          push: localised
+
+        - match: '(?<==)\s*{{value_with_dots}}'
+          captures:
+            1: value.user.defined
+        - match: '(?<==)\s*(@(?:\w|\.|:)+)'
+          captures:
+            1: value.user.defined.constant
+        - include: eat_end_brace
+
+    - match: '(?i)\b(set_faction_hostility)\b{{equals_open_brace}}'
+      captures:
+        1: keyword.defined.block.constant
+        2: sign.equals
+        3: brace.open
+      push: 
+        - meta_content_scope: special constant set_faction_hostility
+        - match: '(?i)\b(set_hostile)\b\s*(=)'
+          captures:
+            1: keyword.defined.value
+            2: sign.equals
+
+        - match: '"'
+          push: localised
+
+        - match: '(?<==)\s*{{value_with_dots}}'
+          captures:
+            1: value.user.defined
+        - match: '(?<==)\s*(@(?:\w|\.|:)+)'
+          captures:
+            1: value.user.defined.constant
+        - include: eat_end_brace
+
+    - match: '(?i)\b(queue_actions)\b{{equals_open_brace}}'
+      captures:
+        1: keyword.defined.block.constant
+        2: sign.equals
+        3: brace.open
+      push: 
+        - meta_content_scope: special constant queue_actions
+        - match: '(?i)\b(repeat)\b\s*(=)'
+          captures:
+            1: keyword.defined.value
+            2: sign.equals
+
+        - match: '"'
+          push: localised
+
+        - match: '(?<==)\s*{{value_with_dots}}'
+          captures:
+            1: value.user.defined
+        - match: '(?<==)\s*(@(?:\w|\.|:)+)'
+          captures:
+            1: value.user.defined.constant
+        - include: eat_end_brace
+
+    - match: '(?i)\b(set_timed_ship_flag)\b{{equals_open_brace}}'
+      captures:
+        1: keyword.defined.block.constant
+        2: sign.equals
+        3: brace.open
+      push: 
+        - meta_content_scope: special constant set_timed_ship_flag
+        - match: '(?i)\b(flag|days)\b\s*(=)'
+          captures:
+            1: keyword.defined.value
+            2: sign.equals
+
+        - match: '"'
+          push: localised
+
+        - match: '(?<==)\s*{{value_with_dots}}'
+          captures:
+            1: value.user.defined
+        - match: '(?<==)\s*(@(?:\w|\.|:)+)'
+          captures:
+            1: value.user.defined.constant
+        - include: eat_end_brace
+
+    - match: '(?i)\b(create_mining_station)\b{{equals_open_brace}}'
+      captures:
+        1: keyword.defined.block.constant
+        2: sign.equals
+        3: brace.open
+      push: 
+        - meta_content_scope: special constant create_mining_station
+        - match: '(?i)\b(owner)\b\s*(=)'
+          captures:
+            1: keyword.defined.value
+            2: sign.equals
+
+        - match: '"'
+          push: localised
+
+        - match: '(?<==)\s*{{value_with_dots}}'
+          captures:
+            1: value.user.defined
+        - match: '(?<==)\s*(@(?:\w|\.|:)+)'
+          captures:
+            1: value.user.defined.constant
+        - include: eat_end_brace
+
+    - match: '(?i)\b(clear_uncharted_space)\b{{equals_open_brace}}'
+      captures:
+        1: keyword.defined.block.constant
+        2: sign.equals
+        3: brace.open
+      push: 
+        - meta_content_scope: special constant clear_uncharted_space
+        - match: '(?i)\b(from|radius)\b\s*(=)'
+          captures:
+            1: keyword.defined.value
+            2: sign.equals
+
+        - match: '"'
+          push: localised
+
+        - match: '(?<==)\s*{{value_with_dots}}'
+          captures:
+            1: value.user.defined
+        - match: '(?<==)\s*(@(?:\w|\.|:)+)'
+          captures:
+            1: value.user.defined.constant
+        - include: eat_end_brace
+
+    - match: '(?i)\b(create_point_of_interest)\b{{equals_open_brace}}'
+      captures:
+        1: keyword.defined.block.constant
+        2: sign.equals
+        3: brace.open
+      push: 
+        - meta_content_scope: special constant create_point_of_interest
+        - match: '(?i)\b(category|name|event_chain|location|id|desc)\b\s*(=)'
+          captures:
+            1: keyword.defined.value
+            2: sign.equals
+
+        - match: '"'
+          push: localised
+
+        - match: '(?<==)\s*{{value_with_dots}}'
+          captures:
+            1: value.user.defined
+        - match: '(?<==)\s*(@(?:\w|\.|:)+)'
+          captures:
+            1: value.user.defined.constant
+        - include: eat_end_brace
+
+    - match: '(?i)\b(create_species)\b{{equals_open_brace}}'
+      captures:
+        1: keyword.defined.block.constant
+        2: sign.equals
+        3: brace.open
+      push: 
+        - meta_content_scope: special constant create_species
+        - match: '(?i)\b(name|immortal|traits|portrait|plural|class|homeworld)\b\s*(=)'
+          captures:
+            1: keyword.defined.value
+            2: sign.equals
+
+        - match: '"'
+          push: localised
+
+        - match: '(?<==)\s*{{value_with_dots}}'
+          captures:
+            1: value.user.defined
+        - match: '(?<==)\s*(@(?:\w|\.|:)+)'
+          captures:
+            1: value.user.defined.constant
+        - include: eat_end_brace
+
+    - match: '(?i)\b(create_army)\b{{equals_open_brace}}'
+      captures:
+        1: keyword.defined.block.constant
+        2: sign.equals
+        3: brace.open
+      push: 
+        - meta_content_scope: special constant create_army
+        - match: '(?i)\b(name|owner|type|species)\b\s*(=)'
+          captures:
+            1: keyword.defined.value
+            2: sign.equals
+
+        - match: '"'
+          push: localised
+
+        - match: '(?<==)\s*{{value_with_dots}}'
+          captures:
+            1: value.user.defined
+        - match: '(?<==)\s*(@(?:\w|\.|:)+)'
+          captures:
+            1: value.user.defined.constant
+        - include: eat_end_brace
+
+    - match: '(?i)\b(add_resource)\b{{equals_open_brace}}'
+      captures:
+        1: keyword.defined.block.constant
+        2: sign.equals
+        3: brace.open
+      push: 
+        - meta_content_scope: special constant add_resource
+        - match: '(?i)\b(amount|resource|replace)\b\s*(=)'
+          captures:
+            1: keyword.defined.value
+            2: sign.equals
+
+        - match: '"'
+          push: localised
+
+        - match: '(?<==)\s*{{value_with_dots}}'
+          captures:
+            1: value.user.defined
+        - match: '(?<==)\s*(@(?:\w|\.|:)+)'
+          captures:
+            1: value.user.defined.constant
+        - include: eat_end_brace
+
+    - match: '(?i)\b(add_modifier)\b{{equals_open_brace}}'
+      captures:
+        1: keyword.defined.block.constant
+        2: sign.equals
+        3: brace.open
+      push: 
+        - meta_content_scope: special constant add_modifier
+        - match: '(?i)\b(modifier|days)\b\s*(=)'
+          captures:
+            1: keyword.defined.value
+            2: sign.equals
+
+        - match: '"'
+          push: localised
+
+        - match: '(?<==)\s*{{value_with_dots}}'
+          captures:
+            1: value.user.defined
+        - match: '(?<==)\s*(@(?:\w|\.|:)+)'
+          captures:
+            1: value.user.defined.constant
+        - include: eat_end_brace
+
+    - match: '(?i)\b(add_event_chain_counter)\b{{equals_open_brace}}'
+      captures:
+        1: keyword.defined.block.constant
+        2: sign.equals
+        3: brace.open
+      push: 
+        - meta_content_scope: special constant add_event_chain_counter
+        - match: '(?i)\b(amount|event_chain|counter)\b\s*(=)'
+          captures:
+            1: keyword.defined.value
+            2: sign.equals
+
+        - match: '"'
+          push: localised
+
+        - match: '(?<==)\s*{{value_with_dots}}'
+          captures:
+            1: value.user.defined
+        - match: '(?<==)\s*(@(?:\w|\.|:)+)'
+          captures:
+            1: value.user.defined.constant
+        - include: eat_end_brace
+
+    - match: '(?i)\b(begin_event_chain)\b{{equals_open_brace}}'
+      captures:
+        1: keyword.defined.block.constant
+        2: sign.equals
+        3: brace.open
+      push: 
+        - meta_content_scope: special constant begin_event_chain
+        - match: '(?i)\b(event_chain|target)\b\s*(=)'
+          captures:
+            1: keyword.defined.value
+            2: sign.equals
+
+        - match: '"'
+          push: localised
+
+        - match: '(?<==)\s*{{value_with_dots}}'
+          captures:
+            1: value.user.defined
+        - match: '(?<==)\s*(@(?:\w|\.|:)+)'
+          captures:
+            1: value.user.defined.constant
+        - include: eat_end_brace
+
+    - match: '(?i)\b(kill_leader)\b{{equals_open_brace}}'
+      captures:
+        1: keyword.defined.block.constant
+        2: sign.equals
+        3: brace.open
+      push: 
+        - meta_content_scope: special constant kill_leader
+        - match: '(?i)\b(show_notification|type)\b\s*(=)'
+          captures:
+            1: keyword.defined.value
+            2: sign.equals
+
+        - match: '"'
+          push: localised
+
+        - match: '(?<==)\s*{{value_with_dots}}'
+          captures:
+            1: value.user.defined
+        - match: '(?<==)\s*(@(?:\w|\.|:)+)'
+          captures:
+            1: value.user.defined.constant
+        - include: eat_end_brace
+
+    - match: '(?i)\b(create_rebels)\b{{equals_open_brace}}'
+      captures:
+        1: keyword.defined.block.constant
+        2: sign.equals
+        3: brace.open
+      push: 
+        - meta_content_scope: special constant create_rebels
+        - match: '(?i)\b(species|flag|ethos|name|government)\b\s*(=)'
+          captures:
+            1: keyword.defined.value
+            2: sign.equals
+
+        - match: '"'
+          push: localised
+
+        - match: '(?<==)\s*{{value_with_dots}}'
+          captures:
+            1: value.user.defined
+        - match: '(?<==)\s*(@(?:\w|\.|:)+)'
+          captures:
+            1: value.user.defined.constant
+        - include: eat_end_brace
+
+    - match: '(?i)\b(set_policy)\b{{equals_open_brace}}'
+      captures:
+        1: keyword.defined.block.constant
+        2: sign.equals
+        3: brace.open
+      push: 
+        - meta_content_scope: special constant set_policy
+        - match: '(?i)\b(policy|cooldown|option)\b\s*(=)'
+          captures:
+            1: keyword.defined.value
+            2: sign.equals
+
+        - match: '"'
+          push: localised
+
+        - match: '(?<==)\s*{{value_with_dots}}'
+          captures:
+            1: value.user.defined
+        - match: '(?<==)\s*(@(?:\w|\.|:)+)'
+          captures:
+            1: value.user.defined.constant
+        - include: eat_end_brace
+
+    - match: '(?i)\b(remove_relation_flag)\b{{equals_open_brace}}'
+      captures:
+        1: keyword.defined.block.constant
+        2: sign.equals
+        3: brace.open
+      push: 
+        - meta_content_scope: special constant remove_relation_flag
+        - match: '(?i)\b(flag|who)\b\s*(=)'
+          captures:
+            1: keyword.defined.value
+            2: sign.equals
+
+        - match: '"'
+          push: localised
+
+        - match: '(?<==)\s*{{value_with_dots}}'
+          captures:
+            1: value.user.defined
+        - match: '(?<==)\s*(@(?:\w|\.|:)+)'
+          captures:
+            1: value.user.defined.constant
+        - include: eat_end_brace
+
+    - match: '(?i)\b(create_country)\b{{equals_open_brace}}'
+      captures:
+        1: keyword.defined.block.constant
+        2: sign.equals
+        3: brace.open
+      push: 
+        - meta_content_scope: special constant create_country
+        - match: '(?i)\b(released_from_country|name|day_zero_contact|government|ignore_initial_colony_error|name_list|flag|ethos|released_by_country|type|species)\b\s*(=)'
+          captures:
+            1: keyword.defined.value
+            2: sign.equals
+
+        - match: '"'
+          push: localised
+
+        - match: '(?<==)\s*{{value_with_dots}}'
+          captures:
+            1: value.user.defined
+        - match: '(?<==)\s*(@(?:\w|\.|:)+)'
+          captures:
+            1: value.user.defined.constant
+        - include: eat_end_brace
+
+    - match: '(?i)\b(set_variable)\b{{equals_open_brace}}'
+      captures:
+        1: keyword.defined.block.constant
+        2: sign.equals
+        3: brace.open
+      push: 
+        - meta_content_scope: special constant set_variable
+        - match: '(?i)\b(which|value)\b\s*(=)'
+          captures:
+            1: keyword.defined.value
+            2: sign.equals
+
+        - match: '"'
+          push: localised
+
+        - match: '(?<==)\s*{{value_with_dots}}'
+          captures:
+            1: value.user.defined
+        - match: '(?<==)\s*(@(?:\w|\.|:)+)'
+          captures:
+            1: value.user.defined.constant
+        - include: eat_end_brace
+
+    - match: '(?i)\b(create_military_fleet)\b{{equals_open_brace}}'
+      captures:
+        1: keyword.defined.block.constant
+        2: sign.equals
+        3: brace.open
+      push: 
+        - meta_content_scope: special constant create_military_fleet
+        - match: '(?i)\b(owner|scaled_size)\b\s*(=)'
+          captures:
+            1: keyword.defined.value
+            2: sign.equals
+
+        - match: '"'
+          push: localised
+
+        - match: '(?<==)\s*{{value_with_dots}}'
+          captures:
+            1: value.user.defined
+        - match: '(?<==)\s*(@(?:\w|\.|:)+)'
+          captures:
+            1: value.user.defined.constant
+        - include: eat_end_brace
+
+    - match: '(?i)\b(create_pop_faction)\b{{equals_open_brace}}'
+      captures:
+        1: keyword.defined.block.constant
+        2: sign.equals
+        3: brace.open
+      push: 
+        - meta_content_scope: special constant create_pop_faction
+        - match: '(?i)\b(parameter:country|type|pop)\b\s*(=)'
+          captures:
+            1: keyword.defined.value
+            2: sign.equals
+
+        - match: '"'
+          push: localised
+
+        - match: '(?<==)\s*{{value_with_dots}}'
+          captures:
+            1: value.user.defined
+        - match: '(?<==)\s*(@(?:\w|\.|:)+)'
+          captures:
+            1: value.user.defined.constant
+        - include: eat_end_brace
+
+    - match: '(?i)\b(purge)\b{{equals_open_brace}}'
+      captures:
+        1: keyword.defined.block.constant
+        2: sign.equals
+        3: brace.open
+      push: 
+        - meta_content_scope: special constant purge
+        - match: '(?i)\b(potential|option)\b\s*(=)'
+          captures:
+            1: keyword.defined.value
+            2: sign.equals
+
+        - match: '"'
+          push: localised
+
+        - match: '(?<==)\s*{{value_with_dots}}'
+          captures:
+            1: value.user.defined
+        - match: '(?<==)\s*(@(?:\w|\.|:)+)'
+          captures:
+            1: value.user.defined.constant
+        - include: eat_end_brace
+
+    - match: '(?i)\b(set_spaceport_module)\b{{equals_open_brace}}'
+      captures:
+        1: keyword.defined.block.constant
+        2: sign.equals
+        3: brace.open
+      push: 
+        - meta_content_scope: special constant set_spaceport_module
+        - match: '(?i)\b(slot|module)\b\s*(=)'
+          captures:
+            1: keyword.defined.value
+            2: sign.equals
+
+        - match: '"'
+          push: localised
+
+        - match: '(?<==)\s*{{value_with_dots}}'
+          captures:
+            1: value.user.defined
+        - match: '(?<==)\s*(@(?:\w|\.|:)+)'
+          captures:
+            1: value.user.defined.constant
+        - include: eat_end_brace
+
+    - match: '(?i)\b(create_ship)\b{{equals_open_brace}}'
+      captures:
+        1: keyword.defined.block.constant
+        2: sign.equals
+        3: brace.open
+      push: 
+        - meta_content_scope: special constant create_ship
+        - match: '(?i)\b(graphical_culture|design|name)\b\s*(=)'
+          captures:
+            1: keyword.defined.value
+            2: sign.equals
+
+        - match: '"'
+          push: localised
+
+        - match: '(?<==)\s*{{value_with_dots}}'
+          captures:
+            1: value.user.defined
+        - match: '(?<==)\s*(@(?:\w|\.|:)+)'
+          captures:
+            1: value.user.defined.constant
+        - include: eat_end_brace
+
+    - match: '(?i)\b(create_colony)\b{{equals_open_brace}}'
+      captures:
+        1: keyword.defined.block.constant
+        2: sign.equals
+        3: brace.open
+      push: 
+        - meta_content_scope: special constant create_colony
+        - match: '(?i)\b(owner|ethos|species)\b\s*(=)'
+          captures:
+            1: keyword.defined.value
+            2: sign.equals
+
+        - match: '"'
+          push: localised
+
+        - match: '(?<==)\s*{{value_with_dots}}'
+          captures:
+            1: value.user.defined
+        - match: '(?<==)\s*(@(?:\w|\.|:)+)'
+          captures:
+            1: value.user.defined.constant
+        - include: eat_end_brace
+
+    - match: '(?i)\b(set_relation_flag)\b{{equals_open_brace}}'
+      captures:
+        1: keyword.defined.block.constant
+        2: sign.equals
+        3: brace.open
+      push: 
+        - meta_content_scope: special constant set_relation_flag
+        - match: '(?i)\b(flag|who)\b\s*(=)'
+          captures:
+            1: keyword.defined.value
+            2: sign.equals
+
+        - match: '"'
+          push: localised
+
+        - match: '(?<==)\s*{{value_with_dots}}'
+          captures:
+            1: value.user.defined
+        - match: '(?<==)\s*(@(?:\w|\.|:)+)'
+          captures:
+            1: value.user.defined.constant
+        - include: eat_end_brace
+
+    - match: '(?i)\b(spawn_system)\b{{equals_open_brace}}'
+      captures:
+        1: keyword.defined.block.constant
+        2: sign.equals
+        3: brace.open
+      push: 
+        - meta_content_scope: special constant spawn_system
+        - match: '(?i)\b(max_distance|min_distance|initializer)\b\s*(=)'
+          captures:
+            1: keyword.defined.value
+            2: sign.equals
+
+        - match: '"'
+          push: localised
+
+        - match: '(?<==)\s*{{value_with_dots}}'
+          captures:
+            1: value.user.defined
+        - match: '(?<==)\s*(@(?:\w|\.|:)+)'
+          captures:
+            1: value.user.defined.constant
+        - include: eat_end_brace
+
+    - match: '(?i)\b(set_timed_country_flag)\b{{equals_open_brace}}'
+      captures:
+        1: keyword.defined.block.constant
+        2: sign.equals
+        3: brace.open
+      push: 
+        - meta_content_scope: special constant set_timed_country_flag
+        - match: '(?i)\b(flag|days)\b\s*(=)'
+          captures:
+            1: keyword.defined.value
+            2: sign.equals
+
+        - match: '"'
+          push: localised
+
+        - match: '(?<==)\s*{{value_with_dots}}'
+          captures:
+            1: value.user.defined
+        - match: '(?<==)\s*(@(?:\w|\.|:)+)'
+          captures:
+            1: value.user.defined.constant
+        - include: eat_end_brace
+
+    - match: '(?i)\b(enable_special_project)\b{{equals_open_brace}}'
+      captures:
+        1: keyword.defined.block.constant
+        2: sign.equals
+        3: brace.open
+      push: 
+        - meta_content_scope: special constant enable_special_project
+        - match: '(?i)\b(name|owner|location)\b\s*(=)'
+          captures:
+            1: keyword.defined.value
+            2: sign.equals
+
+        - match: '"'
+          push: localised
+
+        - match: '(?<==)\s*{{value_with_dots}}'
+          captures:
+            1: value.user.defined
+        - match: '(?<==)\s*(@(?:\w|\.|:)+)'
+          captures:
+            1: value.user.defined.constant
+        - include: eat_end_brace
+
+    - match: '(?i)\b(add_war_demand)\b{{equals_open_brace}}'
+      captures:
+        1: keyword.defined.block.constant
+        2: sign.equals
+        3: brace.open
+      push: 
+        - meta_content_scope: special constant add_war_demand
+        - match: '(?i)\b(type|parameter:country|target|warscore_cost)\b\s*(=)'
+          captures:
+            1: keyword.defined.value
+            2: sign.equals
+
+        - match: '"'
+          push: localised
+
+        - match: '(?<==)\s*{{value_with_dots}}'
+          captures:
+            1: value.user.defined
+        - match: '(?<==)\s*(@(?:\w|\.|:)+)'
+          captures:
+            1: value.user.defined.constant
+        - include: eat_end_brace
+
+    - match: '(?i)\b(set_timed_star_flag)\b{{equals_open_brace}}'
+      captures:
+        1: keyword.defined.block.constant
+        2: sign.equals
+        3: brace.open
+      push: 
+        - meta_content_scope: special constant set_timed_star_flag
+        - match: '(?i)\b(flag|days)\b\s*(=)'
+          captures:
+            1: keyword.defined.value
+            2: sign.equals
+
+        - match: '"'
+          push: localised
+
+        - match: '(?<==)\s*{{value_with_dots}}'
+          captures:
+            1: value.user.defined
+        - match: '(?<==)\s*(@(?:\w|\.|:)+)'
+          captures:
+            1: value.user.defined.constant
+        - include: eat_end_brace
+
+
+
+
+
+
+
+  localised:
+  - meta_scope: 'value.localised'
+  - match: '"'
+    pop: true
+
+  eat_end_brace:
+    - match: "}"
+      scope: brace.end
+      pop: true
+  comment:
+  - match: '#'
+    push:
+      - meta_scope: comment
+      - match: '\n'
+        pop: true

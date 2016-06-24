@@ -13,6 +13,9 @@ variables:
   equals_open_brace: '\s+(=)\s+({)'
   brace_behind: '(?<={)'
 
+#prototype:
+#  - match: '"'
+#    push: string
 
 contexts:
   main: 
@@ -44,12 +47,19 @@ contexts:
         3: brace.open
       push: 'ship_event'
 
+    - match: '"'
+      push: string
 
 
-
+  string:
+    - meta_scope: keywords.localised
+   # - meta_include_protype: false   
+    - match: '"'
+      pop: true
 
   country_event:
     - meta_scope: event
+    - include: event_general
     - match: '(immediate){{equals_open_brace}}'
       captures:
         1: effect.starter
@@ -57,10 +67,24 @@ contexts:
         3: brace.open
       push: 
         - match: ''
-          push: 'Packages/User/Stellaris/hidden/StellarisCountryEffectBlock.sublime-syntax'
+          push: 'Packages/Stellaris/hidden/StellarisCountryEffectBlock.sublime-syntax'
+    - include: end
+
+    - match: '(option){{equals_open_brace}}'
+      captures:
+        1: effect.starter
+        2: sign.equal
+        3: brace.open
+      push: 
+        - include: has_ended
+        - include: option_general
+        - match: ''
+          push:  'Packages/Stellaris/hidden/StellarisCountryEffectBlock.sublime-syntax'
+    - include: end
 
   fleet_event:
     - meta_scope: event
+    - include: event_general
     - match: '(immediate){{equals_open_brace}}'
       captures:
         1: effect.starter
@@ -68,10 +92,26 @@ contexts:
         3: brace.open
       push: 
         - match: ''
-          push: 'Packages/User/Stellaris/hidden/StellarisFleetEffectBlock.sublime-syntax'
+          push: 'Packages/Stellaris/hidden/StellarisFleetEffectBlock.sublime-syntax'
+    - include: end
+
+    - match: '(option){{equals_open_brace}}'
+      captures:
+        1: effect.starter
+        2: sign.equal
+        3: brace.open
+      push: 
+        - include: has_ended
+        - include: option_general
+        - match: ''
+          push:  'Packages/Stellaris/hidden/StellarisFleetEffectBlock.sublime-syntax'
+    - include: end
+
+
 
   planet_event:
     - meta_scope: event
+    - include: event_general
     - match: '(immediate){{equals_open_brace}}'
       captures:
         1: effect.starter
@@ -79,19 +119,61 @@ contexts:
         3: brace.open
       push: 
         - match: ''
-          push: 'Packages/User/Stellaris/hidden/StellarisPlanetEffectBlock.sublime-syntax'
+          push: 'Packages/Stellaris/hidden/StellarisPlanetEffectBlock.sublime-syntax'
+    - include: end
 
+    - match: '(option){{equals_open_brace}}'
+      captures:
+        1: effect.starter
+        2: sign.equal
+        3: brace.open
+      push: 
+        - include: has_ended
+        - include: option_general
+        - match: ''
+          push:  'Packages/Stellaris/hidden/StellarisPlanetEffectBlock.sublime-syntax'
+    - include: end
 
   ship_event:
     - meta_scope: event
+    - include: event_general
     - match: '(immediate){{equals_open_brace}}'
       captures:
         1: effect.starter
         2: sign.equal
         3: brace.open
       push: 
+        - include: has_ended
         - match: ''
-          push: 'Packages/User/Stellaris/hidden/StellarisShipEffectBlock.sublime-syntax'
+          push: 'Packages/Stellaris/hidden/StellarisShipEffectBlock.sublime-syntax'
+    - include: end
+
+    - match: '(option){{equals_open_brace}}'
+      captures:
+        1: effect.starter
+        2: sign.equal
+        3: brace.open
+      push: 
+        - include: has_ended
+        - include: option_general
+        - match: ''
+        - include: 'Packages/Stellaris/hidden/StellarisShipEffectBlock.sublime-syntax'
+    - include: end
+
+  event_general:
+    - meta_scope: event
+    - match: '"'
+      push: string
+    - match: '\b(id|title|desc|picture|show_sound|location|is_triggered_only|hide_window)\b'
+      scope: event.keyword
+
+  option_general:
+    - meta_scope: option
+    - match: '\b(name)\b'
+      scope: keyword.option
   end: 
     - match: '(?=})'
+      pop: true
+  has_ended:
+    - match: '(?<=})'
       pop: true

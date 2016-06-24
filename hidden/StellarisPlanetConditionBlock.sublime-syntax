@@ -22,73 +22,92 @@ contexts:
     - include: to_Fleet
     - include: eat_end_brace
 
-
     
-
-    - match: (?i)(has_ring|has_owner|is_moon|any_pop|is_owned_by|is_planet_class|has_strategic_resource|is_star_class|distance|has_planet_modifier|has_planet_flag|is_capital|has_ground_combat|num_pops|is_inside_nebula|is_inside_border|planet_size|is_star|is_asteroid|is_colonizable|num_minerals|num_physics|num_society|num_engineering|num_modifiers|has_any_strategic_resource|free_leader_slots|is_occupied_flag|can_colonize|is_surveyed|has_global_flag|check_variable|is_colony|habitability|has_building|is_controlled_by|is_terraformed|is_terraforming|has_planet_edict|has_observation_outpost|has_mining_station|has_research_station|has_spaceport|any_spaceport|any_research_station|any_mining_station|has_army|count_pops|has_anomaly|is_planet|is_ship|has_grown_pop|has_growing_pop|has_resource|has_building_construction|any_tile|has_blocker|free_pop_tiles|free_building_tiles|has_edict|has_moon|num_moons|is_in_cluster|any_moon|is_preventing_anomaly|observation_outpost_owner|observation_outpost|has_deposit|has_deposit_for|colony_age|is_rim_system|has_modifier|is_ringworld|is_ideal_planet_class|sector_controlled|orbital_bombardment|count_deposits|has_point_of_interest|has_orbital_station|any_orbital_station|count_armies|original_owner|is_homeworld|is_neighbor_of|is_under_colonization|has_colony_progress|is_valid|fortification_health|has_spaceport_module|has_free_spaceport_module_slot|is_spaceport_module_slot_free|can_build_spaceport_module|num_free_spaceport_module_slots|num_spaceport_modules|num_energy|is_proposing_war_demands|if|and|or|not|hidden_trigger|always|any_country|any_planet|any_ship|any_system|is_multiplayer|exists|any_rim_system|switch|any_ship_in_system|is_same_value|is_scope_valid|closest_system|is_ironman|custom_tooltip_fail|years_passed|host_has_dlc|local_has_dlc|nor|nand)
+    
+    - match: '\b(?i)(has_ring|has_owner|is_moon|any_pop|is_owned_by|is_planet_class|has_strategic_resource|is_star_class|distance|has_planet_modifier|has_planet_flag|is_capital|has_ground_combat|num_pops|is_inside_nebula|is_inside_border|planet_size|is_star|is_asteroid|is_colonizable|num_minerals|num_physics|num_society|num_engineering|num_modifiers|has_any_strategic_resource|free_leader_slots|is_occupied_flag|can_colonize|is_surveyed|has_global_flag|check_variable|is_colony|habitability|has_building|is_controlled_by|is_terraformed|is_terraforming|has_planet_edict|has_observation_outpost|has_mining_station|has_research_station|has_spaceport|any_spaceport|any_research_station|any_mining_station|has_army|count_pops|has_anomaly|is_planet|is_ship|has_grown_pop|has_growing_pop|has_resource|has_building_construction|any_tile|has_blocker|free_pop_tiles|free_building_tiles|has_edict|has_moon|num_moons|is_in_cluster|any_moon|is_preventing_anomaly|observation_outpost_owner|observation_outpost|has_deposit|has_deposit_for|colony_age|is_rim_system|has_modifier|is_ringworld|is_ideal_planet_class|sector_controlled|orbital_bombardment|count_deposits|has_point_of_interest|has_orbital_station|any_orbital_station|count_armies|original_owner|is_homeworld|is_neighbor_of|is_under_colonization|has_colony_progress|is_valid|fortification_health|has_spaceport_module|has_free_spaceport_module_slot|is_spaceport_module_slot_free|can_build_spaceport_module|num_free_spaceport_module_slots|num_spaceport_modules|num_energy|is_proposing_war_demands|if|and|or|not|hidden_trigger|always|any_country|any_planet|any_ship|any_system|is_multiplayer|exists|any_rim_system|switch|any_ship_in_system|is_same_value|is_scope_valid|closest_system|is_ironman|custom_tooltip_fail|years_passed|host_has_dlc|local_has_dlc|nor|nand)\b'
       scope: keyword.condition.Planet
+      push:
+       - match: '='
+         scope: sign.equals
+         set: value
 
+    - match: '(?i)(fromfromfrom|fromfrom|from|prevprevprev|prevprev|prev|root){{equals_open_brace}}'
+      captures:
+        1: effect.block.keyword.general
+        2: sign.equals
+        3: brace.open
+      push: contextual_scopes
 
-    - match: '(?i)(from{1,3}|prev{1,3}|root){{equals_open_brace}}'
-      push: general_scope
+    - match: '"'
+      push: string
 
-    - match: '(every_planet_army|observation_outpost_owner|closest_system|random_pop|random_moon|every_planet|orbital_deposit_tile|every_tile|random_tile|observation_outpost|leader|\w)'
-      push: illegal
   
   to_Country:
     - match: '(?i)(observation_outpost_owner){{equals_open_brace}}'
       captures:
-        1: block.condition.keyword
+        1: condition.block.keyword
         2: sign.equals
         3: brace.open
       push: 'Packages/Stellaris/hidden/StellarisCountryConditionBlock.sublime-syntax'
-  #  - include: end_brace_behind
     
   to_System:
     - match: '(?i)(closest_system){{equals_open_brace}}'
       captures:
-        1: block.condition.keyword
+        1: condition.block.keyword
         2: sign.equals
         3: brace.open
       push: 'Packages/Stellaris/hidden/StellarisSystemConditionBlock.sublime-syntax'
-  #  - include: end_brace_behind
     
   to_Pop:
     - match: '(?i)(any_pop){{equals_open_brace}}'
       captures:
-        1: block.condition.keyword
+        1: condition.block.keyword
         2: sign.equals
         3: brace.open
       push: 'Packages/Stellaris/hidden/StellarisPopConditionBlock.sublime-syntax'
-  #  - include: end_brace_behind
     
   to_Planet:
     - match: '(?i)(any_moon){{equals_open_brace}}'
       captures:
-        1: block.condition.keyword
+        1: condition.block.keyword
         2: sign.equals
         3: brace.open
       push: 'Packages/Stellaris/hidden/StellarisPlanetConditionBlock.sublime-syntax'
-  #  - include: end_brace_behind
     
   to_Tile:
     - match: '(?i)(any_tile|orbital_deposit_tile){{equals_open_brace}}'
       captures:
-        1: block.condition.keyword
+        1: condition.block.keyword
         2: sign.equals
         3: brace.open
       push: 'Packages/Stellaris/hidden/StellarisTileConditionBlock.sublime-syntax'
-  #  - include: end_brace_behind
     
   to_Fleet:
     - match: '(?i)(observation_outpost){{equals_open_brace}}'
       captures:
-        1: block.condition.keyword
+        1: condition.block.keyword
         2: sign.equals
         3: brace.open
       push: 'Packages/Stellaris/hidden/StellarisFleetConditionBlock.sublime-syntax'
-  #  - include: end_brace_behind
     
+  string:
+    - meta_scope: keywords.localised
+    - match: '"'
+      pop: true
+
+  equalsign:
+    - match: '='
+      scope: sign.equals
+      pop: true
+
+  value:
+    - meta_scope: 'meta.value'
+    - match: '"'
+      set: string
+
+    - match: '\w+'
+      scope: "value"
+      pop: true
 
   end_brace_behind: 
     - match: '(?<=})'
@@ -103,8 +122,9 @@ contexts:
     - match: '(?=})'
       pop: true
 
-  general_scope:
-    - meta_scope: block.effect.contextual
+  contextual_scopes:
+    - meta_scope: effect.block.contextual
+    
     - include: Packages/Stellaris/hidden/StellarisAmbient_objectConditionBlock.sublime-syntax
     - include: Packages/Stellaris/hidden/StellarisArmyConditionBlock.sublime-syntax
     - include: Packages/Stellaris/hidden/StellarisCountryConditionBlock.sublime-syntax
@@ -119,6 +139,3 @@ contexts:
     - include: Packages/Stellaris/hidden/StellarisTileConditionBlock.sublime-syntax
     - include: Packages/Stellaris/hidden/StellarisWarConditionBlock.sublime-syntax
     - include: eat_end_brace
-  illegal:
-    - meta_scope: illegal
-    - include: end_brace_behind

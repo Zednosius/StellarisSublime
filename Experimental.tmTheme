@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <!--
+     To change a color, find the right scope for what you want to change and change its foreground color 
+     Scopes can be found by activating the syntax file for a stellaris file, and then putting the caret on what you want to color
+     and then press ctrl+shift+alt+P , the word in the bottom of the popup is the scope you need to find.
+
+     If other colors change that you don't want to change, you have to go into the sublime-syntax file and edit the syntax there.
+     Hopefully it isn't too hard to modify.
+
+    -->
+    <key>author</key>
+    <string>Zednosius</string>
+    <key>name</key>
+    <string>Stellaris Theme</string>
+
+    <key>settings</key>
+    <array>
+        <dict>
+            <key>settings</key>
+            <!-- General editor color settings   -->
+            <dict>
+                <key>background</key>
+                <string>#000000</string>
+                <key>caret</key>
+                <string>#A7A7A7</string>
+                <key>foreground</key>
+                <string>#F8F8F8</string>
+                <key>invisibles</key>
+                <string>#CAE2FB3D</string>
+                <key>lineHighlight</key>
+                <string>#FFFFFF0D</string>
+                <key>selection</key>
+                <string>#DDF0FF33</string>
+            </dict>
+        </dict>
+
+        <!-- All Scopes are colored with this -->
+        <dict>
+            <key>name</key>
+            <string>Keyword Value</string>
+
+            <key>scope</key>
+            <string>keyword.defined.value</string>
+
+            <key>settings</key>
+            <dict>
+                <key>foreground</key>
+                <string>#00eeee</string>
+            </dict>
+        </dict>
+
+        <dict>
+            <key>name</key>
+            <string>Keyword block</string>
+
+            <key>scope</key>
+            <string>keyword.defined.block</string>
+
+            <key>settings</key>
+            <dict>
+                <key>foreground</key>
+                <string>#00ff00</string>
+            </dict>
+        </dict>
+
+        <dict>
+            <key>name</key>
+            <string>Value user defined</string>
+
+            <key>scope</key>
+            <string>value.user.defined</string>
+
+            <key>settings</key>
+            <dict>
+                <key>foreground</key>
+                <string>#00a0ff</string>
+            </dict>
+        </dict>    
+
+        <dict>
+            <key>name</key>
+            <string>Value user defined</string>
+
+            <key>scope</key>
+            <string>keyword.user.defined</string>
+
+            <key>settings</key>
+            <dict>
+                <key>foreground</key>
+                <string>#f0a0ff</string>
+            </dict>
+        </dict>    
+
+        <dict>
+            <key>name</key>
+            <string>Value localised</string>
+
+            <key>scope</key>
+            <string>value.localised</string>
+
+            <key>settings</key>
+            <dict>
+                <key>foreground</key>
+                <string>#ffaaaa</string>
+            </dict>
+        </dict>    
+        <dict>
+            <key>name</key>
+            <string>Value User defined</string>
+
+            <key>scope</key>
+            <string>value.user.defined</string>
+
+            <key>settings</key>
+            <dict>
+                <key>foreground</key>
+                <string>#ffa500</string>
+            </dict>
+        </dict> 
+        <dict>
+            <key>name</key>
+            <string>Block general</string>
+
+            <key>scope</key>
+            <string>effect.block.keyword.general</string>
+
+            <key>settings</key>
+            <dict>
+                <key>foreground</key>
+                <string>#f23456</string>
+            </dict>
+        </dict>   
+
+        <dict>
+            <key>name</key>
+            <string>Commented</string>
+
+            <key>scope</key>
+            <string>comment</string>
+
+            <key>settings</key>
+            <dict>
+                <key>fontStyle</key>
+                <string>italic</string>
+                <key>foreground</key>
+                <string>#d3d3d3</string>
+            </dict>
+        </dict>   
+
+    </array>
+</dict>
+</plist>

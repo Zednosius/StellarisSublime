@@ -1,0 +1,366 @@
+%YAML 1.2
+---
+# See http://www.sublimetext.com/docs/3/syntax.html
+#The base level syntax file
+#TODO: Rename to Stellaris.sublime-syntax
+# These are of particular interest
+#(events, fleet_event)
+#(events, planet_event)
+#(events, country_event)
+#(events, pop_faction_event)
+#(events, ship_event)
+#(events, event)
+#(events, pop_event)
+#(anomalies, anomaly)
+#(anomalies, anomaly_category)
+#then one for general ones
+
+file_extensions: 
+  - syntaxtest
+hidden: true
+scope: effect tile
+
+variables:
+  equals_open_brace: '\s*(=)\s*({)'
+  value_with_dots: '(-?(?:\w|:|\.)+)'
+  user_keyword: ((?:\w|:)+)
+
+contexts:
+  main:
+  - match: '(?i)\b(random_army)\b{{equals_open_brace}}'
+    captures:
+      1: keyword.defined.block.altering
+      2: sign.equals
+      3: brace.open
+    push:
+      - meta_scope: effect army
+      - match: \b(limit)\b{{equals_open_brace}}
+        captures:
+          1: keyword.defined.block
+          2: sign.equals
+          3: brace.open
+        push: 'Packages/Stellaris/hidden/army_condition.sublime-syntax'
+
+      - match: '(?<=})' #When the pushed condition file closes, we'll have a closing brace behind
+        set: 'Packages/Stellaris/hidden/army_effect.sublime-syntax'
+
+      - match: '(?!limit)(?=\w)'
+        set: 'Packages/Stellaris/hidden/army_effect.sublime-syntax'
+  - match: '(?i)\b(random_ambient_object|every_ambient_object)\b{{equals_open_brace}}'
+    captures:
+      1: keyword.defined.block.altering
+      2: sign.equals
+      3: brace.open
+    push:
+      - meta_scope: effect ambient_object
+      - match: \b(limit)\b{{equals_open_brace}}
+        captures:
+          1: keyword.defined.block
+          2: sign.equals
+          3: brace.open
+        push: 'Packages/Stellaris/hidden/ambient_object_condition.sublime-syntax'
+
+      - match: '(?<=})' #When the pushed condition file closes, we'll have a closing brace behind
+        set: 'Packages/Stellaris/hidden/ambient_object_effect.sublime-syntax'
+
+      - match: '(?!limit)(?=\w)'
+        set: 'Packages/Stellaris/hidden/ambient_object_effect.sublime-syntax'
+  - match: '(?i)\b(random_country|every_country)\b{{equals_open_brace}}'
+    captures:
+      1: keyword.defined.block.altering
+      2: sign.equals
+      3: brace.open
+    push:
+      - meta_scope: effect country
+      - match: \b(limit)\b{{equals_open_brace}}
+        captures:
+          1: keyword.defined.block
+          2: sign.equals
+          3: brace.open
+        push: 'Packages/Stellaris/hidden/country_condition.sublime-syntax'
+
+      - match: '(?<=})' #When the pushed condition file closes, we'll have a closing brace behind
+        set: 'Packages/Stellaris/hidden/country_effect.sublime-syntax'
+
+      - match: '(?!limit)(?=\w)'
+        set: 'Packages/Stellaris/hidden/country_effect.sublime-syntax'
+  - match: '(?i)\b(random_system|every_rim_system|random_rim_system|closest_system)\b{{equals_open_brace}}'
+    captures:
+      1: keyword.defined.block.altering
+      2: sign.equals
+      3: brace.open
+    push:
+      - meta_scope: effect system
+      - match: \b(limit)\b{{equals_open_brace}}
+        captures:
+          1: keyword.defined.block
+          2: sign.equals
+          3: brace.open
+        push: 'Packages/Stellaris/hidden/system_condition.sublime-syntax'
+
+      - match: '(?<=})' #When the pushed condition file closes, we'll have a closing brace behind
+        set: 'Packages/Stellaris/hidden/system_effect.sublime-syntax'
+
+      - match: '(?!limit)(?=\w)'
+        set: 'Packages/Stellaris/hidden/system_effect.sublime-syntax'
+  - match: '(?i)\b(every_pop)\b{{equals_open_brace}}'
+    captures:
+      1: keyword.defined.block.altering
+      2: sign.equals
+      3: brace.open
+    push:
+      - meta_scope: effect pop
+      - match: \b(limit)\b{{equals_open_brace}}
+        captures:
+          1: keyword.defined.block
+          2: sign.equals
+          3: brace.open
+        push: 'Packages/Stellaris/hidden/pop_condition.sublime-syntax'
+
+      - match: '(?<=})' #When the pushed condition file closes, we'll have a closing brace behind
+        set: 'Packages/Stellaris/hidden/pop_effect.sublime-syntax'
+
+      - match: '(?!limit)(?=\w)'
+        set: 'Packages/Stellaris/hidden/pop_effect.sublime-syntax'
+  - match: '(?i)\b(random_planet|every_planet)\b{{equals_open_brace}}'
+    captures:
+      1: keyword.defined.block.altering
+      2: sign.equals
+      3: brace.open
+    push:
+      - meta_scope: effect planet
+      - match: \b(limit)\b{{equals_open_brace}}
+        captures:
+          1: keyword.defined.block
+          2: sign.equals
+          3: brace.open
+        push: 'Packages/Stellaris/hidden/planet_condition.sublime-syntax'
+
+      - match: '(?<=})' #When the pushed condition file closes, we'll have a closing brace behind
+        set: 'Packages/Stellaris/hidden/planet_effect.sublime-syntax'
+
+      - match: '(?!limit)(?=\w)'
+        set: 'Packages/Stellaris/hidden/planet_effect.sublime-syntax'
+  - match: '(?i)\b(random_neighboring_tile|every_neighboring_tile)\b{{equals_open_brace}}'
+    captures:
+      1: keyword.defined.block.altering
+      2: sign.equals
+      3: brace.open
+    push:
+      - meta_scope: effect tile
+      - match: \b(limit)\b{{equals_open_brace}}
+        captures:
+          1: keyword.defined.block
+          2: sign.equals
+          3: brace.open
+        push: 'Packages/Stellaris/hidden/tile_condition.sublime-syntax'
+
+      - match: '(?<=})' #When the pushed condition file closes, we'll have a closing brace behind
+        set: main
+
+      - match: '(?!limit)(?=\w)'
+        set: main
+  - match: '(?i)\b(every_ship)\b{{equals_open_brace}}'
+    captures:
+      1: keyword.defined.block.altering
+      2: sign.equals
+      3: brace.open
+    push:
+      - meta_scope: effect ship
+      - match: \b(limit)\b{{equals_open_brace}}
+        captures:
+          1: keyword.defined.block
+          2: sign.equals
+          3: brace.open
+        push: 'Packages/Stellaris/hidden/ship_condition.sublime-syntax'
+
+      - match: '(?<=})' #When the pushed condition file closes, we'll have a closing brace behind
+        set: 'Packages/Stellaris/hidden/ship_effect.sublime-syntax'
+
+      - match: '(?!limit)(?=\w)'
+        set: 'Packages/Stellaris/hidden/ship_effect.sublime-syntax'
+  - match: '(?i)\b(last_created_ambient_object)\b{{equals_open_brace}}'
+    captures:
+      1: keyword.defined.block.altering
+      2: sign.equals
+      3: brace.open
+    push: 'Packages/Stellaris/hidden/ambient_object_effect.sublime-syntax'
+  - match: '(?i)\b(last_created_country)\b{{equals_open_brace}}'
+    captures:
+      1: keyword.defined.block.altering
+      2: sign.equals
+      3: brace.open
+    push: 'Packages/Stellaris/hidden/country_effect.sublime-syntax'
+  - match: '(?i)\b(last_created_pop)\b{{equals_open_brace}}'
+    captures:
+      1: keyword.defined.block.altering
+      2: sign.equals
+      3: brace.open
+    push: 'Packages/Stellaris/hidden/pop_effect.sublime-syntax'
+  - match: '(?i)\b(last_create_pop_faction)\b{{equals_open_brace}}'
+    captures:
+      1: keyword.defined.block.altering
+      2: sign.equals
+      3: brace.open
+    push: 'Packages/Stellaris/hidden/pop_faction_effect.sublime-syntax'
+  - match: '(?i)\b(last_created_fleet)\b{{equals_open_brace}}'
+    captures:
+      1: keyword.defined.block.altering
+      2: sign.equals
+      3: brace.open
+    push: 'Packages/Stellaris/hidden/fleet_effect.sublime-syntax'
+  - match: '(?i)\b(last_created_leader)\b{{equals_open_brace}}'
+    captures:
+      1: keyword.defined.block.altering
+      2: sign.equals
+      3: brace.open
+    push: 'Packages/Stellaris/hidden/leader_effect.sublime-syntax'
+
+  - include: 'Packages/Stellaris/hidden/constant_scopes.sublime-syntax'
+
+  - match: '\b(switch)\b{{equals_open_brace}}'
+    captures: 
+      1: keyword.defined.block.constant
+      2: sign.equals
+      3: brace.open  
+    push: main
+
+  - match: '(?i)\b(hidden_effect|custom_tooltip|random|random_list|create_species|create_country|create_fleet|create_ambient_object|set_timed_global_flag|switch)\b{{equals_open_brace}}'
+    captures:
+      1: keyword.defined.block.constant
+      2: sign.equals
+      3: brace.open
+    push: main
+  - match: '(?i)\b(if|while)\b{{equals_open_brace}}'
+    captures:
+      1: keyword.defined.block.altering
+      2: sign.equals
+      3: brace.open
+    push:
+      - meta_scope: effect tile
+      - match: \b(limit)\b{{equals_open_brace}}
+        captures:
+          1: keyword.defined.block
+          2: sign.equals
+          3: brace.open
+        push: 'Packages/Stellaris/hidden/tile_effect.sublime-syntax'
+
+      - match: '(?<=})' #When the pushed condition file closes, we'll have a closing brace behind
+        set: main
+
+      - match: '(?!limit)(?=\w)'
+        set: main
+
+
+  - match: '(?i)\b(fromfromfrom|fromfrom|from|prevprevprev|prevprev|prev|root|\w+:\w+)\b{{equals_open_brace}}'
+    captures:
+      1: effect.block.keyword.general
+      2: sign.equals
+      3: brace.open
+    push: user_define_scope
+
+  #SINGLE VALUE KEYWORDS
+  - match: '(?i)\b(add_deposit|clear_deposits|set_building|remove_building|set_blocker|remove_blocker|set_ruined|custom_tooltip|random|remove_global_flag|set_global_flag|save_event_target_as|save_global_event_target_as|break|destroy_fleet|destroy_ambient_object|custom_tooltip|random|remove_global_flag|set_global_flag|save_event_target_as|save_global_event_target_as|break|destroy_fleet|destroy_ambient_object)\b\s*(=)\s*((?:\w|:|\.)+)'
+    captures:
+      1: keyword.defined.value
+      2: sign.equals
+      3: value.user.defined
+  - match: '(?i)\b(add_deposit|clear_deposits|set_building|remove_building|set_blocker|remove_blocker|set_ruined|custom_tooltip|random|remove_global_flag|set_global_flag|save_event_target_as|save_global_event_target_as|break|destroy_fleet|destroy_ambient_object|custom_tooltip|random|remove_global_flag|set_global_flag|save_event_target_as|save_global_event_target_as|break|destroy_fleet|destroy_ambient_object)\b\s*(=)\s*(")' #SomeLocalisedValue
+    captures:
+      1: keyword.defined.value
+      2: sign.equals
+      3: value.localised
+    push: localised
+
+  #Unknown scope matches
+  - match: '{{user_keyword}}\s*(=)\s*{{value_with_dots}}'
+    captures:
+      1: keyword.user.defined.value
+      2: sign.equals
+      3: value.user.defined
+
+  - match: '{user_keyword}}\s*(=)\s*"'
+    captures:
+      1: keyword.user.defined.value
+      2: sign.equals
+      3: value.localised
+    push: localised
+
+  #Unknown scope matches
+  - match: '{user_keyword}}\s*(=)\s*(@(?:\w|\.|:)+)'
+    captures:
+      1: keyword.user.defined.value
+      2: sign.equals
+      3: value.user.defined.constant
+
+  - match: '{{user_keyword}}{{equals_open_brace}}'
+    captures:
+      1: keyword.user.defined.block
+      2: sign.equals
+      3: brace.open
+    push: main
+
+  - include: eat_end_brace
+  - match: '#.*'
+    scope: comment
+
+
+  localised:
+  - meta_scope: 'value.localised'
+  - match: '"'
+    pop: true
+
+  eat_end_brace:
+    - match: "}"
+      scope: brace.end
+      pop: true
+
+  user_define_scope:
+    - meta_content_scope: comment
+    - match: '(?i)#\s*global'
+      scope: user_defined_scope
+      set: 'Packages/Stellaris/hidden/global_effect.sublime-syntax'
+    - match: '(?i)#\s*country'
+      scope: user_defined_scope
+      set: 'Packages/Stellaris/hidden/country_effect.sublime-syntax'
+    - match: '(?i)#\s*sector'
+      scope: user_defined_scope
+      set: 'Packages/Stellaris/hidden/sector_effect.sublime-syntax'
+    - match: '(?i)#\s*system'
+      scope: user_defined_scope
+      set: 'Packages/Stellaris/hidden/system_effect.sublime-syntax'
+    - match: '(?i)#\s*planet'
+      scope: user_defined_scope
+      set: 'Packages/Stellaris/hidden/planet_effect.sublime-syntax'
+    - match: '(?i)#\s*ambient_object'
+      scope: user_defined_scope
+      set: 'Packages/Stellaris/hidden/ambient_object_effect.sublime-syntax'
+    - match: '(?i)#\s*fleet'
+      scope: user_defined_scope
+      set: 'Packages/Stellaris/hidden/fleet_effect.sublime-syntax'
+    - match: '(?i)#\s*ship'
+      scope: user_defined_scope
+      set: 'Packages/Stellaris/hidden/ship_effect.sublime-syntax'
+    - match: '(?i)#\s*pop'
+      scope: user_defined_scope
+      set: 'Packages/Stellaris/hidden/pop_effect.sublime-syntax'
+    - match: '(?i)#\s*pop_faction'
+      scope: user_defined_scope
+      set: 'Packages/Stellaris/hidden/pop_faction_effect.sublime-syntax'
+    - match: '(?i)#\s*leader'
+      scope: user_defined_scope
+      set: 'Packages/Stellaris/hidden/leader_effect.sublime-syntax'
+    - match: '(?i)#\s*war'
+      scope: user_defined_scope
+      set: 'Packages/Stellaris/hidden/war_effect.sublime-syntax'
+    - match: '(?i)#\s*army'
+      scope: user_defined_scope
+      set: 'Packages/Stellaris/hidden/army_effect.sublime-syntax'
+    - match: '(?i)#\s*tile'
+      scope: user_defined_scope
+      set: main
+    - match: '\n'
+      set: main
+    - match: '(?=\w)'
+      set: main
+      #pop: true    
