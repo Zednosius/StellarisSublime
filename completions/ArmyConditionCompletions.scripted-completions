@@ -1,9 +1,0 @@
-
-{
-	"scope":"block.condition block.Army",
-	"completions":
-	[
-		{ "trigger": "army_type	checks what type an army type is", "contents": "army_type" },
-		{ "trigger": "is_army	checks if an army is of the same as the scope", "contents": "is_army" }
-	]
-}

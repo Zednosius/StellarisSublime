@@ -1,9 +1,0 @@
-
-{
-	"scope":"block.effect block.Pop_faction",
-	"completions":
-	[
-		{ "trigger": "add_support	Adds to a pop factions Support level", "contents": "add_support" },
-		{ "trigger": "set_support	Sets a pop factions Support level", "contents": "set_support" }
-	]
-}

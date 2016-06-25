@@ -1,8 +1,0 @@
-
-{
-	"scope":"block.condition block.Sector",
-	"completions":
-	[
-		{ "trigger": "is_core_sector	Checks if the current sector is the country's core sector", "contents": "is_core_sector" }
-	]
-}
