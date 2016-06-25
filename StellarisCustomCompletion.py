@@ -40,7 +40,7 @@ class StellarisScriptedCompletion(sublime_plugin.EventListener):
         if len(scopelist) >= 2:
             (blocktype,scoeptype) = scopelist[-2:]
             scope = " ".join(scopelist[-2:])
-            return self.scope_completion_dict[scope]# + self.scope_completion_dict[blocktype+" block.Any"]
+            return self.scope_completion_dict.get(scope,[])# + self.scope_completion_dict[blocktype+" block.Any"]
         else:
             return []
 
