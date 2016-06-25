@@ -1,0 +1,10 @@
+
+{
+	"scope":"constant create_colony",
+	"completions":
+	[
+		{ "trigger": "owner	Value", "contents": "owner = $1" },
+		{ "trigger": "ethos	Value", "contents": "ethos = $1" },
+		{ "trigger": "species	Value", "contents": "species = $1" }
+	]
+}

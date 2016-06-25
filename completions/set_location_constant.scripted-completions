@@ -1,0 +1,10 @@
+
+{
+	"scope":"constant set_location",
+	"completions":
+	[
+		{ "trigger": "distance	Value", "contents": "distance = {\n\t$1\n }" },
+		{ "trigger": "angle	Value", "contents": "angle = $1" },
+		{ "trigger": "target	Value", "contents": "target = $1" }
+	]
+}

@@ -1,0 +1,13 @@
+
+{
+	"scope":"constant create_point_of_interest",
+	"completions":
+	[
+		{ "trigger": "category	Value", "contents": "category = $1" },
+		{ "trigger": "name	Value", "contents": "name = $1" },
+		{ "trigger": "event_chain	Value", "contents": "event_chain = $1" },
+		{ "trigger": "location	Value", "contents": "location = $1" },
+		{ "trigger": "id	Value", "contents": "id = $1" },
+		{ "trigger": "desc	Value", "contents": "desc = $1" }
+	]
+}

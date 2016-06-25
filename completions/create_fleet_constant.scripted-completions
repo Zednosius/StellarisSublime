@@ -1,0 +1,8 @@
+
+{
+	"scope":"constant create_fleet",
+	"completions":
+	[
+		{ "trigger": "name	Value", "contents": "name = $1" }
+	]
+}

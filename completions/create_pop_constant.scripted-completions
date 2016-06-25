@@ -1,0 +1,9 @@
+
+{
+	"scope":"constant create_pop",
+	"completions":
+	[
+		{ "trigger": "ethos	Value", "contents": "ethos = $1" },
+		{ "trigger": "species	Value", "contents": "species = $1" }
+	]
+}

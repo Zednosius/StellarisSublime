@@ -1,0 +1,10 @@
+
+{
+	"scope":"constant add_event_chain_counter",
+	"completions":
+	[
+		{ "trigger": "amount	Value", "contents": "amount = $1" },
+		{ "trigger": "event_chain	Value", "contents": "event_chain = $1" },
+		{ "trigger": "counter	Value", "contents": "counter = $1" }
+	]
+}

@@ -1,0 +1,9 @@
+
+{
+	"scope":"constant create_spaceport",
+	"completions":
+	[
+		{ "trigger": "owner	Value", "contents": "owner = $1" },
+		{ "trigger": "initial_module	Value", "contents": "initial_module = $1" }
+	]
+}

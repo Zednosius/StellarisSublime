@@ -1,0 +1,9 @@
+
+{
+	"scope":"constant clear_uncharted_space",
+	"completions":
+	[
+		{ "trigger": "from	Value", "contents": "from = $1" },
+		{ "trigger": "radius	Value", "contents": "radius = $1" }
+	]
+}

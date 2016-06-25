@@ -1,0 +1,12 @@
+
+{
+	"scope":"constant create_army_transport",
+	"completions":
+	[
+		{ "trigger": "army_name	Value", "contents": "army_name = $1" },
+		{ "trigger": "ship_name	Value", "contents": "ship_name = $1" },
+		{ "trigger": "army_type	Value", "contents": "army_type = $1" },
+		{ "trigger": "graphical_culture	Value", "contents": "graphical_culture = {\n\t$1\n }" },
+		{ "trigger": "species	Value", "contents": "species = $1" }
+	]
+}

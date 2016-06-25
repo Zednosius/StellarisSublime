@@ -1,0 +1,9 @@
+
+{
+	"scope":"constant establish_contact",
+	"completions":
+	[
+		{ "trigger": "who	Value", "contents": "who = $1" },
+		{ "trigger": "location	Value", "contents": "location = $1" }
+	]
+}

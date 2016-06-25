@@ -1,0 +1,12 @@
+
+{
+	"scope":"constant create_rebels",
+	"completions":
+	[
+		{ "trigger": "species	Value", "contents": "species = $1" },
+		{ "trigger": "flag	Value", "contents": "flag = $1" },
+		{ "trigger": "ethos	Value", "contents": "ethos = $1" },
+		{ "trigger": "name	Value", "contents": "name = $1" },
+		{ "trigger": "government	Value", "contents": "government = $1" }
+	]
+}

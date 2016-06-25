@@ -1,0 +1,9 @@
+
+{
+	"scope":"constant kill_leader",
+	"completions":
+	[
+		{ "trigger": "show_notification	Value", "contents": "show_notification = $1" },
+		{ "trigger": "type	Value", "contents": "type = $1" }
+	]
+}

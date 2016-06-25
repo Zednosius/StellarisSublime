@@ -1,0 +1,9 @@
+
+{
+	"scope":"constant purge",
+	"completions":
+	[
+		{ "trigger": "potential	Value", "contents": "potential = $1" },
+		{ "trigger": "option	Value", "contents": "option = $1" }
+	]
+}

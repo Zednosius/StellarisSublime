@@ -1,0 +1,9 @@
+
+{
+	"scope":"constant set_subject_of",
+	"completions":
+	[
+		{ "trigger": "who	Value", "contents": "who = $1" },
+		{ "trigger": "subject_type	Value", "contents": "subject_type = $1" }
+	]
+}

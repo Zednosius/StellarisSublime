@@ -1,0 +1,9 @@
+
+{
+	"scope":"constant create_military_fleet",
+	"completions":
+	[
+		{ "trigger": "owner	Value", "contents": "owner = $1" },
+		{ "trigger": "scaled_size	Value", "contents": "scaled_size = $1" }
+	]
+}

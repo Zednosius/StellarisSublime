@@ -1,0 +1,10 @@
+
+{
+	"scope":"constant set_timed_relation_flag",
+	"completions":
+	[
+		{ "trigger": "flag	Value", "contents": "flag = $1" },
+		{ "trigger": "who	Value", "contents": "who = $1" },
+		{ "trigger": "days	Value", "contents": "days = $1" }
+	]
+}

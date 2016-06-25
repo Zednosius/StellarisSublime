@@ -1,0 +1,9 @@
+
+{
+	"scope":"constant create_wormhole_station",
+	"completions":
+	[
+		{ "trigger": "owner	Value", "contents": "owner = $1" },
+		{ "trigger": "angle	Value", "contents": "angle = $1" }
+	]
+}

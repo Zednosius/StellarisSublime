@@ -1,0 +1,10 @@
+
+{
+	"scope":"constant change_country_flag",
+	"completions":
+	[
+		{ "trigger": "colors	Value", "contents": "colors = $1" },
+		{ "trigger": "background	Value", "contents": "background = $1" },
+		{ "trigger": "icon	Value", "contents": "icon = $1" }
+	]
+}

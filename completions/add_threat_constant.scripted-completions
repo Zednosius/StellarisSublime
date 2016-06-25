@@ -1,0 +1,9 @@
+
+{
+	"scope":"constant add_threat",
+	"completions":
+	[
+		{ "trigger": "amount	Value", "contents": "amount = $1" },
+		{ "trigger": "who	Value", "contents": "who = $1" }
+	]
+}

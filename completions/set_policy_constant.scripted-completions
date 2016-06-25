@@ -1,0 +1,10 @@
+
+{
+	"scope":"constant set_policy",
+	"completions":
+	[
+		{ "trigger": "policy	Value", "contents": "policy = $1" },
+		{ "trigger": "cooldown	Value", "contents": "cooldown = $1" },
+		{ "trigger": "option	Value", "contents": "option = $1" }
+	]
+}

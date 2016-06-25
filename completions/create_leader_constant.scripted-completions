@@ -1,0 +1,12 @@
+
+{
+	"scope":"constant create_leader",
+	"completions":
+	[
+		{ "trigger": "name	Value", "contents": "name = $1" },
+		{ "trigger": "traits	Value", "contents": "traits = $1" },
+		{ "trigger": "skill	Value", "contents": "skill = $1" },
+		{ "trigger": "type	Value", "contents": "type = $1" },
+		{ "trigger": "species	Value", "contents": "species = $1" }
+	]
+}

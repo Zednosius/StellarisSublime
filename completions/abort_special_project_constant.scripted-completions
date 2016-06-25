@@ -1,0 +1,9 @@
+
+{
+	"scope":"constant abort_special_project",
+	"completions":
+	[
+		{ "trigger": "type	Value", "contents": "type = $1" },
+		{ "trigger": "location	Value", "contents": "location = $1" }
+	]
+}

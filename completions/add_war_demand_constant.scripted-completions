@@ -1,0 +1,11 @@
+
+{
+	"scope":"constant add_war_demand",
+	"completions":
+	[
+		{ "trigger": "type	Value", "contents": "type = $1" },
+		{ "trigger": "parameter:country	Value", "contents": "parameter:country = $1" },
+		{ "trigger": "target	Value", "contents": "target = $1" },
+		{ "trigger": "warscore_cost	Value", "contents": "warscore_cost = $1" }
+	]
+}

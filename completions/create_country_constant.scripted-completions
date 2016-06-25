@@ -1,0 +1,18 @@
+
+{
+	"scope":"constant create_country",
+	"completions":
+	[
+		{ "trigger": "released_from_country	Value", "contents": "released_from_country = $1" },
+		{ "trigger": "name	Value", "contents": "name = $1" },
+		{ "trigger": "day_zero_contact	Value", "contents": "day_zero_contact = $1" },
+		{ "trigger": "government	Value", "contents": "government = $1" },
+		{ "trigger": "ignore_initial_colony_error	Value", "contents": "ignore_initial_colony_error = $1" },
+		{ "trigger": "name_list	Value", "contents": "name_list = $1" },
+		{ "trigger": "flag	Value", "contents": "flag = $1" },
+		{ "trigger": "ethos	Value", "contents": "ethos = $1" },
+		{ "trigger": "released_by_country	Value", "contents": "released_by_country = $1" },
+		{ "trigger": "type	Value", "contents": "type = $1" },
+		{ "trigger": "species	Value", "contents": "species = $1" }
+	]
+}

@@ -1,0 +1,10 @@
+
+{
+	"scope":"constant create_pop_faction",
+	"completions":
+	[
+		{ "trigger": "parameter:country	Value", "contents": "parameter:country = $1" },
+		{ "trigger": "type	Value", "contents": "type = $1" },
+		{ "trigger": "pop	Value", "contents": "pop = $1" }
+	]
+}

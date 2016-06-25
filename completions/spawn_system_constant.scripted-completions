@@ -1,0 +1,10 @@
+
+{
+	"scope":"constant spawn_system",
+	"completions":
+	[
+		{ "trigger": "max_distance	Value", "contents": "max_distance = $1" },
+		{ "trigger": "min_distance	Value", "contents": "min_distance = $1" },
+		{ "trigger": "initializer	Value", "contents": "initializer = $1" }
+	]
+}

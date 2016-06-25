@@ -1,0 +1,14 @@
+
+{
+	"scope":"constant create_species",
+	"completions":
+	[
+		{ "trigger": "name	Value", "contents": "name = $1" },
+		{ "trigger": "immortal	Value", "contents": "immortal = $1" },
+		{ "trigger": "traits	Value", "contents": "traits = $1" },
+		{ "trigger": "portrait	Value", "contents": "portrait = $1" },
+		{ "trigger": "plural	Value", "contents": "plural = $1" },
+		{ "trigger": "class	Value", "contents": "class = $1" },
+		{ "trigger": "homeworld	Value", "contents": "homeworld = $1" }
+	]
+}

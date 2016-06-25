@@ -1,0 +1,9 @@
+
+{
+	"scope":"constant surveyed",
+	"completions":
+	[
+		{ "trigger": "surveyor	Value", "contents": "surveyor = $1" },
+		{ "trigger": "set_surveyed	Value", "contents": "set_surveyed = $1" }
+	]
+}

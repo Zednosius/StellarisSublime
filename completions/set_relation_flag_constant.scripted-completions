@@ -1,0 +1,9 @@
+
+{
+	"scope":"constant set_relation_flag",
+	"completions":
+	[
+		{ "trigger": "flag	Value", "contents": "flag = $1" },
+		{ "trigger": "who	Value", "contents": "who = $1" }
+	]
+}

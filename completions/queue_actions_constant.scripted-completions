@@ -1,0 +1,8 @@
+
+{
+	"scope":"constant queue_actions",
+	"completions":
+	[
+		{ "trigger": "repeat	Value", "contents": "repeat = $1" }
+	]
+}

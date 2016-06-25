@@ -1,0 +1,10 @@
+
+{
+	"scope":"constant add_resource",
+	"completions":
+	[
+		{ "trigger": "amount	Value", "contents": "amount = $1" },
+		{ "trigger": "resource	Value", "contents": "resource = $1" },
+		{ "trigger": "replace	Value", "contents": "replace = $1" }
+	]
+}

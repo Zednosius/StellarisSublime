@@ -1,0 +1,9 @@
+
+{
+	"scope":"constant set_timed_star_flag",
+	"completions":
+	[
+		{ "trigger": "flag	Value", "contents": "flag = $1" },
+		{ "trigger": "days	Value", "contents": "days = $1" }
+	]
+}

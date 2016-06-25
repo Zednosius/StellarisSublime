@@ -1,0 +1,9 @@
+
+{
+	"scope":"constant set_spaceport_module",
+	"completions":
+	[
+		{ "trigger": "slot	Value", "contents": "slot = $1" },
+		{ "trigger": "module	Value", "contents": "module = $1" }
+	]
+}

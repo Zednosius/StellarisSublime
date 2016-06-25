@@ -1,0 +1,9 @@
+
+{
+	"scope":"constant modify_species",
+	"completions":
+	[
+		{ "trigger": "add_trait	Value", "contents": "add_trait = $1" },
+		{ "trigger": "species	Value", "contents": "species = $1" }
+	]
+}

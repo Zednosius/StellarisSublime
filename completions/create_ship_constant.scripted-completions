@@ -1,0 +1,11 @@
+
+{
+	"scope":"constant create_ship",
+	"completions":
+	[
+		{ "trigger": "graphical_culture	Value", "contents": "graphical_culture = {\n\t$1\n }" },
+		{ "trigger": "design	Value", "contents": "design = $1" },
+		{ "trigger": "name	Value", "contents": "name = $1" },
+		{ "trigger": "prefix	Value", "contents": "prefix = $1" }
+	]
+}

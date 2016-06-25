@@ -1,0 +1,11 @@
+
+{
+	"scope":"constant add_monthly_resource_mult",
+	"completions":
+	[
+		{ "trigger": "resource	Value", "contents": "resource = $1" },
+		{ "trigger": "min	Value", "contents": "min = $1" },
+		{ "trigger": "max	Value", "contents": "max = $1" },
+		{ "trigger": "value	Value", "contents": "value = $1" }
+	]
+}

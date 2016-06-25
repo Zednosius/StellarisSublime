@@ -1,0 +1,9 @@
+
+{
+	"scope":"constant create_ambient_object",
+	"completions":
+	[
+		{ "trigger": "type	Value", "contents": "type = $1" },
+		{ "trigger": "location	Value", "contents": "location = $1" }
+	]
+}

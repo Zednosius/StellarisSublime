@@ -1,0 +1,10 @@
+
+{
+	"scope":"constant create_ship_design",
+	"completions":
+	[
+		{ "trigger": "design	Value", "contents": "design = $1" },
+		{ "trigger": "ftl	Value", "contents": "ftl = $1" },
+		{ "trigger": "random_existing_design	Value", "contents": "random_existing_design = $1" }
+	]
+}

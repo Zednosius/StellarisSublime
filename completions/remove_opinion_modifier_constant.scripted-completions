@@ -1,0 +1,9 @@
+
+{
+	"scope":"constant remove_opinion_modifier",
+	"completions":
+	[
+		{ "trigger": "modifier	Value", "contents": "modifier = $1" },
+		{ "trigger": "who	Value", "contents": "who = $1" }
+	]
+}

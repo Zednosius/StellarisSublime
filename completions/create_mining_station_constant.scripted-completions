@@ -1,0 +1,8 @@
+
+{
+	"scope":"constant create_mining_station",
+	"completions":
+	[
+		{ "trigger": "owner	Value", "contents": "owner = $1" }
+	]
+}

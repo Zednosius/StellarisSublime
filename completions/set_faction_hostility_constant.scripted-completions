@@ -1,0 +1,8 @@
+
+{
+	"scope":"constant set_faction_hostility",
+	"completions":
+	[
+		{ "trigger": "set_hostile	Value", "contents": "set_hostile = $1" }
+	]
+}

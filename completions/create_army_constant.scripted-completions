@@ -1,0 +1,11 @@
+
+{
+	"scope":"constant create_army",
+	"completions":
+	[
+		{ "trigger": "name	Value", "contents": "name = $1" },
+		{ "trigger": "owner	Value", "contents": "owner = $1" },
+		{ "trigger": "type	Value", "contents": "type = $1" },
+		{ "trigger": "species	Value", "contents": "species = $1" }
+	]
+}

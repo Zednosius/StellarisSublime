@@ -1,0 +1,9 @@
+
+{
+	"scope":"constant change_variable",
+	"completions":
+	[
+		{ "trigger": "value	Value", "contents": "value = $1" },
+		{ "trigger": "which	Value", "contents": "which = $1" }
+	]
+}

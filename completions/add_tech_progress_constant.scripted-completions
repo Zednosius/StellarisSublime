@@ -1,0 +1,9 @@
+
+{
+	"scope":"constant add_tech_progress",
+	"completions":
+	[
+		{ "trigger": "progress	Value", "contents": "progress = $1" },
+		{ "trigger": "tech	Value", "contents": "tech = $1" }
+	]
+}

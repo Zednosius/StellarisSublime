@@ -1,0 +1,9 @@
+
+{
+	"scope":"constant begin_event_chain",
+	"completions":
+	[
+		{ "trigger": "event_chain	Value", "contents": "event_chain = $1" },
+		{ "trigger": "target	Value", "contents": "target = $1" }
+	]
+}
