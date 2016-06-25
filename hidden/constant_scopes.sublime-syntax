@@ -84,14 +84,14 @@ contexts:
             1: value.user.defined.constant
         - include: eat_end_brace
 
-    - match: '(?i)\b(random)\b{{equals_open_brace}}'
+    - match: '(?i)\b(set_timed_pop_flag)\b{{equals_open_brace}}'
       captures:
         1: keyword.defined.block.constant
         2: sign.equals
         3: brace.open
       push: 
-        - meta_content_scope: special constant random
-        - match: '(?i)\b(chance|last_created_fleet|create_fleet)\b\s*(=)'
+        - meta_content_scope: special constant set_timed_pop_flag
+        - match: '(?i)\b(flag|days)\b\s*(=)'
           captures:
             1: keyword.defined.value
             2: sign.equals
@@ -229,29 +229,6 @@ contexts:
         3: brace.open
       push: 
         - meta_content_scope: special constant set_timed_planet_flag
-        - match: '(?i)\b(flag|days)\b\s*(=)'
-          captures:
-            1: keyword.defined.value
-            2: sign.equals
-
-        - match: '"'
-          push: localised
-
-        - match: '(?<==)\s*{{value_with_dots}}'
-          captures:
-            1: value.user.defined
-        - match: '(?<==)\s*(@(?:\w|\.|:)+)'
-          captures:
-            1: value.user.defined.constant
-        - include: eat_end_brace
-
-    - match: '(?i)\b(set_timed_pop_flag)\b{{equals_open_brace}}'
-      captures:
-        1: keyword.defined.block.constant
-        2: sign.equals
-        3: brace.open
-      push: 
-        - meta_content_scope: special constant set_timed_pop_flag
         - match: '(?i)\b(flag|days)\b\s*(=)'
           captures:
             1: keyword.defined.value
