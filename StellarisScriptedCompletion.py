@@ -17,7 +17,7 @@ class StellarisScriptedCompletion(sublime_plugin.EventListener):
         #Completions are on tuple form (trigger\tHint, content)
         self.completion_list = []
         self.prefix_completion_dict = {}
-
+        self.scoped = {}
         # construct a dictionary from (tag, attribute[0]) -> [attribute]
         # self.tag_to_attributes = get_tag_to_attributes()
     def on_activated(self, view):
@@ -42,15 +42,17 @@ class StellarisScriptedCompletion(sublime_plugin.EventListener):
         return self.get_completions(view, prefix, locations)
 
     def get_completions(self, view, prefix, locations):
+        scope = " ".join(view.scope_name(locations[0]).split()[-2:])
         if prefix == '':
             completion_list = self.completion_list
         else:
             completion_list = self.prefix_completion_dict.get(prefix[0], [])
-        return completion_list
+        return completion_list+self.scoped.get(scope,[])
 
     #Scans through all scripted triggers and effects and appends them to the autocomplete list.
     def update_scripted_completions(self, view):
         self.completion_list = []
+        self.scoped = {}
         for base in view.window().folders():
             triggers_path = base+"/common/scripted_triggers/"
             effects_path  = base+"/common/scripted_effects/"
@@ -80,21 +82,33 @@ class StellarisScriptedCompletion(sublime_plugin.EventListener):
         #If it finds a new keyword, it uses the previous comment as hint (if any)
         with open(filepath,'r') as f:
             hint = ""
+            scope = ""
             for line in f:
-                if line.startswith("#"):
+                if line.startswith("#!"):
+                    scope = line[2:].strip()
+                elif line.startswith("#"):
                     hint = line[1:]
                 else:
                     match = self.regex.match(line)
                     if match and hint:
                         key = match.groups()[0]
-                        self.completion_list.append(make_completion(key,hint,key))
+                        completion = make_completion(key,hint,key)
+                        if not scope:
+                            self.completion_list.append(completion)
+                        else:
+                            self.scoped.setdefault(scope,[]).append(completion)
                     elif match:
                         key = match.groups()[0]
-                        self.completion_list.append(make_completion(key,("Scripted Trigger" if isTrigger else "Scripted Effect"),key))
+                        completion = make_completion(key,("Scripted Trigger" if isTrigger else "Scripted Effect"),key)
+                        if not scope:
+                            self.completion_list.append(completion)
+                        else:
+                            self.scoped.setdefault(scope,[]).append(completion)
                     else:
                         pass
                     #Throw away the hint makes us only match comments directly above the line with the effect/trigger name
                     hint = ""
+                    scope = ""
 
 
 
