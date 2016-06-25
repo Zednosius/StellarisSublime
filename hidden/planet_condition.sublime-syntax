@@ -17,6 +17,8 @@
 
 file_extensions: 
   - syntaxtest
+  - stellaris
+  - txt
 hidden: true
 scope: condition planet
 
@@ -169,7 +171,7 @@ contexts:
       3: brace.open  
     push: main
 
-  - match: '(?i)\b(distance|planet_size|can_colonize|is_surveyed|check_variable|habitability|any_research_station|count_pops|has_resource|is_ideal_planet_class|orbital_bombardment|has_point_of_interest|or|not|hidden_trigger|switch|custom_tooltip_fail|custom_tooltip)\b{{equals_open_brace}}'
+  - match: '(?i)\b(distance|planet_size|can_colonize|is_surveyed|check_variable|habitability|any_research_station|count_pops|has_resource|is_ideal_planet_class|orbital_bombardment|has_point_of_interest|or|not|and|hidden_trigger|switch|custom_tooltip_fail|custom_tooltip)\b{{equals_open_brace}}'
     captures:
       1: keyword.defined.block.constant
       2: sign.equals

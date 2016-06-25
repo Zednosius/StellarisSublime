@@ -17,6 +17,8 @@
 
 file_extensions: 
   - syntaxtest
+  - stellaris
+  - txt
 hidden: true
 scope: condition tile
 
@@ -113,7 +115,7 @@ contexts:
       3: brace.open  
     push: main
 
-  - match: '(?i)\b(or|not|hidden_trigger|switch|custom_tooltip_fail|custom_tooltip)\b{{equals_open_brace}}'
+  - match: '(?i)\b(or|not|and|hidden_trigger|switch|custom_tooltip_fail|custom_tooltip)\b{{equals_open_brace}}'
     captures:
       1: keyword.defined.block.constant
       2: sign.equals
@@ -148,12 +150,12 @@ contexts:
     push: user_define_scope
 
   #SINGLE VALUE KEYWORDS
-  - match: '(?i)\b(is_orbital_tile|is_ruined|has_prev_building|always|exists|is_same_value|is_scope_valid|is_ironman|text|custom_tooltip|always|exists|is_same_value|is_scope_valid|is_ironman|text|custom_tooltip)\b\s*(=)\s*((?:\w|:|\.)+)'
+  - match: '(?i)\b(is_orbital_tile|is_ruined|has_prev_building|has_blocker|has_deposit|always|exists|is_same_value|is_scope_valid|is_ironman|text|custom_tooltip|always|exists|is_same_value|is_scope_valid|is_ironman|text|custom_tooltip)\b\s*(=)\s*((?:\w|:|\.)+)'
     captures:
       1: keyword.defined.value
       2: sign.equals
       3: value.user.defined
-  - match: '(?i)\b(is_orbital_tile|is_ruined|has_prev_building|always|exists|is_same_value|is_scope_valid|is_ironman|text|custom_tooltip|always|exists|is_same_value|is_scope_valid|is_ironman|text|custom_tooltip)\b\s*(=)\s*(")' #SomeLocalisedValue
+  - match: '(?i)\b(is_orbital_tile|is_ruined|has_prev_building|has_blocker|has_deposit|always|exists|is_same_value|is_scope_valid|is_ironman|text|custom_tooltip|always|exists|is_same_value|is_scope_valid|is_ironman|text|custom_tooltip)\b\s*(=)\s*(")' #SomeLocalisedValue
     captures:
       1: keyword.defined.value
       2: sign.equals

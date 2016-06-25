@@ -17,6 +17,8 @@
 
 file_extensions: 
   - syntaxtest
+  - stellaris
+  - txt
 scope: source.stellaris
 
 variables:
@@ -30,35 +32,35 @@ prototype:
 
 contexts:
   main:
-    - match: '(event){{equals_open_brace}}' #Globally scoped, can only use stuff that goes to every/any item in the galaxy
+    - match: '(?i)(event){{equals_open_brace}}' #Globally scoped, can only use stuff that goes to every/any item in the galaxy
       scope: keyword.defined.block.altering
       push: event
 
-    - match: '(country_event){{equals_open_brace}}'
+    - match: '(?i)(country_event){{equals_open_brace}}'
       scope: keyword.defined.block.altering
       push: country_event
 
-    - match: '(planet_event){{equals_open_brace}}'
+    - match: '(?i)(planet_event){{equals_open_brace}}'
       scope: keyword.defined.block.altering
       push: planet_event
 
-    - match: '(pop_event){{equals_open_brace}}'
+    - match: '(?i)(pop_event){{equals_open_brace}}'
       scope: keyword.defined.block.altering
       push: pop_event
 
-    - match: '(pop_faction_event){{equals_open_brace}}'
+    - match: '(?i)(pop_faction_event){{equals_open_brace}}'
       scope: keyword.defined.block.altering
       push: pop_faction_event
 
-    - match: '(fleet_event){{equals_open_brace}}'
+    - match: '(?i)(fleet_event){{equals_open_brace}}'
       scope: keyword.defined.block.altering
       push: fleet_event
 
-    - match: '(ship_event){{equals_open_brace}}'
+    - match: '(?i)(ship_event){{equals_open_brace}}'
       scope: keyword.defined.block.altering
       push: ship_event
    # - match: 'anomaly{{equals_open_brace}}'
-    - match: '(anomaly_category){{equals_open_brace}}'
+    - match: '(?i)(anomaly_category){{equals_open_brace}}'
       captures:
         1: keyword.defined.block.altering
         2: sign.equals
@@ -86,13 +88,13 @@ contexts:
     - meta_scope: event
     - include: comment
     #Basic stuff that is generally always present
-    - match: '\b(id|picture|show_sound|is_triggered_only|location|hide_window){{equals_value_with_dots}}\b'
+    - match: '(?i)\b(id|picture|show_sound|is_triggered_only|location|hide_window|title|desc){{equals_value_with_dots}}\b'
       captures:
         1: keyword.defined.value
         2: sign.equals
         3: value.user.defined
-        
-    - match: '\b(title|desc)\b'
+
+    - match: '(?i)\b(title|desc)\b'
       scope: keyword.defined.value.localised
 
     - match: '"'
@@ -114,7 +116,7 @@ contexts:
   
   event: 
     - meta_scope: event
-    - match: '(trigger){{equals_open_brace}}'
+    - match: '(?i)(trigger){{equals_open_brace}}'
       captures:
         1: keyword.defined.block.constant
         2: sign.equals
@@ -122,7 +124,7 @@ contexts:
       push: 'Packages/Stellaris/hidden/global_condition.sublime-syntax'
     
     # Matches immediate block
-    - match: '(immediate){{equals_open_brace}}'
+    - match: '(?i)(immediate){{equals_open_brace}}'
       captures:
         1: keyword.defined.block.constant
         2: sign.equals
@@ -140,13 +142,13 @@ contexts:
   country_event:
     - meta_scope: event
     # Matches trigger match
-    - match: '(trigger){{equals_open_brace}}'
+    - match: '(?i)(trigger){{equals_open_brace}}'
       captures:
         1: keyword.defined.block.constant
         2: sign.equals
         3: brace.open
       push: 'Packages/Stellaris/hidden/country_condition.sublime-syntax'
-    - match: '(desc){{equals_open_brace}}'
+    - match: '(?i)(desc){{equals_open_brace}}'
       captures:
         1: keyword.defined.block.constant
         2: sign.equals
@@ -154,7 +156,7 @@ contexts:
       push: country_event
 
     # Matches immediate block
-    - match: '(immediate){{equals_open_brace}}'
+    - match: '(?i)(immediate){{equals_open_brace}}'
       captures:
         1: keyword.defined.block.constant
         2: sign.equals
@@ -162,7 +164,7 @@ contexts:
       push: 'Packages/Stellaris/hidden/country_effect.sublime-syntax'
     
     ## Matches Option block
-    - match: '(option){{equals_open_brace}}'
+    - match: '(?i)(option){{equals_open_brace}}'
       captures:
         1: keyword.defined.block.constant
         2: sign.equals
@@ -170,7 +172,7 @@ contexts:
       push:
         - meta_scope: effect country
         - include: option_name
-        - match: '(trigger){{equals_open_brace}}'
+        - match: '(?i)(trigger){{equals_open_brace}}'
           captures:
             1: keyword.defined.block.constant
             2: sign.equals
@@ -188,14 +190,14 @@ contexts:
   planet_event:
     - meta_scope: event
     # Matches trigger match
-    - match: '(trigger){{equals_open_brace}}'
+    - match: '(?i)(trigger){{equals_open_brace}}'
       captures:
         1: keyword.defined.block.constant
         2: sign.equals
         3: brace.open
       push: 'Packages/Stellaris/hidden/planet_condition.sublime-syntax'
 
-    - match: '(desc){{equals_open_brace}}'
+    - match: '(?i)(desc){{equals_open_brace}}'
       captures:
         1: keyword.defined.block.constant
         2: sign.equals
@@ -203,7 +205,7 @@ contexts:
       push: planet_event
 
     # Matches immediate block
-    - match: '(immediate){{equals_open_brace}}'
+    - match: '(?i)(immediate){{equals_open_brace}}'
       captures:
         1: keyword.defined.block.constant
         2: sign.equals
@@ -211,7 +213,7 @@ contexts:
       push: 'Packages/Stellaris/hidden/planet_effect.sublime-syntax'
 
     ## Matches Option block
-    - match: '(option){{equals_open_brace}}'
+    - match: '(?i)(option){{equals_open_brace}}'
       captures:
         1: keyword.defined.block.constant
         2: sign.equals
@@ -219,7 +221,7 @@ contexts:
       push:
         - meta_scope: effect planet
         - include: option_name
-        - match: '(trigger){{equals_open_brace}}'
+        - match: '(?i)(trigger){{equals_open_brace}}'
           captures:
             1: keyword.defined.block.constant
             2: sign.equals
@@ -237,14 +239,14 @@ contexts:
   pop_event:
     - meta_scope: event
     # Matches trigger match
-    - match: '(trigger){{equals_open_brace}}'
+    - match: '(?i)(trigger){{equals_open_brace}}'
       captures:
         1: keyword.defined.block.constant
         2: sign.equals
         3: brace.open
       push: 'Packages/Stellaris/hidden/pop_condition.sublime-syntax'
 
-    - match: '(desc){{equals_open_brace}}'
+    - match: '(?i)(desc){{equals_open_brace}}'
       captures:
         1: keyword.defined.block.constant
         2: sign.equals
@@ -252,14 +254,14 @@ contexts:
       push: pop_event
       
     # Matches immediate block
-    - match: '(immediate){{equals_open_brace}}'
+    - match: '(?i)(immediate){{equals_open_brace}}'
       captures:
         1: keyword.defined.block.constant
         2: sign.equals
         3: brace.open
       push: 'Packages/Stellaris/hidden/pop_effect.sublime-syntax'
     ## Matches Option block
-    - match: '(option){{equals_open_brace}}'
+    - match: '(?i)(option){{equals_open_brace}}'
       captures:
         1: keyword.defined.block.constant
         2: sign.equals
@@ -267,7 +269,7 @@ contexts:
       push:
         - meta_scope: effect pop
         - include: option_name
-        - match: '(trigger){{equals_open_brace}}'
+        - match: '(?i)(trigger){{equals_open_brace}}'
           captures:
             1: keyword.defined.block.constant
             2: sign.equals
@@ -285,14 +287,14 @@ contexts:
   pop_faction_event:
     - meta_scope: event
     # Matches trigger match
-    - match: '(trigger){{equals_open_brace}}'
+    - match: '(?i)(trigger){{equals_open_brace}}'
       captures:
         1: keyword.defined.block.constant
         2: sign.equals
         3: brace.open
       push: 'Packages/Stellaris/hidden/pop_faction_condition.sublime-syntax'
 
-    - match: '(desc){{equals_open_brace}}'
+    - match: '(?i)(desc){{equals_open_brace}}'
       captures:
         1: keyword.defined.block.constant
         2: sign.equals
@@ -300,14 +302,14 @@ contexts:
       push: pop_faction_event
       
     # Matches immediate block
-    - match: '(immediate){{equals_open_brace}}'
+    - match: '(?i)(immediate){{equals_open_brace}}'
       captures:
         1: keyword.defined.block.constant
         2: sign.equals
         3: brace.open
       push: 'Packages/Stellaris/hidden/pop_faction_effect.sublime-syntax'
     ## Matches Option block
-    - match: '(option){{equals_open_brace}}'
+    - match: '(?i)(option){{equals_open_brace}}'
       captures:
         1: keyword.defined.block.constant
         2: sign.equals
@@ -315,7 +317,7 @@ contexts:
       push:
         - meta_scope: effect pop_faction
         - include: option_name
-        - match: '(trigger){{equals_open_brace}}'
+        - match: '(?i)(trigger){{equals_open_brace}}'
           captures:
             1: keyword.defined.block.constant
             2: sign.equals
@@ -335,14 +337,14 @@ contexts:
   fleet_event:
     - meta_scope: event
     # Matches trigger match
-    - match: '(trigger){{equals_open_brace}}'
+    - match: '(?i)(trigger){{equals_open_brace}}'
       captures:
         1: keyword.defined.block.constant
         2: sign.equals
         3: brace.open
       push: 'Packages/Stellaris/hidden/fleet_condition.sublime-syntax'
 
-    - match: '(desc){{equals_open_brace}}'
+    - match: '(?i)(desc){{equals_open_brace}}'
       captures:
         1: keyword.defined.block.constant
         2: sign.equals
@@ -350,14 +352,14 @@ contexts:
       push: fleet_event
       
     # Matches immediate block
-    - match: '(immediate){{equals_open_brace}}'
+    - match: '(?i)(immediate){{equals_open_brace}}'
       captures:
         1: keyword.defined.block.constant
         2: sign.equals
         3: brace.open
       push: 'Packages/Stellaris/hidden/fleet_effect.sublime-syntax'
     ## Matches Option block
-    - match: '(option){{equals_open_brace}}'
+    - match: '(?i)(option){{equals_open_brace}}'
       captures:
         1: keyword.defined.block.constant
         2: sign.equals
@@ -365,7 +367,7 @@ contexts:
       push:
         - meta_scope: effect fleet
         - include: option_name
-        - match: '(trigger){{equals_open_brace}}'
+        - match: '(?i)(trigger){{equals_open_brace}}'
           captures:
             1: keyword.defined.block.constant
             2: sign.equals
@@ -384,14 +386,14 @@ contexts:
   ship_event:
     - meta_scope: event
     # Matches trigger match
-    - match: '(trigger){{equals_open_brace}}'
+    - match: '(?i)(trigger){{equals_open_brace}}'
       captures:
         1: keyword.defined.block.constant
         2: sign.equals
         3: brace.open
       push: 'Packages/Stellaris/hidden/ship_condition.sublime-syntax'
 
-    - match: '(desc){{equals_open_brace}}'
+    - match: '(?i)(desc){{equals_open_brace}}'
       captures:
         1: keyword.defined.block.constant
         2: sign.equals
@@ -399,14 +401,14 @@ contexts:
       push: ship_event
       
     # Matches immediate block
-    - match: '(immediate){{equals_open_brace}}'
+    - match: '(?i)(immediate){{equals_open_brace}}'
       captures:
         1: keyword.defined.block.constant
         2: sign.equals
         3: brace.open
       push: 'Packages/Stellaris/hidden/ship_effect.sublime-syntax'
     ## Matches Option block
-    - match: '(option){{equals_open_brace}}'
+    - match: '(?i)(option){{equals_open_brace}}'
       captures:
         1: keyword.defined.block.constant
         2: sign.equals
@@ -414,7 +416,7 @@ contexts:
       push:
         - meta_scope: effect ship
         - include: option_name
-        - match: '(trigger){{equals_open_brace}}'
+        - match: '(?i)(trigger){{equals_open_brace}}'
           captures:
             1: keyword.defined.block.constant
             2: sign.equals
@@ -424,13 +426,13 @@ contexts:
         - include: 'Packages/Stellaris/hidden/ship_effect.sublime-syntax'
     - include: general_event 
   option_name:
-    - match: '(name){{equals_value_with_dots}}'
+    - match: '(?i)(name){{equals_value_with_dots}}'
       captures:
         1: keyword.defined.value
         2: sign.equals
         3: value.user.defined
 
-    - match: '(name)"'
+    - match: '(?i)(name)"'
       captures:
         1: keyword.defined.value
         2: sign.equals
@@ -446,34 +448,34 @@ contexts:
 #
   anomaly_category:
     - meta_scope: anomaly
-    - match: '(spawn_chance|default|potential){{equals_open_brace}}'
+    - match: '(?i)(spawn_chance|default|potential){{equals_open_brace}}'
       captures:
         1: keyword.defined.block.constant
         2: sign.equals
         3: brace.open
       push: 'Packages/Stellaris/hidden/planet_condition.sublime-syntax'
 
-    - match: '(on_spawn){{equals_open_brace}}'
+    - match: '(?i)(on_spawn){{equals_open_brace}}'
       captures:
         1: keyword.defined.block.constant
         2: sign.equals
         3: brace.open
       push: 'Packages/Stellaris/hidden/planet_effect.sublime-syntax'
 
-    - match: '(on_success|on_fail|on_critical_fail){{equals_open_brace}}'
+    - match: '(?i)(on_success|on_fail|on_critical_fail){{equals_open_brace}}'
       captures:
         1: keyword.defined.block.constant
         2: sign.equals
         3: brace.open    
       push: 'Packages/Stellaris/hidden/ship_effect.sublime-syntax'
 
-    - match: '(level|risk|key|desc|picture){{equals_value_with_dots}}'
+    - match: '(?i)(level|risk|key|desc|picture){{equals_value_with_dots}}'
       captures:
         1: keyword.defined.value
         2: sign.equals
         3: value.user.defined
 
-    - match: '(level|risk|key|desc|picture)"'
+    - match: '(?i)(level|risk|key|desc|picture)"'
       captures:
         1: keyword.defined.value
         2: sign.equals

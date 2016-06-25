@@ -17,6 +17,8 @@
 
 file_extensions: 
   - syntaxtest
+  - stellaris
+  - txt
 hidden: true
 scope: condition country
 
@@ -220,7 +222,7 @@ contexts:
       3: brace.open  
     push: main
 
-  - match: '(?i)\b(war_demand_counter|opinion|num_owned_planets|influence|their_opinion|check_variable|energy|graphical_culture|has_opinion_modifier|has_established_contact|has_completed_event_chain_counter|has_relation_flag|reverse_has_relation_flag|intel_level|count_owned_pops|has_country_resource|num_killed_ships|num_taken_planets|count_owned_ships|research_leader|opposing_ethics_divergence|count_pop_factions|has_monthly_income|count_tech_options|last_increased_tech|has_point_of_interest|tech_unlocked_ratio|would_join_war|can_be_subject|or|not|hidden_trigger|switch|custom_tooltip_fail|custom_tooltip)\b{{equals_open_brace}}'
+  - match: '(?i)\b(war_demand_counter|opinion|num_owned_planets|influence|their_opinion|check_variable|energy|graphical_culture|has_opinion_modifier|has_established_contact|has_completed_event_chain_counter|has_relation_flag|reverse_has_relation_flag|intel_level|count_owned_pops|has_country_resource|num_killed_ships|num_taken_planets|count_owned_ships|research_leader|opposing_ethics_divergence|count_pop_factions|has_monthly_income|count_tech_options|last_increased_tech|has_point_of_interest|tech_unlocked_ratio|would_join_war|can_be_subject|or|not|and|hidden_trigger|switch|custom_tooltip_fail|custom_tooltip)\b{{equals_open_brace}}'
     captures:
       1: keyword.defined.block.constant
       2: sign.equals

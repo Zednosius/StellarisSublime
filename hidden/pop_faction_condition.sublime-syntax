@@ -17,6 +17,8 @@
 
 file_extensions: 
   - syntaxtest
+  - stellaris
+  - txt
 hidden: true
 scope: condition pop_faction
 
@@ -94,7 +96,7 @@ contexts:
       3: brace.open  
     push: main
 
-  - match: '(?i)\b(check_pop_faction_parameter|or|not|hidden_trigger|switch|custom_tooltip_fail|custom_tooltip)\b{{equals_open_brace}}'
+  - match: '(?i)\b(check_pop_faction_parameter|or|not|and|hidden_trigger|switch|custom_tooltip_fail|custom_tooltip)\b{{equals_open_brace}}'
     captures:
       1: keyword.defined.block.constant
       2: sign.equals

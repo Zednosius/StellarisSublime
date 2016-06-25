@@ -2,6 +2,8 @@
 ---
 file_extensions: 
   - syntaxtest
+  - stellaris
+  - txt
 hidden: true
 scope: effect constant
 
@@ -1193,7 +1195,7 @@ contexts:
         3: brace.open
       push: 
         - meta_content_scope: special constant create_ship
-        - match: '(?i)\b(graphical_culture|design|name)\b\s*(=)'
+        - match: '(?i)\b(graphical_culture|design|name|prefix)\b\s*(=)'
           captures:
             1: keyword.defined.value
             2: sign.equals

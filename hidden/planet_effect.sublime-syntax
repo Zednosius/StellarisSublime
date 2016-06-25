@@ -17,6 +17,8 @@
 
 file_extensions: 
   - syntaxtest
+  - stellaris
+  - txt
 hidden: true
 scope: effect planet
 
@@ -268,7 +270,7 @@ contexts:
           1: keyword.defined.block
           2: sign.equals
           3: brace.open
-        push: 'Packages/Stellaris/hidden/planet_effect.sublime-syntax'
+        push: 'Packages/Stellaris/hidden/planet_condition.sublime-syntax'
 
       - match: '(?<=})' #When the pushed condition file closes, we'll have a closing brace behind
         set: main
