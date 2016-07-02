@@ -37,7 +37,13 @@
             </dict>
         </dict>
 
-        <!-- All Scopes are colored with this -->
+        <!-- 
+    █░░░░░░▄▀░░█▀▀▀▀▀▀▀▀░░▀█▄░░░░░▄█▀░░▀█░░░░░██▄░░░░▄█░░█▀▀▀▀▀▀▀▀█░░█▀▀▀▀▀▀▀▀█░░█▀▀▀▀▀▀▀▀█░░█▀▀▀▀▀▀▀▀█
+    █░░░░▄█░░░░█░░░░░░░░░░░░▀█░░░█▀░░░░░▀█░░░▄█░█░░░░█░░░█░░░░░░░░█░░█░░░░░░░░█░░█░░░░░░░░█░░█░░░░░░░░░
+    █▀▀▀▀█░░░░░█▀▀▀▀▀▀░░░░░░░░█▄█░░░░░░░░▀▄░░█░░▀█░░█░░░░█░░░░░░░░█░░█▄▄▄▄▄▄▄▄█░░█░░░░░░░░█░░▀▀▀▀▀▀▀▀▀▄
+    █░░░░▀█░░░░█░░░░░░░░░░░░░░░█░░░░░░░░░░█░█░░░░█▄█▀░░░░█░░░░░░░░█░░█░░░░░█▄░░░░█░░░░░░░░█░░░░░░░░░░░█
+    █░░░░░░▀▄░░█▄▄▄▄▄▄▄▄░░░░░░░█░░░░░░░░░░░█▀░░░░░██░░░░░█▄▄▄▄▄▄▄▄█░░█░░░░░░▀█▄░░█▄▄▄▄▄▄▄▄█░░█▄▄▄▄▄▄▄▄▀
+         -->
         <dict>
             <key>name</key>
             <string>Keyword Value</string>
@@ -48,10 +54,46 @@
             <key>settings</key>
             <dict>
                 <key>foreground</key>
-                <string>#00eeee</string>
+                <string>#d96459</string>
             </dict>
         </dict>
 
+        <dict>
+            <key>name</key>
+            <string>Keyword user defined</string>
+
+            <key>scope</key>
+            <string>keyword.user.defined</string>
+
+            <key>settings</key>
+            <dict>
+                <key>foreground</key>
+                <string>#8c4646</string>
+            </dict>
+        </dict>   
+
+    
+
+<!-- 
+█▀▀▀▀▀▀▀█░░█░░░░░░░░░░░█▀▀▀▀▀▀▀▀█░░█▀▀▀▀▀▀▀▀▀░░█░░░░░░▄▀░░░░░
+█░░░░░░░█░░█░░░░░░░░░░░█░░░░░░░░█░░█░░░░░░░░░░░█░░░░▄█░░░░░░░
+█▀▀▀▀▀▀▀█░░█░░░░░░░░░░░█░░░░░░░░█░░█░░░░░░░░░░░█▀▀▀▀█░░░░░░░░
+█░░░░░░░█░░█░░░░░░░░░░░█░░░░░░░░█░░█░░░░░░░░░░░█░░░░▀█░░░░░░░
+█▄▄▄▄▄▄▄█░░█▄▄▄▄▄▄▄▄▄░░█▄▄▄▄▄▄▄▄█░░█▄▄▄▄▄▄▄▄▄░░█░░░░░░▀▄░░░░░
+
+█░░░░░░▄▀░░█▀▀▀▀▀▀▀▀░░▀█▄░░░░░▄█▀░░▀█░░░░░██▄░░░░▄█░░█▀▀▀▀▀▀▀▀█░░█▀▀▀▀▀▀▀▀█░░█▀▀▀▀▀▀▀▀█░░█▀▀▀▀▀▀▀▀█
+█░░░░▄█░░░░█░░░░░░░░░░░░▀█░░░█▀░░░░░▀█░░░▄█░█░░░░█░░░█░░░░░░░░█░░█░░░░░░░░█░░█░░░░░░░░█░░█░░░░░░░░░
+█▀▀▀▀█░░░░░█▀▀▀▀▀▀░░░░░░░░█▄█░░░░░░░░▀▄░░█░░▀█░░█░░░░█░░░░░░░░█░░█▄▄▄▄▄▄▄▄█░░█░░░░░░░░█░░▀▀▀▀▀▀▀▀▀▄
+█░░░░▀█░░░░█░░░░░░░░░░░░░░░█░░░░░░░░░░█░█░░░░█▄█▀░░░░█░░░░░░░░█░░█░░░░░█▄░░░░█░░░░░░░░█░░░░░░░░░░░█
+█░░░░░░▀▄░░█▄▄▄▄▄▄▄▄░░░░░░░█░░░░░░░░░░░█▀░░░░░██░░░░░█▄▄▄▄▄▄▄▄█░░█░░░░░░▀█▄░░█▄▄▄▄▄▄▄▄█░░█▄▄▄▄▄▄▄▄▀
+-->
+<!--
+#588c7e
+#f2e394
+#f2ae72
+#d96459
+#8c4646
+-->
         <dict>
             <key>name</key>
             <string>Keyword block</string>
@@ -62,64 +104,38 @@
             <key>settings</key>
             <dict>
                 <key>foreground</key>
-                <string>#00ff00</string>
+                <string>#f2ae72</string>
             </dict>
         </dict>
 
         <dict>
             <key>name</key>
-            <string>Value user defined</string>
+            <string>Keyword block</string>
 
             <key>scope</key>
-            <string>value.user.defined</string>
+            <string>keyword.defined.block.constant</string>
 
             <key>settings</key>
             <dict>
                 <key>foreground</key>
-                <string>#00a0ff</string>
+                <string>#588c7e</string>
             </dict>
-        </dict>    
+        </dict>
 
         <dict>
             <key>name</key>
-            <string>Value user defined</string>
+            <string>Keyword block</string>
 
             <key>scope</key>
-            <string>keyword.user.defined</string>
+            <string>keyword.defined.block.altering</string>
 
             <key>settings</key>
             <dict>
                 <key>foreground</key>
-                <string>#f0a0ff</string>
+                <string>#f2e394</string>
             </dict>
-        </dict>    
+        </dict>
 
-        <dict>
-            <key>name</key>
-            <string>Value localised</string>
-
-            <key>scope</key>
-            <string>value.localised</string>
-
-            <key>settings</key>
-            <dict>
-                <key>foreground</key>
-                <string>#ffaaaa</string>
-            </dict>
-        </dict>    
-        <dict>
-            <key>name</key>
-            <string>Value User defined</string>
-
-            <key>scope</key>
-            <string>value.user.defined</string>
-
-            <key>settings</key>
-            <dict>
-                <key>foreground</key>
-                <string>#ffa500</string>
-            </dict>
-        </dict> 
         <dict>
             <key>name</key>
             <string>Block general</string>
@@ -134,6 +150,64 @@
             </dict>
         </dict>   
 
+
+        <!-- 
+    ▀█▄░░░░░░░░▄█░░█▀▀▀▀▀▀▀▀█░░█░░░░░░░░░░░█░░░░░░░░█░░█▀▀▀▀▀▀▀▀░░█▀▀▀▀▀▀▀▀█
+    ░░▀▄░░░░░░▄▀░░░█░░░░░░░░█░░█░░░░░░░░░░░█░░░░░░░░█░░█░░░░░░░░░░█░░░░░░░░░
+    ░░░▀▄░░░░▄▀░░░░█▄▄▄▄▄▄▄▄█░░█░░░░░░░░░░░█░░░░░░░░█░░█▀▀▀▀▀▀░░░░▀▀▀▀▀▀▀▀▀▄
+    ░░░░▀█░░█▀░░░░░█░░░░░░░░█░░█░░░░░░░░░░░█░░░░░░░░█░░█░░░░░░░░░░░░░░░░░░░█
+    ░░░░░▀██▀░░░░░░█░░░░░░░░█░░█▄▄▄▄▄▄▄▄▄░░█▄▄▄▄▄▄▄▄█░░█▄▄▄▄▄▄▄▄░░█▄▄▄▄▄▄▄▄▀
+        -->
+        <dict>
+            <key>name</key>
+            <string>Value user defined</string>
+
+            <key>scope</key>
+            <string>value.user.defined</string>
+
+            <key>settings</key>
+            <dict>
+                <key>foreground</key>
+                <string>#8c4646</string>
+            </dict>
+        </dict>    
+        <dict>
+            <key>name</key>
+            <string>Value user defined</string>
+
+            <key>scope</key>
+            <string>value.user.defined.constant</string>
+
+            <key>settings</key>
+            <dict>
+                <key>foreground</key>
+                <string>#4aaaa5</string>
+            </dict>
+        </dict>
+
+        <dict>
+            <key>name</key>
+            <string>Value localised</string>
+
+            <key>scope</key>
+            <string>value.localised</string>
+
+            <key>settings</key>
+            <dict>
+                <key>foreground</key>
+                <string>#ff3333</string>
+            </dict>
+        </dict>    
+
+
+
+<!--
+█▀▀▀▀▀▀▀▀▀░░█▀▀▀▀▀▀▀▀█░░██▄░░░░░▄██░░██▄░░░░░▄██░░█▀▀▀▀▀▀▀▀░░██▄░░░░░░█░░▀▀▀▀█▀▀▀▀░░█▀▀▀▀▀▀▀▀█
+█░░░░░░░░░░░█░░░░░░░░█░░█░▀▄░░░▄▀░█░░█░▀▄░░░▄▀░█░░█░░░░░░░░░░█░▀█▄░░░░█░░░░░░█░░░░░░█░░░░░░░░░
+█░░░░░░░░░░░█░░░░░░░░█░░█░░░█▄█░░░█░░█░░░█▄█░░░█░░█▀▀▀▀▀▀░░░░█░░░▀▄░░░█░░░░░░█░░░░░░▀▀▀▀▀▀▀▀▀▄
+█░░░░░░░░░░░█░░░░░░░░█░░█░░░░▀░░░░█░░█░░░░▀░░░░█░░█░░░░░░░░░░█░░░░▀█▄░█░░░░░░█░░░░░░░░░░░░░░░█
+█▄▄▄▄▄▄▄▄▄░░█▄▄▄▄▄▄▄▄█░░█░░░░░░░░░█░░█░░░░░░░░░█░░█▄▄▄▄▄▄▄▄░░█░░░░░░▀██░░░░░░█░░░░░░█▄▄▄▄▄▄▄▄▀
+-->
         <dict>
             <key>name</key>
             <string>Commented</string>
@@ -150,6 +224,27 @@
             </dict>
         </dict>   
 
+<!---
+█░░░░░░░░█░░██▄░░░░░░█░░█░░░░░░▄▀░░██▄░░░░░░█░░█▀▀▀▀▀▀▀▀█░░▀█░░░░░██▄░░░░▄█░░██▄░░░░░░█
+█░░░░░░░░█░░█░▀█▄░░░░█░░█░░░░▄█░░░░█░▀█▄░░░░█░░█░░░░░░░░█░░░▀█░░░▄█░█░░░░█░░░█░▀█▄░░░░█
+█░░░░░░░░█░░█░░░▀▄░░░█░░█▀▀▀▀█░░░░░█░░░▀▄░░░█░░█░░░░░░░░█░░░░▀▄░░█░░▀█░░█░░░░█░░░▀▄░░░█
+█░░░░░░░░█░░█░░░░▀█▄░█░░█░░░░▀█░░░░█░░░░▀█▄░█░░█░░░░░░░░█░░░░░█░█░░░░█▄█▀░░░░█░░░░▀█▄░█
+█▄▄▄▄▄▄▄▄█░░█░░░░░░▀██░░█░░░░░░▀▄░░█░░░░░░▀██░░█▄▄▄▄▄▄▄▄█░░░░░░█▀░░░░░██░░░░░█░░░░░░▀██
+-->
+        <dict>
+            <key>name</key>
+            <string>Base Statement</string>
+
+            <key>scope</key>
+            <string>unknown.base.statement</string>
+
+            <key>settings</key>
+            <dict>
+                <key>foreground</key>
+                <string>#FF8300</string>
+            </dict>
+        </dict>  
+    
     </array>
 </dict>
 </plist>
