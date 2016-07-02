@@ -2,26 +2,16 @@
 Adds syntax highlighting and auto-completions to the stellaris script language.  
 Most autocompletes are grabbed from stellariswiki.com
 
-To use, simply clone this repo into your sublime user folder, (should also work with the Packages folder).  
+To use, simply clone this repo into your sublime Packages folder.  
 If you are on windows you will most likely find this folder in %appdata%/Sublime Text 3/Packages
+The final path should look like /Sublime Text 3/Packages/Stellaris/<files>
 
 ### Associate with .txt files
-Then you open a .txt file, click `View -> Syntax -> User -> Stellaris`   or   `View -> Syntax -> Stellaris` depending on where you put the files.
+Then you open a .txt file, click  `View -> Syntax -> Stellaris` to have sublime use that syntax file when opening text files.
 
 ### Associate theme with Stellaris Syntax
 Then you want to click `Preferences -> Settings - More -> Syntax Specific (User)`  
 A file named 'Stellaris.sublime-settings' should pop up, in that file write  
-(if you put files in Packages/User/Stellaris)
-```
-{
-	"color_scheme": "Packages/User/Stellaris/StellarisTheme.tmTheme",
-	"extensions":
-	[
-		"txt"
-	]
-}
-```
-
 (if you put files in Packages/Stellaris)
 
 ```
@@ -33,7 +23,6 @@ A file named 'Stellaris.sublime-settings' should pop up, in that file write
 	]
 }
 ```
-
 and then save it to your Packages/User folder.
 
 
