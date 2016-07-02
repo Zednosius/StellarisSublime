@@ -72,12 +72,19 @@ contexts:
         1: unknown.base.statement
         2: sign.equals
         3: brace.open
-      push: general_event
+      push: user_define_scope
+
     - match: '(@\w+)\s*(=)\s*{{value_with_dots}}'
       captures:
         1: value.user.defined.constant
         2: sign.equals
         3: value.user.defined 
+    - match: '(namespace)\s*(=)\s*(\w+)'
+      captures:
+        1: keyword.defined.value
+        2: sign.equals
+        3: value.user.defined
+    - include: comment
 #   ▄█▀█▄░░█▀▀▀▀░░█▄░░█░░█▀▀▀▀░░██▀█▄░░▄█▀█▄░░█░░░░░░░░░░░█▀▀▀▀░░█░░░█░░█▀▀▀▀░░█▄░░█░░▀▀█▀▀░░░░░
 #   █░░░▀░░█░░░░░░█▀▄░█░░█░░░░░░█▄░▄█░░█░░░█░░█░░░░░░░░░░░█░░░░░░█░░░█░░█░░░░░░█▀▄░█░░░░█░░░░░░░
 #   █░▀▀█░░█▀▀▀░░░█░▀▄█░░█▀▀▀░░░███▀░░░█▀▀▀█░░█░░░░░░░░░░░█▀▀▀░░░█░░░█░░█▀▀▀░░░█░▀▄█░░░░█░░░░░░░
@@ -93,8 +100,20 @@ contexts:
         1: keyword.defined.value
         2: sign.equals
         3: value.user.defined
+    - match: '(?i)\b(mean_time_to_happen)\b{{equals_open_brace}}'
+      captures:
+        1: keyword.defined.block.constant
+        2: sign.equals
+        3: brace.open
+      push:
+        - match: '(?i)(days)\s*(=)\s*(\d+)'
+          captures:
+            1: keyword.defined.value
+            2: sign.equals
+            3: value.user.defined
+        - include: eat_end_brace
 
-    - match: '(?i)\b(title|desc)\b'
+    - match: '(?i)\b(title|desc|picture)\b'
       scope: keyword.defined.value.localised
 
     - match: '"'
@@ -182,11 +201,11 @@ contexts:
     - include: general_event  #
 
 
-#    █▀▀█▄░░█░░░░░░▄█▀█▄░░█▄░░█░░█▀▀▀▀░░▀▀█▀▀░░░░░░░█▀▀▀▀░░█░░░█░░█▀▀▀▀░░█▄░░█░░▀▀█▀▀░░░░░
-#    █░░▄█░░█░░░░░░█░░░█░░█▀▄░█░░█░░░░░░░░█░░░░░░░░░█░░░░░░█░░░█░░█░░░░░░█▀▄░█░░░░█░░░░░░░
-#    █▀▀▀░░░█░░░░░░█▀▀▀█░░█░▀▄█░░█▀▀▀░░░░░█░░░░░░░░░█▀▀▀░░░█░░░█░░█▀▀▀░░░█░▀▄█░░░░█░░░░░░░
-#    █░░░░░░█▄▄▄▄░░█░░░█░░█░░▀█░░█▄▄▄▄░░░░█░░░░░░░░░█▄▄▄▄░░░▀▄▀░░░█▄▄▄▄░░█░░▀█░░░░█░░░░░░░
-#    
+#   █▀▀▀▀▀▀▀▀█░░█░░░░░░░░░░░█▀▀▀▀▀▀▀▀█░░██▄░░░░░░█░░█▀▀▀▀▀▀▀▀░░▀▀▀▀█▀▀▀▀░░░░░█▀▀▀▀▀▀▀▀░░▀█▄░░░░░░░░▄█░░█▀▀▀▀▀▀▀▀░░██▄░░░░░░█░░▀▀▀▀█▀▀▀▀
+#   █░░░░░░░░█░░█░░░░░░░░░░░█░░░░░░░░█░░█░▀█▄░░░░█░░█░░░░░░░░░░░░░░█░░░░░░░░░█░░░░░░░░░░░░▀▄░░░░░░▄▀░░░█░░░░░░░░░░█░▀█▄░░░░█░░░░░░█░░░░
+#   █▄▄▄▄▄▄▄▄█░░█░░░░░░░░░░░█▄▄▄▄▄▄▄▄█░░█░░░▀▄░░░█░░█▀▀▀▀▀▀░░░░░░░░█░░░░░░░░░█▀▀▀▀▀▀░░░░░░░▀▄░░░░▄▀░░░░█▀▀▀▀▀▀░░░░█░░░▀▄░░░█░░░░░░█░░░░
+#   █░░░░░░░░░░░█░░░░░░░░░░░█░░░░░░░░█░░█░░░░▀█▄░█░░█░░░░░░░░░░░░░░█░░░░░░░░░█░░░░░░░░░░░░░░▀█░░█▀░░░░░█░░░░░░░░░░█░░░░▀█▄░█░░░░░░█░░░░
+#   █░░░░░░░░░░░█▄▄▄▄▄▄▄▄▄░░█░░░░░░░░█░░█░░░░░░▀██░░█▄▄▄▄▄▄▄▄░░░░░░█░░░░░░░░░█▄▄▄▄▄▄▄▄░░░░░░░▀██▀░░░░░░█▄▄▄▄▄▄▄▄░░█░░░░░░▀██░░░░░░█░░░░
   planet_event:
     - meta_scope: event
     # Matches trigger match
@@ -376,11 +395,16 @@ contexts:
         - include: 'Packages/Stellaris/hidden/fleet_effect.sublime-syntax'
     - include: general_event
  
- 
-#  ▄█▀█▄░░█░░░█░░▀▀█▀▀░░█▀▀█▄░░░░░░░█▀▀▀▀░░█░░░█░░█▀▀▀▀░░█▄░░█░░▀▀█▀▀
-#  █▄▄░▀░░█░░░█░░░░█░░░░█░░▄█░░░░░░░█░░░░░░█░░░█░░█░░░░░░█▀▄░█░░░░█░░
-#  ▄░▀▀█░░█▀▀▀█░░░░█░░░░█▀▀▀░░░░░░░░█▀▀▀░░░█░░░█░░█▀▀▀░░░█░▀▄█░░░░█░░
-#  ▀█▄█▀░░█░░░█░░▄▄█▄▄░░█░░░░░░░░░░░█▄▄▄▄░░░▀▄▀░░░█▄▄▄▄░░█░░▀█░░░░█░░
+#  
+#   ▄▀▀▀▀▀▀▀▀▀▀▄░░█░░░░░░░░░░░█░░█░░█▀▀▀▀▀▀▀▀▀▀▀▄░░░░░█▀▀▀▀▀▀▀▀▀▀░░██░░░░░░░░░░░░█▀░░█▀▀▀▀▀▀▀▀▀▀░░███░░░░░░░░░█░░▀▀▀▀▀▀█▀▀▀▀▀▀
+#   █░░░░░░░░░░▀░░█░░░░░░░░░░░█░░█░░█░░░░░░░░░░░█░░░░░█░░░░░░░░░░░░░▀█░░░░░░░░░░█▀░░░█░░░░░░░░░░░░█░▀█▄░░░░░░░█░░░░░░░░█░░░░░░
+#   █░░░░░░░░░░░░░█░░░░░░░░░░░█░░█░░█░░░░░░░░░░░█░░░░░█░░░░░░░░░░░░░░▀█░░░░░░░▄█▀░░░░█░░░░░░░░░░░░█░░▀██▄░░░░░█░░░░░░░░█░░░░░░
+#   ░▀▀▀▀▀▀▀▀▀▀▄░░█▀▀▀▀▀▀▀▀▀▀▀█░░█░░█▄▄▄▄▄▄▄▄▄▄▄▀░░░░░█▀▀▀▀▀▀▀▀░░░░░░░▀█▄░░░░▄█▀░░░░░█▀▀▀▀▀▀▀▀░░░░█░░░░▀██▄░░░█░░░░░░░░█░░░░░░
+#   ░░░░░░░░░░░█░░█░░░░░░░░░░░█░░█░░█░░░░░░░░░░░░░░░░░█░░░░░░░░░░░░░░░░░█▄░░▄█░░░░░░░█░░░░░░░░░░░░█░░░░░░▀██░░█░░░░░░░░█░░░░░░
+#   █░░░░░░░░░░█░░█░░░░░░░░░░░█░░█░░█░░░░░░░░░░░░░░░░░█░░░░░░░░░░░░░░░░░░█▄▄█░░░░░░░░█░░░░░░░░░░░░█░░░░░░░░▀█▄█░░░░░░░░█░░░░░░
+#   ░▀▀▀▀▀▀▀▀▀▀░░░▀░░░░░░░░░░░▀░░▀░░▀░░░░░░░░░░░░░░░░░▀▀▀▀▀▀▀▀▀▀▀░░░░░░░░░▀▀░░░░░░░░░▀▀▀▀▀▀▀▀▀▀▀░░▀░░░░░░░░░▀▀▀░░░░░░░░▀░░░░░░
+#
+#
 
 
   ship_event:
@@ -425,6 +449,15 @@ contexts:
 
         - include: 'Packages/Stellaris/hidden/ship_effect.sublime-syntax'
     - include: general_event 
+
+
+
+#   █▀▀▀▀▀▀▀▀█░░█▀▀▀▀▀▀▀▀█░░▀▀▀▀█▀▀▀▀░░█░░█▀▀▀▀▀▀▀▀█░░██▄░░░░░░█░░░░░██▄░░░░░░█░░█▀▀▀▀▀▀▀▀█░░██▄░░░░░▄██░░█▀▀▀▀▀▀▀▀
+#   █░░░░░░░░█░░█░░░░░░░░█░░░░░░█░░░░░░█░░█░░░░░░░░█░░█░▀█▄░░░░█░░░░░█░▀█▄░░░░█░░█░░░░░░░░█░░█░▀▄░░░▄▀░█░░█░░░░░░░░
+#   █░░░░░░░░█░░█▄▄▄▄▄▄▄▄█░░░░░░█░░░░░░█░░█░░░░░░░░█░░█░░░▀▄░░░█░░░░░█░░░▀▄░░░█░░█▄▄▄▄▄▄▄▄█░░█░░░█▄█░░░█░░█▀▀▀▀▀▀░░
+#   █░░░░░░░░█░░█░░░░░░░░░░░░░░░█░░░░░░█░░█░░░░░░░░█░░█░░░░▀█▄░█░░░░░█░░░░▀█▄░█░░█░░░░░░░░█░░█░░░░▀░░░░█░░█░░░░░░░░
+#   █▄▄▄▄▄▄▄▄█░░█░░░░░░░░░░░░░░░█░░░░░░█░░█▄▄▄▄▄▄▄▄█░░█░░░░░░▀██░░░░░█░░░░░░▀██░░█░░░░░░░░█░░█░░░░░░░░░█░░█▄▄▄▄▄▄▄▄
+
   option_name:
     - match: '(?i)(name){{equals_value_with_dots}}'
       captures:
@@ -432,7 +465,7 @@ contexts:
         2: sign.equals
         3: value.user.defined
 
-    - match: '(?i)(name)"'
+    - match: '(?i)(name)\s*(=)\s*"'
       captures:
         1: keyword.defined.value
         2: sign.equals
@@ -440,12 +473,14 @@ contexts:
       push: localised
   
 
-#
-#     ▄█▀█▄░░█▄░░█░░█▀▀▀█░░█▄░▄█░░▄█▀█▄░░█░░░░░░█░░░█
-#     █░░░█░░█▀▄░█░░█░░░█░░█░█░█░░█░░░█░░█░░░░░░▀█▄█▀
-#     █▀▀▀█░░█░▀▄█░░█░░░█░░█░░░█░░█▀▀▀█░░█░░░░░░░░█░░
-#     █░░░█░░█░░▀█░░█▄▄▄█░░█░░░█░░█░░░█░░█▄▄▄▄░░░░█░░
-#
+
+# ['anomaly']
+# █▀▀▀▀▀▀▀▀█░░██▄░░░░░░█░░█▀▀▀▀▀▀▀▀█░░██▄░░░░░▄██░░█▀▀▀▀▀▀▀▀█░░█░░░░░░░░░░░▀█▄░░░░░▄█▀
+# █░░░░░░░░█░░█░▀█▄░░░░█░░█░░░░░░░░█░░█░▀▄░░░▄▀░█░░█░░░░░░░░█░░█░░░░░░░░░░░░░▀█░░░█▀░░
+# █▄▄▄▄▄▄▄▄█░░█░░░▀▄░░░█░░█░░░░░░░░█░░█░░░█▄█░░░█░░█▄▄▄▄▄▄▄▄█░░█░░░░░░░░░░░░░░░█▄█░░░░
+# █░░░░░░░░█░░█░░░░▀█▄░█░░█░░░░░░░░█░░█░░░░▀░░░░█░░█░░░░░░░░█░░█░░░░░░░░░░░░░░░░█░░░░░
+# █░░░░░░░░█░░█░░░░░░▀██░░█▄▄▄▄▄▄▄▄█░░█░░░░░░░░░█░░█░░░░░░░░█░░█▄▄▄▄▄▄▄▄▄░░░░░░░█░░░░░
+
   anomaly_category:
     - meta_scope: anomaly
     - match: '(?i)(spawn_chance|default|potential){{equals_open_brace}}'
@@ -522,5 +557,98 @@ contexts:
 
   - match: '\w+'
     scope: 'value.user.defined'
+
+
+  user_define_scope:
+    - meta_content_scope: user_define comment
+    - match: '(?i)#\s*effect\s+global'
+      scope: user_defined_scope
+      set: 'Packages/Stellaris/hidden/global_effect.sublime-syntax'
+    - match: '(?i)#\s*effect\s+country'
+      scope: user_defined_scope
+      set: 'Packages/Stellaris/hidden/country_effect.sublime-syntax'
+    - match: '(?i)#\s*effect\s+sector'
+      scope: user_defined_scope
+      set: 'Packages/Stellaris/hidden/sector_effect.sublime-syntax'
+    - match: '(?i)#\s*effect\s+system'
+      scope: user_defined_scope
+      set: 'Packages/Stellaris/hidden/system_effect.sublime-syntax'
+    - match: '(?i)#\s*effect\s+planet'
+      scope: user_defined_scope
+      set: 'Packages/Stellaris/hidden/planet_effect.sublime-syntax'
+    - match: '(?i)#\s*effect\s+ambient_object'
+      scope: user_defined_scope
+      set: 'Packages/Stellaris/hidden/ambient_object_effect.sublime-syntax'
+    - match: '(?i)#\s*effect\s+fleet'
+      scope: user_defined_scope
+      set: 'Packages/Stellaris/hidden/fleet_effect.sublime-syntax'
+    - match: '(?i)#\s*effect\s+ship'
+      scope: user_defined_scope
+      set: 'Packages/Stellaris/hidden/ship_effect.sublime-syntax'
+    - match: '(?i)#\s*effect\s+pop'
+      scope: user_defined_scope
+      set: 'Packages/Stellaris/hidden/pop_effect.sublime-syntax'
+    - match: '(?i)#\s*effect\s+pop_faction'
+      scope: user_defined_scope
+      set: 'Packages/Stellaris/hidden/pop_faction_effect.sublime-syntax'
+    - match: '(?i)#\s*effect\s+leader'
+      scope: user_defined_scope
+      set: 'Packages/Stellaris/hidden/leader_effect.sublime-syntax'
+    - match: '(?i)#\s*effect\s+war'
+      scope: user_defined_scope
+      set: 'Packages/Stellaris/hidden/war_effect.sublime-syntax'
+    - match: '(?i)#\s*effect\s+army'
+      scope: user_defined_scope
+      set: 'Packages/Stellaris/hidden/army_effect.sublime-syntax'
+    - match: '(?i)#\s*effect\s+tile'
+      scope: user_defined_scope
+      set: 'Packages/Stellaris/hidden/tile_effect.sublime-syntax'
+
+    - match: '(?i)#\s*global'
+      scope: user_defined_scope
+      set: 'Packages/Stellaris/hidden/global_condition.sublime-syntax'
+    - match: '(?i)#\s*condition\s*country'
+      scope: user_defined_scope
+      set: 'Packages/Stellaris/hidden/country_condition.sublime-syntax'
+    - match: '(?i)#\s*condition\s+sector'
+      scope: user_defined_scope
+      set: 'Packages/Stellaris/hidden/sector_condition.sublime-syntax'
+    - match: '(?i)#\s*condition\s+system'
+      scope: user_defined_scope
+      set: 'Packages/Stellaris/hidden/system_condition.sublime-syntax'
+    - match: '(?i)#\s*condition\s+planet'
+      scope: user_defined_scope
+      set: 'Packages/Stellaris/hidden/planet_condition.sublime-syntax'
+    - match: '(?i)#\s*condition\s+ambient_object'
+      scope: user_defined_scope
+      set: 'Packages/Stellaris/hidden/ambient_object_condition.sublime-syntax'
+    - match: '(?i)#\s*condition\s+fleet'
+      scope: user_defined_scope
+      set: 'Packages/Stellaris/hidden/fleet_condition.sublime-syntax'
+    - match: '(?i)#\s*condition\s+ship'
+      scope: user_defined_scope
+      set: 'Packages/Stellaris/hidden/ship_condition.sublime-syntax'
+    - match: '(?i)#\s*condition\s+pop'
+      scope: user_defined_scope
+      set: 'Packages/Stellaris/hidden/pop_condition.sublime-syntax'
+    - match: '(?i)#\s*condition\s+pop_faction'
+      scope: user_defined_scope
+      set: 'Packages/Stellaris/hidden/pop_faction_condition.sublime-syntax'
+    - match: '(?i)#\s*condition\s+leader'
+      scope: user_defined_scope
+      set: 'Packages/Stellaris/hidden/leader_condition.sublime-syntax'
+    - match: '(?i)#\s*condition\s+war'
+      scope: user_defined_scope
+      set: 'Packages/Stellaris/hidden/war_condition.sublime-syntax'
+    - match: '(?i)#\s*condition\s+army'
+      scope: user_defined_scope
+      set: 'Packages/Stellaris/hidden/army_condition.sublime-syntax'
+    - match: '(?i)#\s*condition\s+tile'
+      scope: user_defined_scope
+      set: 'Packages/Stellaris/hidden/tile_condition.sublime-syntax'
+    - match: '\n'
+      set: general_event
+    - match: '(?=\w|")'
+      set: general_event
   #anomaly:
   #anomaly_category:
