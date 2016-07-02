@@ -1,0 +1,9 @@
+
+{
+    "scope":"source.stellaris",
+    "completions":
+    [
+        { "trigger": "ship_event  Event", "contents": "ship_event = {\n\tid = $1\n\ttitle = $2\n\tdesc = $3\n\tis_triggered_only = $4\n\thide_window = $5 \n\timmediate = {\n\t$6\n}\n}" },
+        { "trigger": "fleet_event  Event", "contents": "fleet_event = {\n\tid = $1\n\ttitle = $2\n\tdesc = $3\n\tis_triggered_only = $4\n\thide_window = $5 \n\timmediate = {\n\t$6\n}\n}" }
+    ]
+}
