@@ -112,6 +112,14 @@ contexts:
       3: brace.open
     push: 'Packages/Stellaris/hidden/country_condition.sublime-syntax'
 
+  - match: '(?i)\b(space_owner)\b\.'
+    captures:
+      1: keyword.defined.block.altering
+    push: 
+      - match: '(?=\})'
+        pop: true
+      - include: 'Packages/Stellaris/hidden/country_condition.sublime-syntax'
+
   - include: 'Packages/Stellaris/hidden/constant_scopes.sublime-syntax'
 
   - match: '\b(switch)\b{{equals_open_brace}}'

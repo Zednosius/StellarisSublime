@@ -206,12 +206,28 @@ contexts:
       2: sign.equals
       3: brace.open
     push: 'Packages/Stellaris/hidden/system_condition.sublime-syntax'
+
+  - match: '(?i)\b(solar_system)\b\.'
+    captures:
+      1: keyword.defined.block.altering
+    push: 
+      - match: '(?=\})'
+        pop: true
+      - include: 'Packages/Stellaris/hidden/system_condition.sublime-syntax'
   - match: '(?i)\b(home_planet)\b{{equals_open_brace}}'
     captures:
       1: keyword.defined.block.altering
       2: sign.equals
       3: brace.open
     push: 'Packages/Stellaris/hidden/planet_condition.sublime-syntax'
+
+  - match: '(?i)\b(home_planet)\b\.'
+    captures:
+      1: keyword.defined.block.altering
+    push: 
+      - match: '(?=\})'
+        pop: true
+      - include: 'Packages/Stellaris/hidden/planet_condition.sublime-syntax'
 
   - include: 'Packages/Stellaris/hidden/constant_scopes.sublime-syntax'
 

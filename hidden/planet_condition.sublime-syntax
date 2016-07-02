@@ -149,18 +149,42 @@ contexts:
       2: sign.equals
       3: brace.open
     push: 'Packages/Stellaris/hidden/country_condition.sublime-syntax'
+
+  - match: '(?i)\b(observation_outpost_owner|owner)\b\.'
+    captures:
+      1: keyword.defined.block.altering
+    push: 
+      - match: '(?=\})'
+        pop: true
+      - include: 'Packages/Stellaris/hidden/country_condition.sublime-syntax'
   - match: '(?i)\b(orbital_deposit_tile)\b{{equals_open_brace}}'
     captures:
       1: keyword.defined.block.altering
       2: sign.equals
       3: brace.open
     push: 'Packages/Stellaris/hidden/tile_condition.sublime-syntax'
+
+  - match: '(?i)\b(orbital_deposit_tile)\b\.'
+    captures:
+      1: keyword.defined.block.altering
+    push: 
+      - match: '(?=\})'
+        pop: true
+      - include: 'Packages/Stellaris/hidden/tile_condition.sublime-syntax'
   - match: '(?i)\b(observation_outpost)\b{{equals_open_brace}}'
     captures:
       1: keyword.defined.block.altering
       2: sign.equals
       3: brace.open
     push: 'Packages/Stellaris/hidden/fleet_condition.sublime-syntax'
+
+  - match: '(?i)\b(observation_outpost)\b\.'
+    captures:
+      1: keyword.defined.block.altering
+    push: 
+      - match: '(?=\})'
+        pop: true
+      - include: 'Packages/Stellaris/hidden/fleet_condition.sublime-syntax'
 
   - include: 'Packages/Stellaris/hidden/constant_scopes.sublime-syntax'
 

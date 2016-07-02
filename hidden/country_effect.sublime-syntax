@@ -244,48 +244,112 @@ contexts:
       2: sign.equals
       3: brace.open
     push: 'Packages/Stellaris/hidden/ambient_object_effect.sublime-syntax'
+
+  - match: '(?i)\b(last_created_ambient_object)\b\.'
+    captures:
+      1: keyword.defined.block.altering
+    push: 
+      - match: '(?=\})'
+        pop: true
+      - include: 'Packages/Stellaris/hidden/ambient_object_effect.sublime-syntax'
   - match: '(?i)\b(last_created_country)\b{{equals_open_brace}}'
     captures:
       1: keyword.defined.block.altering
       2: sign.equals
       3: brace.open
     push: main
+
+  - match: '(?i)\b(last_created_country)\b\.'
+    captures:
+      1: keyword.defined.block.altering
+    push: 
+      - match: '(?=\})'
+        pop: true
+      - include: main
   - match: '(?i)\b(solar_system)\b{{equals_open_brace}}'
     captures:
       1: keyword.defined.block.altering
       2: sign.equals
       3: brace.open
     push: 'Packages/Stellaris/hidden/system_effect.sublime-syntax'
+
+  - match: '(?i)\b(solar_system)\b\.'
+    captures:
+      1: keyword.defined.block.altering
+    push: 
+      - match: '(?=\})'
+        pop: true
+      - include: 'Packages/Stellaris/hidden/system_effect.sublime-syntax'
   - match: '(?i)\b(last_created_pop)\b{{equals_open_brace}}'
     captures:
       1: keyword.defined.block.altering
       2: sign.equals
       3: brace.open
     push: 'Packages/Stellaris/hidden/pop_effect.sublime-syntax'
+
+  - match: '(?i)\b(last_created_pop)\b\.'
+    captures:
+      1: keyword.defined.block.altering
+    push: 
+      - match: '(?=\})'
+        pop: true
+      - include: 'Packages/Stellaris/hidden/pop_effect.sublime-syntax'
   - match: '(?i)\b(capital_scope)\b{{equals_open_brace}}'
     captures:
       1: keyword.defined.block.altering
       2: sign.equals
       3: brace.open
     push: 'Packages/Stellaris/hidden/planet_effect.sublime-syntax'
+
+  - match: '(?i)\b(capital_scope)\b\.'
+    captures:
+      1: keyword.defined.block.altering
+    push: 
+      - match: '(?=\})'
+        pop: true
+      - include: 'Packages/Stellaris/hidden/planet_effect.sublime-syntax'
   - match: '(?i)\b(last_create_pop_faction)\b{{equals_open_brace}}'
     captures:
       1: keyword.defined.block.altering
       2: sign.equals
       3: brace.open
     push: 'Packages/Stellaris/hidden/pop_faction_effect.sublime-syntax'
+
+  - match: '(?i)\b(last_create_pop_faction)\b\.'
+    captures:
+      1: keyword.defined.block.altering
+    push: 
+      - match: '(?=\})'
+        pop: true
+      - include: 'Packages/Stellaris/hidden/pop_faction_effect.sublime-syntax'
   - match: '(?i)\b(last_created_fleet)\b{{equals_open_brace}}'
     captures:
       1: keyword.defined.block.altering
       2: sign.equals
       3: brace.open
     push: 'Packages/Stellaris/hidden/fleet_effect.sublime-syntax'
+
+  - match: '(?i)\b(last_created_fleet)\b\.'
+    captures:
+      1: keyword.defined.block.altering
+    push: 
+      - match: '(?=\})'
+        pop: true
+      - include: 'Packages/Stellaris/hidden/fleet_effect.sublime-syntax'
   - match: '(?i)\b(leader|last_created_leader)\b{{equals_open_brace}}'
     captures:
       1: keyword.defined.block.altering
       2: sign.equals
       3: brace.open
     push: 'Packages/Stellaris/hidden/leader_effect.sublime-syntax'
+
+  - match: '(?i)\b(leader|last_created_leader)\b\.'
+    captures:
+      1: keyword.defined.block.altering
+    push: 
+      - match: '(?=\})'
+        pop: true
+      - include: 'Packages/Stellaris/hidden/leader_effect.sublime-syntax'
 
   - include: 'Packages/Stellaris/hidden/constant_scopes.sublime-syntax'
 
@@ -331,12 +395,12 @@ contexts:
     push: user_define_scope
 
   #SINGLE VALUE KEYWORDS
-  - match: '(?i)\b(tooltip|change_country_flag|change_government|add_energy|add_minerals|give_technology|add_physics_research|set_country_flag|remove_country_flag|set_name|destroy_country|add_influence|declare_war|set_primitive_age|set_advisor_active|set_tutorial_level|end_event_chain|remove_point_of_interest|assign_leader|country_add_ethic|country_remove_ethic|remove_modifier|set_country_type|add_ship_design|set_graphical_culture|establish_communications|add_research_option|set_aggro_range|set_aggro_range_measure_from|establish_communications_no_message|set_leader|id|days|custom_tooltip|random|remove_global_flag|set_global_flag|save_event_target_as|save_global_event_target_as|break|destroy_fleet|destroy_ambient_object|custom_tooltip|random|remove_global_flag|set_global_flag|save_event_target_as|save_global_event_target_as|break|destroy_fleet|destroy_ambient_object)\b\s*(=)\s*((?:\w|:|\.)+)'
+  - match: '(?i)\b(tooltip|change_country_flag|change_government|add_energy|add_minerals|give_technology|add_physics_research|set_country_flag|remove_country_flag|set_name|destroy_country|add_influence|declare_war|set_primitive_age|set_advisor_active|set_tutorial_level|end_event_chain|remove_point_of_interest|assign_leader|country_add_ethic|country_remove_ethic|remove_modifier|set_country_type|add_ship_design|set_graphical_culture|establish_communications|add_research_option|set_aggro_range|set_aggro_range_measure_from|establish_communications_no_message|set_leader|exile_leader_as|id|days|custom_tooltip|random|remove_global_flag|set_global_flag|save_event_target_as|save_global_event_target_as|break|destroy_fleet|destroy_ambient_object|custom_tooltip|random|remove_global_flag|set_global_flag|save_event_target_as|save_global_event_target_as|break|destroy_fleet|destroy_ambient_object)\b\s*(=)\s*((?:\w|:|\.)+)'
     captures:
       1: keyword.defined.value
       2: sign.equals
       3: value.user.defined
-  - match: '(?i)\b(tooltip|change_country_flag|change_government|add_energy|add_minerals|give_technology|add_physics_research|set_country_flag|remove_country_flag|set_name|destroy_country|add_influence|declare_war|set_primitive_age|set_advisor_active|set_tutorial_level|end_event_chain|remove_point_of_interest|assign_leader|country_add_ethic|country_remove_ethic|remove_modifier|set_country_type|add_ship_design|set_graphical_culture|establish_communications|add_research_option|set_aggro_range|set_aggro_range_measure_from|establish_communications_no_message|set_leader|id|days|custom_tooltip|random|remove_global_flag|set_global_flag|save_event_target_as|save_global_event_target_as|break|destroy_fleet|destroy_ambient_object|custom_tooltip|random|remove_global_flag|set_global_flag|save_event_target_as|save_global_event_target_as|break|destroy_fleet|destroy_ambient_object)\b\s*(=)\s*(")' #SomeLocalisedValue
+  - match: '(?i)\b(tooltip|change_country_flag|change_government|add_energy|add_minerals|give_technology|add_physics_research|set_country_flag|remove_country_flag|set_name|destroy_country|add_influence|declare_war|set_primitive_age|set_advisor_active|set_tutorial_level|end_event_chain|remove_point_of_interest|assign_leader|country_add_ethic|country_remove_ethic|remove_modifier|set_country_type|add_ship_design|set_graphical_culture|establish_communications|add_research_option|set_aggro_range|set_aggro_range_measure_from|establish_communications_no_message|set_leader|exile_leader_as|id|days|custom_tooltip|random|remove_global_flag|set_global_flag|save_event_target_as|save_global_event_target_as|break|destroy_fleet|destroy_ambient_object|custom_tooltip|random|remove_global_flag|set_global_flag|save_event_target_as|save_global_event_target_as|break|destroy_fleet|destroy_ambient_object)\b\s*(=)\s*(")' #SomeLocalisedValue
     captures:
       1: keyword.defined.value
       2: sign.equals

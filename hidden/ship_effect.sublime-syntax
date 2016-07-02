@@ -187,42 +187,98 @@ contexts:
       2: sign.equals
       3: brace.open
     push: 'Packages/Stellaris/hidden/ambient_object_effect.sublime-syntax'
+
+  - match: '(?i)\b(last_created_ambient_object)\b\.'
+    captures:
+      1: keyword.defined.block.altering
+    push: 
+      - match: '(?=\})'
+        pop: true
+      - include: 'Packages/Stellaris/hidden/ambient_object_effect.sublime-syntax'
   - match: '(?i)\b(owner|last_created_country)\b{{equals_open_brace}}'
     captures:
       1: keyword.defined.block.altering
       2: sign.equals
       3: brace.open
     push: 'Packages/Stellaris/hidden/country_effect.sublime-syntax'
+
+  - match: '(?i)\b(owner|last_created_country)\b\.'
+    captures:
+      1: keyword.defined.block.altering
+    push: 
+      - match: '(?=\})'
+        pop: true
+      - include: 'Packages/Stellaris/hidden/country_effect.sublime-syntax'
   - match: '(?i)\b(solar_system)\b{{equals_open_brace}}'
     captures:
       1: keyword.defined.block.altering
       2: sign.equals
       3: brace.open
     push: 'Packages/Stellaris/hidden/system_effect.sublime-syntax'
+
+  - match: '(?i)\b(solar_system)\b\.'
+    captures:
+      1: keyword.defined.block.altering
+    push: 
+      - match: '(?=\})'
+        pop: true
+      - include: 'Packages/Stellaris/hidden/system_effect.sublime-syntax'
   - match: '(?i)\b(last_created_pop)\b{{equals_open_brace}}'
     captures:
       1: keyword.defined.block.altering
       2: sign.equals
       3: brace.open
     push: 'Packages/Stellaris/hidden/pop_effect.sublime-syntax'
+
+  - match: '(?i)\b(last_created_pop)\b\.'
+    captures:
+      1: keyword.defined.block.altering
+    push: 
+      - match: '(?=\})'
+        pop: true
+      - include: 'Packages/Stellaris/hidden/pop_effect.sublime-syntax'
   - match: '(?i)\b(last_create_pop_faction)\b{{equals_open_brace}}'
     captures:
       1: keyword.defined.block.altering
       2: sign.equals
       3: brace.open
     push: 'Packages/Stellaris/hidden/pop_faction_effect.sublime-syntax'
+
+  - match: '(?i)\b(last_create_pop_faction)\b\.'
+    captures:
+      1: keyword.defined.block.altering
+    push: 
+      - match: '(?=\})'
+        pop: true
+      - include: 'Packages/Stellaris/hidden/pop_faction_effect.sublime-syntax'
   - match: '(?i)\b(fleet|last_created_fleet)\b{{equals_open_brace}}'
     captures:
       1: keyword.defined.block.altering
       2: sign.equals
       3: brace.open
     push: 'Packages/Stellaris/hidden/fleet_effect.sublime-syntax'
+
+  - match: '(?i)\b(fleet|last_created_fleet)\b\.'
+    captures:
+      1: keyword.defined.block.altering
+    push: 
+      - match: '(?=\})'
+        pop: true
+      - include: 'Packages/Stellaris/hidden/fleet_effect.sublime-syntax'
   - match: '(?i)\b(leader|last_created_leader)\b{{equals_open_brace}}'
     captures:
       1: keyword.defined.block.altering
       2: sign.equals
       3: brace.open
     push: 'Packages/Stellaris/hidden/leader_effect.sublime-syntax'
+
+  - match: '(?i)\b(leader|last_created_leader)\b\.'
+    captures:
+      1: keyword.defined.block.altering
+    push: 
+      - match: '(?=\})'
+        pop: true
+      - include: 'Packages/Stellaris/hidden/leader_effect.sublime-syntax'
 
   - include: 'Packages/Stellaris/hidden/constant_scopes.sublime-syntax'
 
@@ -268,12 +324,12 @@ contexts:
     push: user_define_scope
 
   #SINGLE VALUE KEYWORDS
-  - match: '(?i)\b(tooltip|set_ship_flag|remove_ship_flag|set_name|reduce_hp|reduce_hp_percent|repair_ship|set_disable_at_health|set_disabled|unassign_leader|id|days|custom_tooltip|random|remove_global_flag|set_global_flag|save_event_target_as|save_global_event_target_as|break|destroy_fleet|destroy_ambient_object|custom_tooltip|random|remove_global_flag|set_global_flag|save_event_target_as|save_global_event_target_as|break|destroy_fleet|destroy_ambient_object)\b\s*(=)\s*((?:\w|:|\.)+)'
+  - match: '(?i)\b(tooltip|set_ship_flag|remove_ship_flag|set_name|reduce_hp|reduce_hp_percent|repair_ship|set_disable_at_health|set_disabled|unassign_leader|id|days|exile_leader_as|custom_tooltip|random|remove_global_flag|set_global_flag|save_event_target_as|save_global_event_target_as|break|destroy_fleet|destroy_ambient_object|custom_tooltip|random|remove_global_flag|set_global_flag|save_event_target_as|save_global_event_target_as|break|destroy_fleet|destroy_ambient_object)\b\s*(=)\s*((?:\w|:|\.)+)'
     captures:
       1: keyword.defined.value
       2: sign.equals
       3: value.user.defined
-  - match: '(?i)\b(tooltip|set_ship_flag|remove_ship_flag|set_name|reduce_hp|reduce_hp_percent|repair_ship|set_disable_at_health|set_disabled|unassign_leader|id|days|custom_tooltip|random|remove_global_flag|set_global_flag|save_event_target_as|save_global_event_target_as|break|destroy_fleet|destroy_ambient_object|custom_tooltip|random|remove_global_flag|set_global_flag|save_event_target_as|save_global_event_target_as|break|destroy_fleet|destroy_ambient_object)\b\s*(=)\s*(")' #SomeLocalisedValue
+  - match: '(?i)\b(tooltip|set_ship_flag|remove_ship_flag|set_name|reduce_hp|reduce_hp_percent|repair_ship|set_disable_at_health|set_disabled|unassign_leader|id|days|exile_leader_as|custom_tooltip|random|remove_global_flag|set_global_flag|save_event_target_as|save_global_event_target_as|break|destroy_fleet|destroy_ambient_object|custom_tooltip|random|remove_global_flag|set_global_flag|save_event_target_as|save_global_event_target_as|break|destroy_fleet|destroy_ambient_object)\b\s*(=)\s*(")' #SomeLocalisedValue
     captures:
       1: keyword.defined.value
       2: sign.equals
