@@ -226,6 +226,19 @@
 	    </dict>
 	    <dict>
 	    	<key>name</key>
+	    	<string>Constant Number</string>
+	    
+	    	<key>scope</key>
+	    	<string>constant.number</string>
+	    	
+	    	<key>settings</key>
+	    	<dict>
+	    		<key>foreground</key>
+	    		<string>#1f8206</string>
+	    	</dict>
+	    </dict>
+	    <dict>
+	    	<key>name</key>
 	    	<string>Predefined file value</string>
 	    
 	    	<key>scope</key>
