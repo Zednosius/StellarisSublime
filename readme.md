@@ -4,7 +4,7 @@ Most autocompletes are grabbed from stellariswiki.com
 
 To use, simply clone this repo into your sublime Packages folder.  
 If you are on windows you will most likely find this folder in %appdata%/Sublime Text 3/Packages
-The final path should look like /Sublime Text 3/Packages/Stellaris/<files>
+The final path should look like /Sublime Text 3/Packages/StellarisSublime/<files>
 
 ### Associate with .txt files
 Then you open a .txt file, click  `View -> Syntax -> Stellaris` to have sublime use that syntax file when opening text files.
@@ -16,7 +16,7 @@ A file named 'Stellaris.sublime-settings' should pop up, in that file write
 
 ```
 {
-	"color_scheme": "Packages/Stellaris/StellarisTheme.tmTheme",
+	"color_scheme": "Packages/StellarisSublime/StellarisTheme.tmTheme",
 	"extensions":
 	[
 		"txt"
